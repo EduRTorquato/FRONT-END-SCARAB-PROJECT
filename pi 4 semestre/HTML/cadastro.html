@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CADASTRO DE USUÁRIO</title>
+    <link rel="stylesheet" href="../CSS/cadastro.css">
+
+    <h1 class="tittle">CADASTRO DE USUÁRIO</h1>
+</head>
+<body>
+    <form class="forms1">
+        <div class="email">  
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+           
+          <div class="cpf">
+          <form name="cadastro">
+              <label for="text">CPF</label>
+              <input type="text" name="cpf" \
+              pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" \
+              title="Digite um CPF no formato: xxx.xxx.xxx-xx">
+               <input class="verificarcpf" type="submit" value="Verificar">
+              
+            </form>
+            </div>
+        
+        <div class="senha">
+          <label for="exampleInputPassword1" class="form-label">Senha</label>
+          <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="confirmardados">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label  for="exampleCheck1">Confirmo meus dados</label>
+        </div>
+        <button  class="submit" type="submit" class="btn btn-primary">Entrar</button>
+      </form>
+    
+</body>
+</html>

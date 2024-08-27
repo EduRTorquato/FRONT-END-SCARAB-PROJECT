@@ -1,0 +1,51 @@
+.body{
+    background-color: gray ;
+}
+
+.tittle{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+
+.forms1{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+.email{
+    color: black;
+    background-color: #f4f4f4;
+    width: 280px;
+    position: absolute;
+    padding: 20px; 
+    justify-content: space-between;
+    margin-top: 0px;
+}
+.cpf{
+    margin-top: 20px;
+}
+.verificarcpf{
+    
+    margin-left: 10px;
+    text-align: right;
+    position: absolute;
+    
+}
+.senha{
+    margin-bottom: 10px;
+    margin-top: 20px;   
+}
+
+
+   
+.confirmardados{
+    font-size: 15px;
+}
+
+.submit{
+    margin-top: 20px;
+    background-color: rgb(0, 145, 255);
+    color: #f4f4f4;
+    
+}

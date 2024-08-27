@@ -1,0 +1,31 @@
+
+.caixa {
+    position: absolute;
+    border-radius: 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+    color: black;
+    width: 180px;
+    padding: 30px;
+    left: 50%;
+    top: 30%; /* Opcional, se também quiser centralizar verticalmente */
+    transform: translate(-50%, -50%); /* Centraliza horizontal e verticalmente */
+}
+
+
+
+.listProduto{
+    font-size: large;
+    
+    margin-bottom: 20px;
+}
+
+.listUsuario{
+    margin-bottom: 20px;
+    font-size: large;
+}
+
+.listPedidos{
+    font-size: large;
+    
+}
