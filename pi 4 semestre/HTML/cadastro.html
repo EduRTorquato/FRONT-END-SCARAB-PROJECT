@@ -3,43 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> CADASTRO DE USUÁRIO</title>
+    <title>CADASTRO DE USUÁRIO</title>
     <link rel="stylesheet" href="../CSS/cadastro.css">
-    
-
-    <h1 class="tittle">CADASTRO DE USUÁRIO</h1>
 </head>
 <body>
     <form class="forms1">
-        <div class="email">  
-          <label for="exampleInputEmail1" class="form-label">Email</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-           
-          <div class="cpf">
-          <form name="cadastro">
-              <label for="text">CPF</label>
-              <input type="text" name="cpf" \
-              pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" \
-              title="Digite um CPF no formato: xxx.xxx.xxx-xx">
-               <input class="verificarcpf" type="submit" value="Verificar">
-              
-            </form>
-            </div>
         
+
+      <div class="email">
+        <h1 class="tittle">CADASTRO DE USUÁRIO</h1> 
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div class="error" id="errorExampleInputEmail1"></div>
+       
+
+        <div class="cpf">
+            <label for="cpf" class="form-label">CPF</label>
+            <input type="text" name="cpf" id="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF no formato: xxx.xxx.xxx-xx">
+            <div class="error" id="errorCpf"></div>
+        </div>
+
         <div class="senha">
-          <label for="exampleInputPassword1" class="form-label">Senha</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+            <label for="exampleInputPassword1" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+            <div class="error" id="errorExampleInputPassword1"></div>
         </div>
+
+        <div class="confirmasenha">
+            <label for="exampleInputPassword2" class="form-label">Confirme a senha</label>
+            <input type="password" class="form-control" id="exampleInputPassword2">
+            <div class="error" id="errorExampleInputPassword2"></div>
+        </div>
+
         <div class="confirmardados">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label  for="exampleCheck1">Confirmo meus dados</label>
+            <input type="checkbox" class="cb" id="exampleCheck1">
+            <label for="exampleCheck1">Confirmo meus dados</label>
+            <div class="error" id="errorExampleCheck1"></div>
         </div>
-        <button id="btnEntrar"  class="submit" type="submit" class="btn btn-primary">Entrar</button>
-      </form>
 
-
-
-
+        <button id="btnEntrar" class="submit" type="submit" class="btn btn-primary">Entrar</button>
+      </div>
+    </form>
     <script src="../js/cadastro.js"></script>
 </body>
 </html>
