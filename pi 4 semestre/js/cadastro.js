@@ -1,21 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.forms1');
-    const btnEntrar = document.getElementById('btnEntrar');
 
     form.addEventListener('submit', function(event) {
         if (!validateForm()) {
             event.preventDefault(); // Impede o envio do formulário
-            alert('Preencha todos os campos corretamente.'); 
+            alert('Preencha todos os campos corretamente.');
         } else {
-          
-            setTimeout(() => {
-                    window.location.href = '../index.html'; // TA COM ERRO ESSE KRL AQUI
-            }, 100);
+            event.preventDefault(); // Impede o envio do formulário
+            window.location.href = '../index.html'; // Redireciona para index.html
         }
     });
 
     function validateForm() {
-        // Obtém todos os campos
         const email = document.getElementById('exampleInputEmail1').value.trim();
         const cpf = document.querySelector('input[name="cpf"]').value.trim();
         const senha = document.getElementById('exampleInputPassword1').value.trim();
@@ -24,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let isValid = true;
 
-        // Limpa mensagens de erro
         clearErrors();
 
         // Valida o campo Email
@@ -67,27 +62,24 @@ document.addEventListener('DOMContentLoaded', () => {
         return isValid;
     }
 
-    function showError(fieldId, message) {
-        // Cria mensagem de erro
-        const field = document.getElementById(fieldId) || document.querySelector(`input[name="${fieldId}"]`);
-        const error = document.getElementById(`error${fieldId.charAt(0).toUpperCase() + fieldId.slice(1)}`);
-        
-        if (error) {
-            error.textContent = message;
-            error.classList.add('show'); // Mostra o balão de errp
-            const fieldRect = field.getBoundingClientRect();
-            const errorRect = error.getBoundingClientRect();
-
-            error.style.top = `${window.scrollY + fieldRect.top}px`;
-        }
-    }
-
     function clearErrors() {
-        // Remove todas as mensagens de erro
         const errors = document.querySelectorAll('.error');
         errors.forEach(error => {
             error.textContent = '';
             error.classList.remove('show');
         });
+    }
+
+    function showError(fieldId, message) {
+        const field = document.getElementById(fieldId) || document.querySelector(`input[name="${fieldId}"]`);
+        const error = document.getElementById(`error${fieldId.charAt(0).toUpperCase() + fieldId.slice(1)}`);
+
+        if (error) {
+            error.textContent = message;
+            error.classList.add('show'); // Adiciona a classe para mostrar o balão de erro
+            const fieldRect = field.getBoundingClientRect();
+            error.style.top = `${fieldRect.bottom + window.scrollY + 5}px`;
+            error.style.left = `${fieldRect.left + window.scrollX}px`;
+        }
     }
 });

@@ -21,10 +21,10 @@
     background-color: #014d83;
     width: 380px;
     position: absolute;
-    padding-right: 100px;
-    padding-left: 100px; 
+    padding-right: 70px;
+    padding-left: 70px; 
     padding-top: 50px;
-    padding-bottom: 130px;
+    padding-bottom: 30px;
     justify-content: space-around;
     text-align: center;
     margin-bottom: 30px;
@@ -58,10 +58,7 @@ margin-bottom: 25px;
 margin-left: -99px;
 }
 
-.cb{
-        
 
-}
    
 .confirmardados{
     text-align: center; 
@@ -69,7 +66,7 @@ margin-left: -99px;
 }
 
 .submit{
-    margin-top: 80px;
+    margin-top: 60px;
     background-color: rgb(195, 13, 0);
     color: #f4f4f4;
     font-size: 25px;
@@ -79,29 +76,45 @@ margin-left: -99px;
     
 }
 
+.logo01{
+
+    position: absolute;
+    border-radius: 20px;
+   
+    text-align: center;
+    color: black;
+    width: 180px;
+    padding: 30px;
+    left: 50%;
+    top: 88%; /* Opcional, se também quiser centralizar verticalmente */
+    transform: translate(-50%, -50%); /* Centraliza horizontal e verticalmente */
+}
+
 
 
 /* Estilos para mensagens de erro */
 .error {
-    margin-top: -50px ;
+    margin-top: -75px ;
     position: absolute;
     display: flex;
-    
+    font-size: large;
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
     padding: 10px;
     border-radius: 4px;
     font-size: 12px;
-    max-width: 250px;
-    z-index: 1000;
+    width: 250px;
+    margin-left: -50%;
+    
     display: none; /* Inicialmente escondido */
-    right: -30px; /* Distância da borda direita */
+    right: 130px; /* Distância da borda direita */
 }
 
 /* Estilos para mostrar a mensagem de erro */
 .error.show {
     display: block;
+    font-size: 15px;
 }
 
 /* Adiciona uma seta ao balão de erro */
