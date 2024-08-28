@@ -1,19 +1,35 @@
 
 .caixa {
     position: absolute;
-    border-radius: 20px;
-    background-color: #f4f4f4;
     text-align: center;
-    color: black;
-    width: 180px;
     padding: 30px;
     left: 50%;
-    top: 30%; /* Opcional, se também quiser centralizar verticalmente */
+    top: 20%; /* Opcional, se também quiser centralizar verticalmente */
     transform: translate(-50%, -50%); /* Centraliza horizontal e verticalmente */
+    margin-top: 30px;
+    background-color: #014d83;
+    width: 380px;
+    position: absolute; 
+    color: #f4f4f4;
+    padding-top: 30px;
+    border-radius: 30px;
+    
+}
+/* para texto com link*/
+a{
+    color: white;
+    text-decoration: none; /*remove o sublinhado do links*/
+}
+
+a:hover {
+    background-color: #ee1616; /* Cor de fundo ao passar o mouse */
 }
 
 
 
+
+
+/* para texto com link*/
 .listProduto{
     font-size: large;
     
@@ -28,4 +44,19 @@
 .listPedidos{
     font-size: large;
     
+}
+
+
+.logo01{
+
+    position: absolute;
+    border-radius: 20px;
+    
+    text-align: center;
+    color: black;
+    width: 180px;
+    
+    left: 50%;
+    top: 88%; /* Opcional, se também quiser centralizar verticalmente */
+    transform: translate(-50%, -50%); /* Centraliza horizontal e verticalmente */
 }

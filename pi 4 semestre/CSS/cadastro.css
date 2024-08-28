@@ -108,7 +108,7 @@ margin-left: -99px;
     margin-left: -50%;
     
     display: none; /* Inicialmente escondido */
-    right: 130px; /* Distância da borda direita */
+    right: 130px; 
 }
 
 /* Estilos para mostrar a mensagem de erro */
