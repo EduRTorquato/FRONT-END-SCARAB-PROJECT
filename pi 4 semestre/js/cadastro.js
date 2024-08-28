@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Preencha todos os campos corretamente.');
         } else {
             event.preventDefault(); // Impede o envio do formulário
-            window.location.href = '../index.html'; // Redireciona para index.html
+            window.location.href = '../html/listar.html'; // Redireciona para index.html
         }
     });
 

@@ -80,11 +80,11 @@ margin-left: -99px;
 
     position: absolute;
     border-radius: 20px;
-   
+    
     text-align: center;
     color: black;
     width: 180px;
-    padding: 30px;
+    
     left: 50%;
     top: 88%; /* Opcional, se também quiser centralizar verticalmente */
     transform: translate(-50%, -50%); /* Centraliza horizontal e verticalmente */
