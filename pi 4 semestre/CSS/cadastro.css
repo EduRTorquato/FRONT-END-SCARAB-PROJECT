@@ -93,20 +93,20 @@ footer {
 
 /* Estilos para mensagens de erro */
 .error {
-    margin-top: -25% ;
+    margin-top: -15% ;
     position: absolute;
     
     font-size: large;
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
-    padding: 10px;
+    padding: 5px;
     border-radius: 4px;
     font-size: 12px;
-    width: 250px;
-    transform: translate( -175%); /* Centraliza horizontal e verticalmente */
+    width: 280px;
+    transform: translate( -115%); /* Centraliza horizontal e verticalmente */
     display: none; /* Inicialmente escondido */
-    right: 130px; 
+   
 }
 
 /* Estilos para mostrar a mensagem de erro */
