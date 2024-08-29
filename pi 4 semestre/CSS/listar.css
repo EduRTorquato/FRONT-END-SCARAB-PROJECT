@@ -47,16 +47,10 @@ a:hover {
 }
 
 
-.logo01{
-
-    position: absolute;
+.logoListar{
     border-radius: 20px;
-    
-    text-align: center;
     color: black;
     width: 180px;
-    
-    left: 50%;
-    top: 88%; /* Opcional, se também quiser centralizar verticalmente */
-    transform: translate(-50%, -50%); /* Centraliza horizontal e verticalmente */
+    text-align: center;
+    margin-top: 80%;
 }

@@ -4,12 +4,11 @@
 
 .tittle{
     font-size: 30px;
-    margin-bottom: 70px;
-   
-    
+    margin-bottom: 70px;    
 }
 
 .forms1{
+    
     position: relative;
     display: flex;
     justify-content: space-around;
@@ -18,9 +17,11 @@
     background-color:#003049;
     color: white;
     position: fixed;
-    top: 10%;
+    top: 5%;
     width: 20%;
-    padding: 80px;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-bottom: 50px;
     
     text-align: center;
     font-size: larger;
@@ -70,18 +71,22 @@ margin-left: -99px;
     
 }
 
-.logo01{
+/* Estilo para o rodapé */
+footer {
+    display: flex;           
+    justify-content: center; 
+    align-items: center;     
+    height: 100px;           
 
-    position: absolute;
+}
+
+/* Estilo para o logo */
+.logo01 {
     border-radius: 20px;
-    
-    text-align: center;
     color: black;
     width: 180px;
-    
-    left: 50%;
-    top: 88%; /* Opcional, se também quiser centralizar verticalmente */
-    transform: translate(-50%, -50%); /* Centraliza horizontal e verticalmente */
+    text-align: center;
+    margin-top: 80%;
 }
 
 
