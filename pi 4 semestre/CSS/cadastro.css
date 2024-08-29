@@ -3,11 +3,10 @@
 }
 
 .tittle{
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    font-size: 31px;
+    font-size: 30px;
     margin-bottom: 70px;
+   
+    
 }
 
 .forms1{
@@ -20,8 +19,8 @@
     color: white;
     position: fixed;
     top: 10%;
-    width: 300px;
-    padding: 70px;
+    width: 20%;
+    padding: 80px;
     
     text-align: center;
     font-size: larger;
@@ -66,7 +65,7 @@ margin-left: -99px;
     color: #f4f4f4;
     font-size: 25px;
     border-radius: 50px;
-    width: 30%;
+    width: 40%;
     
     
 }
@@ -89,9 +88,9 @@ margin-left: -99px;
 
 /* Estilos para mensagens de erro */
 .error {
-    margin-top: -75px ;
+    margin-top: -25% ;
     position: absolute;
-    display: flex;
+    
     font-size: large;
     background-color: #f8d7da;
     color: #721c24;
@@ -100,8 +99,7 @@ margin-left: -99px;
     border-radius: 4px;
     font-size: 12px;
     width: 250px;
-    margin-left: -50%;
-    
+    transform: translate( -175%); /* Centraliza horizontal e verticalmente */
     display: none; /* Inicialmente escondido */
     right: 130px; 
 }
