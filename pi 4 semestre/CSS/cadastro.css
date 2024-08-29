@@ -16,21 +16,16 @@
     justify-content: space-around;
 }
 .email{
-    margin-top: 30px;
-    color: black;
-    background-color: #014d83;
-    width: 380px;
-    position: absolute;
-    padding-right: 70px;
-    padding-left: 70px; 
-    padding-top: 50px;
-    padding-bottom: 30px;
-    justify-content: space-around;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: larger;
-    border-radius: 30px;
+    background-color:#003049;
     color: white;
+    position: fixed;
+    top: 10%;
+    width: 300px;
+    padding: 70px;
+    
+    text-align: center;
+    font-size: larger;
+    border-radius: 100px;
     
 }
 .cpf{
