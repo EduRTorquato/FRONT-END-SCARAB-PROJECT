@@ -6,13 +6,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnListarUsuario = document.getElementById('btnListarUsuario');
     const btnListarPedidos = document.getElementById('btnListarPedidos');
 
-    function redirectToIndex(event) {
+    function redirectToProduto(event) {
         event.preventDefault(); 
-        window.location.href = '../index.html'; // Redireciona para index.html
+        window.location.href = '../html/listar_produto.html'; // Redireciona para index.html
     }
 
+    function redirectToUsuario(event) {
+        event.preventDefault(); 
+        window.location.href = '../html/listar_usuario.html'; // Redireciona para index.html
+    }
+
+    function redirectToPedido(event) {
+        event.preventDefault(); 
+        window.location.href = '../html/listar_pedido.html'; // Redireciona para index.html
+    }
+
+   
+
     // Adiciona eventos de clique aos links
-    btnListarProduto.addEventListener('click', redirectToIndex);
-    btnListarUsuario.addEventListener('click', redirectToIndex);
-    btnListarPedidos.addEventListener('click', redirectToIndex);
+    btnListarProduto.addEventListener('click', redirectToProduto);
+    btnListarUsuario.addEventListener('click', redirectToUsuario);
+    btnListarPedidos.addEventListener('click', redirectToPedido);
 });
