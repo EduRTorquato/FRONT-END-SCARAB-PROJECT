@@ -1,0 +1,11 @@
+
+
+.logoUsuario{
+    border-radius: 20px;
+    color: black;
+    width: 180px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    
+}

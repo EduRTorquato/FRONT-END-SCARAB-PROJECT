@@ -1,0 +1,116 @@
+/* home.css */
+
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+.navbarHome {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #003049;
+    padding: 10px 20px;
+}
+
+.camposBarra {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.navbarLogo img {
+    display: block;
+}
+
+.opcoes {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin: 0 10px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.nav-link.disabled {
+    color: white;
+    pointer-events: none;
+}
+
+.btnBusca {
+    display: flex;
+    align-items: center;
+}
+
+.form-control {
+    margin-right: 10px;
+}
+
+.btn-outline-success {
+    border-color: #f4f4f4;
+    color: red;
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745;
+    color: white;
+}
+
+
+
+.busca {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    
+    transition: width 0.4s ease;
+}
+
+.busca:hover {
+    width: 300px;
+}
+
+.search-input {
+    width: 80%;
+    height: 40%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.busca:hover .search-input {
+    opacity: 1;
+}
+
+.search-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.search-button img {
+    width: 100%;
+    height: 100%;
+}
