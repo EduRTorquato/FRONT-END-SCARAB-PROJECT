@@ -5,55 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CADASTRO DE USUÁRIO</title>
+    <link rel="icon" href="../IMAGENS/logo(2).png">
     <link rel="stylesheet" href="../CSS/styles.css">
-   
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
-    <form class="forms1">
-        <div class="email">
-            <h1 class="tittle">CADASTRO DE USUÁRIO</h1>
-            <label for="exampleInputEmail1" class="form-control">Email</label>
-            <input id="exampleInputEmail1" class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
-            <div class="error" id="errorExampleInputEmail1"></div>
+    <form class="form">
+        <div class="cadastro">
+            <h1 class="tittle">Cadastro de Usuário</h1>
 
-
-            <div class="cpf">
-                <label for="cpf" class="form-label">CPF</label>
-                <input type="text" name="cpf" id="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
-                    title="Digite um CPF no formato: xxx.xxx.xxx-xx">
-                <div class="error" id="errorCpf"></div>
+            <div class="email">
+                <input id="exampleInputEmail1" placeholder="Email" class="form-control form-control-lg" type="email"
+                    placeholder=".form-control-lg" aria-label=".form-control-lg example">
             </div>
 
+            <div class="cpf">
+                <input placeholder="CPF" type="text" name="cpf" id="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+                    title="Digite um CPF no formato: xxx.xxx.xxx-xx">
+            </div>
+
+
             <div class="senha">
-                <label for="exampleInputPassword1" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
-                <div class="error" id="errorExampleInputPassword1"></div>
+                <input placeholder="Senha" type="password" class="form-control" id="exampleInputPassword1">
             </div>
 
             <div class="confirmasenha">
-                <label for="exampleInputPassword2" class="form-label">Confirme a senha</label>
-                <input type="password" class="form-control" id="exampleInputPassword2">
-                <div class="error" id="errorExampleInputPassword2"></div>
+                <input placeholder="Confirme sua senha" type="password" class="form-control" id="exampleInputPassword2">
             </div>
 
             <div class="confirmardados">
                 <input type="checkbox" class="cb" id="exampleCheck1">
                 <label for="exampleCheck1">Confirmo meus dados</label>
-                <div class="error" id="errorExampleCheck1"></div>
             </div>
 
 
-            <button id="btnEntrar" class="submit" type="submit" class="btn btn-primary">Primary</button>
 
+            <button id="btnEntrar" type="button" class="submit" class="btn btn-primary">Cadastrar</button>
+            <u class="politics">* Politicas de privacidade Scarab</u>
         </div>
     </form>
+
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <script src="../js/cadastro.js"></script>
+
 </body>
 
-    <footer>
-        <img class="logo01" src="../IMAGENS/logo(2).png" alt="">
-    </footer>
+<footer>
+    <img class="logo01" src="../IMAGENS/logo(2).png" alt="">
+</footer>
 
 
 </html>

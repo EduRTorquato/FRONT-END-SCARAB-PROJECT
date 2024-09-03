@@ -1,82 +1,94 @@
-.body{
-    background-color: gray ;
-}
-
-.tittle{
+.tittle {
     font-size: 30px;
-    margin-bottom: 70px;    
+    margin: 50px;
 }
 
-.forms1{
-    
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-}
-.email{
-    background-color:#003049;
+.cadastro {
+    background-color: #003049;
     color: white;
     position: fixed;
-    top: 5%;
-    width: 20%;
-    padding-left: 70px;
-    padding-right: 70px;
-    padding-bottom: 50px;
-    
+    height: 600px;
+    width: 450px;
     text-align: center;
     font-size: larger;
     border-radius: 100px;
-    
 }
-.cpf{
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 40px;
+
+.form {
+   position: fixed;
+   left: 38%;
+   top: 5%;
 }
-.verificarcpf{
-    text-align: center;
-    margin-left: 10px;
-    text-align: right;
-    position: absolute;
+
+input {
+    margin: 15px;
+    height: 35px;
+    width: 250px;
+    border-radius: 15px;
+    padding-left: 10px;
+    border-style: none;
+}
+
+.cb{
+    margin-top: 20x;
+    width: 10px;
+    height: 20px;
+    background-color: red;
+}
+
+
+.confirmardados {
+    display: flex;
     font-size: 15px;
-    
-}
-.senha{
-    text-align: center;
-    margin-bottom: 40px;
-    margin-top: 20px;   
-}
-
-.confirmasenha{
-    text-align: center;
-margin-bottom: 25px;
-margin-left: -99px;
+    justify-content: start;
+    align-items: center;
+    padding-left: 75px;
 }
 
 
-   
-.confirmardados{
-    text-align: center; 
-    font-size: 25px;
-}
-
-.submit{
-    margin-top: 60px;
-    background-color: rgb(195, 13, 0);
+/* BOTÃO DE CADASTRO */
+.submit {
+    background-color: #D62828;
     color: #f4f4f4;
-    font-size: 25px;
-    border-radius: 50px;
-    width: 40%;
+    border-radius: 10px;
+    border-style: none;
+    font-weight: bolder;
+
+    font-size: 20Px;
     
+    height: 7%;
+    width: 50%;
+    margin-top: 60px;
+}
+
+.submit:hover {
+    background-color: rgb(148, 0, 0);
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+/* POLÍTICAS DE PRIVACIDADE  */
+.politics{
+    color: rgb(255, 255, 255);
+    font-size: 10px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
     
+}
+
+.politics:hover{
+    color: rgb(205, 205, 205);
+    transition-duration: 0.2s;
+    cursor: pointer;
 }
 
 /* Estilo para o rodapé */
 footer {
-    display: flex;           
-    justify-content: center; 
-    align-items: center;     
-    height: 100px;           
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
 
 }
 
@@ -87,43 +99,4 @@ footer {
     width: 180px;
     text-align: center;
     margin-top: 80%;
-}
-
-
-
-/* Estilos para mensagens de erro */
-.error {
-    margin-top: -15% ;
-    position: absolute;
-    
-    font-size: large;
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    padding: 5px;
-    border-radius: 4px;
-    font-size: 12px;
-    width: 280px;
-    transform: translate( -115%); /* Centraliza horizontal e verticalmente */
-    display: none; /* Inicialmente escondido */
-   
-}
-
-/* Estilos para mostrar a mensagem de erro */
-.error.show {
-    display: block;
-    font-size: 15px;
-}
-
-/* Adiciona uma seta ao balão de erro */
-.error::before {
-    content: "";
-    position: absolute;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #f8d7da transparent transparent transparent;
-    top: 50%;
-    left: -10px;
-    transform: translateY(-
-    0%);
 }
