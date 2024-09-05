@@ -15,26 +15,46 @@
 }
 
 .form {
-   position: fixed;
-   left: 38%;
-   top: 5%;
+    position: fixed;
+    left: 38%;
+    top: 5%;
 }
 
 input {
     margin: 15px;
-    height: 35px;
+    height: 30px;
     width: 250px;
     border-radius: 15px;
     padding-left: 10px;
     border-style: none;
+    border: solid;
 }
 
-.cb{
+.cb {
     margin-top: 20x;
     width: 10px;
     height: 20px;
     background-color: red;
 }
+
+.cpf {
+    width: 185px;
+}
+
+.buttonVericaCpf {
+    background-color: #D62828;
+    border-radius: 10px;
+    color: #f4f4f4;
+    border-style: none;
+    height: 35px;
+}
+
+.buttonVericaCpf:hover {
+    background-color: rgb(148, 0, 0);
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
 
 
 .confirmardados {
@@ -55,7 +75,7 @@ input {
     font-weight: bolder;
 
     font-size: 20Px;
-    
+
     height: 7%;
     width: 50%;
     margin-top: 60px;
@@ -68,16 +88,16 @@ input {
 }
 
 /* POLÍTICAS DE PRIVACIDADE  */
-.politics{
+.politics {
     color: rgb(255, 255, 255);
     font-size: 10px;
     padding: 5px;
     display: flex;
     justify-content: center;
-    
+
 }
 
-.politics:hover{
+.politics:hover {
     color: rgb(205, 205, 205);
     transition-duration: 0.2s;
     cursor: pointer;
