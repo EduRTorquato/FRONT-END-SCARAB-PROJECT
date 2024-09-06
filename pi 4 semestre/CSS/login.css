@@ -1,0 +1,10 @@
+.login {
+    background-color: #003049;
+    color: white;
+    position: fixed;
+    height: 50%;
+    width: 450px;
+    text-align: center;
+    font-size: larger;
+    border-radius: 100px;
+}

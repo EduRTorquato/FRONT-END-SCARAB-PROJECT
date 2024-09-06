@@ -7,7 +7,7 @@
     background-color: #003049;
     color: white;
     position: fixed;
-    height: 600px;
+    height: 70%;
     width: 450px;
     text-align: center;
     font-size: larger;
@@ -67,8 +67,8 @@ input {
 
 
 /* BOTÃO DE CADASTRO */
-.submit {
-    background-color: #D62828;
+.submitTrue {
+    background-color: red;
     color: #f4f4f4;
     border-radius: 10px;
     border-style: none;
@@ -81,11 +81,17 @@ input {
     margin-top: 60px;
 }
 
-.submit:hover {
+.submitTrue:hover {
     background-color: rgb(148, 0, 0);
     transition-duration: 0.2s;
     cursor: pointer;
 }
+
+/* .submitFalse:hover {
+    background-color: rgb(148, 0, 0);
+    transition-duration: 0.2s;
+    cursor: pointer;
+} */
 
 /* POLÍTICAS DE PRIVACIDADE  */
 .politics {

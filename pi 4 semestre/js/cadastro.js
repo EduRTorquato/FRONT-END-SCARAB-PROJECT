@@ -7,20 +7,21 @@ const email = document.getElementById("email");
 const senha = document.getElementById("senha");
 const confirmSenha = document.getElementById("confirmSenha");
 const checkBox = document.getElementById("checkBox");
+const nomeUsuario = document.getElementById("nomeUsuario");
 
 const verificarCpf = document.getElementById("verificarCpf");
 
 
-
-
+//Validação email
 email.addEventListener("keyup", function () {
     if (EmailValido(email.value)) {
-        email.setAttribute("style", 'border: solid red')
+        email.setAttribute("style", 'border: solid black')
     } else {
-    
+        email.setAttribute("style", 'border: solid red')
     }
 })
 
+//Verifica se senhas estão iguais
 confirmSenha.addEventListener("mouseout", function () {
     if (senha.value != confirmSenha.value) {
         console.log("TÁ ERRADO");
@@ -30,6 +31,9 @@ confirmSenha.addEventListener("mouseout", function () {
     }
 })
 
+
+
+//Verifica se CPF é válido.
 verificarCpf.addEventListener("click", function () {
 
     if (validaCPF(cpf.value)) {
@@ -40,6 +44,11 @@ verificarCpf.addEventListener("click", function () {
             icon: 'success',
             timer: 1500
         })
+        btnEntrar.disabled = false;
+        btnEntrar.classList.toggle('submitTrue');
+
+
+
     } else {
         Swal.fire({
             position: "center",
@@ -48,27 +57,107 @@ verificarCpf.addEventListener("click", function () {
             icon: 'warning',
             timer: 1500
         })
+
+        btnEntrar.disabled = true;
     }
 })
 
 
-btnEntrar.addEventListener("click", function () {
-    console.log("Hello!");
 
+//Evento botão de entrar
+btnEntrar.addEventListener("click", async (event) => {
 
+    if (!validaCPF(cpf.value)) {
+        Swal.fire({
+            position: "center",
+            title: 'Valide o CPF antes de se cadastrar.',
+            showConfirmButton: false,
+            icon: 'warning',
+            timer: 1500
+        })
+    }
+    else if (nomeUsuario.value == "") {
+        Swal.fire({
+            position: "center",
+            title: 'Preencha o nome de usuário.',
+            showConfirmButton: false,
+            icon: 'warning',
+            timer: 2000
+        })
+    }
+    else if (!senha.value == confirmSenha.value || senha.value == "") {
+        Swal.fire({
+            position: "center",
+            title: 'Senhas não preenchidas ou não coincidem.',
+            showConfirmButton: false,
+            icon: 'warning',
+            timer: 2000
+        })
+    } else if (!EmailValido(email.value) || email.value == "") {
+        Swal.fire({
+            position: "center",
+            title: 'Emaiil não está correto!',
+            showConfirmButton: false,
+            icon: 'warning',
+            timer: 1500
+        })
+    } else {
 
-    console.log({
-        cpf: cpf.value,
-        email: email.value,
-        senha: senha.value,
-        confirmSenha: confirmSenha.value,
-        checkBox: checkBox.value
-    })
+        const cpf = document.getElementById("cpf").value;
+        const email = document.getElementById("email").value;
+        const senha = document.getElementById("senha").value;
+        const nomeUsuario = document.getElementById("nomeUsuario").value;
+
+        const objCadastro = {
+            cpf,
+            email,
+            senha,
+            nomeUsuario
+        }
+
+        // Chamar a API para cadastrar o usuário
+        await fetch("http://localhost:8080/usuarios", {
+            method: "POST",
+            body: JSON.stringify(objCadastro),
+            headers: {
+                "Content-Type": "application/json",
+            },
+
+        }).then(response => {
+
+            console.log(objCadastro);
+
+            if (response.status != 202) {
+                throw new Error("Verifique os dados");
+            } else {
+                Swal.fire({
+                    position: "center",
+                    title: "Usuário cadastrado com sucesso",
+                    showConfirmButton: false,
+                    icon: 'success',
+                    timer: 1500
+                })
+            }
+            return response.text();
+        }).catch((error) => {
+
+            console.log(error);
+            Swal.fire({
+                position: "top-end",
+                icon: "warning",
+                title: "Verifique os dados novamente!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        });
+
+    }
 
 });
 
 
 
+//Função que retorna validade do CPF
 function validaCPF(cpf) {
     var Soma = 0
     var Resto
@@ -117,29 +206,37 @@ function validaCPF(cpf) {
     return true
 }
 
+function validaSenha() {
+    if (senha.value == confirmSenha.value) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//Verifica Validade do Email
 function EmailValido(email) {
     if ((email == null) || (email.length < 4))
-    return false;
+        return false;
 
     var partes = email.split('@');
-    if (partes.length < 2 ) return false;
+    if (partes.length < 2) return false;
 
     var pre = partes[0];
     if (pre.length == 0) return false;
-    
+
     if (!/^[a-zA-Z0-9_.-/+]+$/.test(pre))
         return false;
 
     // gmail.com, outlook.com, terra.com.br, etc.
     var partesDoDominio = partes[1].split('.');
-    if (partesDoDominio.length < 2 ) return false;
+    if (partesDoDominio.length < 2) return false;
 
-    for ( var indice = 0; indice < partesDoDominio.length; indice++ )
-    {
+    for (var indice = 0; indice < partesDoDominio.length; indice++) {
         var parteDoDominio = partesDoDominio[indice];
 
         // Evitando @gmail...com
-        if (parteDoDominio.length == 0) return false;  
+        if (parteDoDominio.length == 0) return false;
 
         if (!/^[a-zA-Z0-9-]+$/.test(parteDoDominio))
             return false;
@@ -147,10 +244,3 @@ function EmailValido(email) {
 
     return true;
 }
-// Swal.fire({
-//     position: "top-end",
-//     title: 'Preencha todos os campos!',
-//     showConfirmButton: false,
-//     icon: 'error',
-//     timer: 1500
-// })

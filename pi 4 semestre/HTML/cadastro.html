@@ -7,6 +7,7 @@
     <title>CADASTRO DE USUÁRIO</title>
     <link rel="icon" href="../IMAGENS/logo(2).png">
     <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
@@ -23,7 +24,12 @@
             <div class="">
                 <input placeholder="CPF" class="cpf" type="text" name="cpf" id="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
                     title="Digite um CPF no formato: xxx.xxx.xxx-xx">
-                    <button type="button" id="verificarCpf" class="buttonVericaCpf"> Verificar</button>
+                <button type="button" id="verificarCpf" class="buttonVericaCpf"> Verificar</button>
+            </div>
+
+            <div class="nomeUsuario">
+                <input id="nomeUsuario" placeholder="Nome de Usuário" class="form-control form-control-lg" type="text"
+                    placeholder=".form-control-lg" aria-label=".form-control-lg example">
             </div>
 
 
@@ -42,13 +48,12 @@
 
 
 
-            <button id="btnEntrar" type="button" class="submit" class="btn btn-primary">Cadastrar</button>
+            <button id="btnEntrar" type="button" class="submitTrue" class="btn btn-primary">Cadastrar</button>
             <u class="politics">* Politicas de privacidade Scarab</u>
         </div>
     </form>
 
     <script src="sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
     <script src="../js/cadastro.js"></script>

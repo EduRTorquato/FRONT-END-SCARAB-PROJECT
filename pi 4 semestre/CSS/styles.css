@@ -1,5 +1,6 @@
 @import url(./listar.css);
 @import url(./cadastro.css);
+@import url(./login.css);
 
 html{
     font-family: Arial, Helvetica, sans-serif;
