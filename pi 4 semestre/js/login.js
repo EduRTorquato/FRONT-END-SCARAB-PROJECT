@@ -7,8 +7,6 @@ register.addEventListener("click", () => {
 })
 
 // ======================= LOGIN ======================= \\ 
-
-
 btnEntrar.addEventListener("click", (event) => {
     event.preventDefault();
 
@@ -43,14 +41,16 @@ btnEntrar.addEventListener("click", (event) => {
             },
         })
             .then(response => {
-                if (response.status != 202) {
-                    throw new Error("Email ou senha incorretos");
+                console.log(response.status);
+                if (response.status   == 400) {
+                    throw new Error(JSON.stringify("Usuário ou senha incorretos."));;
+                }else if(response.status == 423){
+                    throw new Error(JSON.stringify("Usuário não ativo no banco de dados."));;
                 }
                 return response.text();
             })
             .then(data => {
                 // Redirecionar para outra página após o login bem-sucedido
-
                 sessionStorage.setItem("user", JSON.stringify(usuario));
                 window.location.href = "listar.html";
             })
@@ -59,7 +59,7 @@ btnEntrar.addEventListener("click", (event) => {
                 Swal.fire({
                     position: "top-end",
                     icon: "warning",
-                    title: "Email ou senha inválidos!",
+                    title: error,
                     showConfirmButton: false,
                     timer: 1500
                 });
