@@ -19,17 +19,6 @@
     left: 38%;
     top: 5%;
 }
-
-input {
-    margin: 15px;
-    height: 30px;
-    width: 250px;
-    border-radius: 15px;
-    padding-left: 10px;
-    border-style: none;
-    border: solid;
-}
-
 .cb {
     margin-top: 20x;
     width: 10px;
@@ -55,8 +44,6 @@ input {
     cursor: pointer;
 }
 
-
-
 .confirmardados {
     display: flex;
     font-size: 15px;
@@ -65,21 +52,6 @@ input {
     padding-left: 75px;
 }
 
-
-/* BOTÃO DE CADASTRO */
-.submitTrue {
-    background-color: red;
-    color: #f4f4f4;
-    border-radius: 10px;
-    border-style: none;
-    font-weight: bolder;
-
-    font-size: 20Px;
-
-    height: 7%;
-    width: 50%;
-    margin-top: 60px;
-}
 
 .submitTrue:hover {
     background-color: rgb(148, 0, 0);

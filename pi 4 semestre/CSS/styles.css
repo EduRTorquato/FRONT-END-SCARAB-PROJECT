@@ -4,12 +4,21 @@
 @import url(./listar_usuario.css);
 @import url(./variaveis.css);
 
-html{
+html {
     font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
     background-color: srgb(255, 255, 255);
 
-    background: rgb(255, 255, 255) url(../IMAGENS/background.png) center;
+    background: radial-gradient(circle, rgba(190,190,190,1) 0%, rgba(199,199,199,1) 100%);
+}
+
+input {
+    height: 36px;
+    width: 250px;
+    border-radius: 15px;
+    padding-left: 10px;
+    border-style: none;
+    border: solid;
 }

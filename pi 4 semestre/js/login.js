@@ -1,10 +1,5 @@
-const register = document.getElementById("register");
+
 const btnEntrar = document.getElementById("btnEntrar");
-
-
-register.addEventListener("click", () => {
-    window.location.href = "cadastro.html";
-})
 
 // ======================= LOGIN ======================= \\ 
 btnEntrar.addEventListener("click", (event) => {
@@ -42,10 +37,13 @@ btnEntrar.addEventListener("click", (event) => {
         })
             .then(response => {
                 console.log(response.status);
-                if (response.status   == 400) {
+                if (response.status == 400) {
                     throw new Error(JSON.stringify("Usuário ou senha incorretos."));;
-                }else if(response.status == 423){
+                } else if (response.status == 423) {
                     throw new Error(JSON.stringify("Usuário não ativo no banco de dados."));;
+                }
+                else if (response.status == 500) {
+                    throw new Error(JSON.stringify("Dados não corretos"));;
                 }
                 return response.text();
             })

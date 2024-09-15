@@ -64,7 +64,8 @@ async function getUserData() {
 
         if (data.grupo == "ESTOQUISTA") {
             console.log(data.grupo);
-            btnListarUsuario.addEventListener('click', avisaUsuario);
+            //btnListarUsuario.addEventListener('click', avisaUsuario);
+            btnListarUsuario.style.visibility = "hidden";
         } else {
             btnListarUsuario.addEventListener('click', redirectToUsuario);
         }

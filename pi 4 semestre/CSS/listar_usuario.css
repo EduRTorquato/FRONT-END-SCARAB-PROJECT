@@ -1,48 +1,70 @@
-
-.bodyList{
+.bodyList {
     display: flex;
-    align-items: center;
     justify-content: center;
-    
+    margin: 60px;
 }
-.logoUsuario{
+
+.logoUsuario {
     border-radius: 20px;
     color: black;
     width: 180px;
     text-align: center;
     display: flex;
     justify-content: space-around;
-    
+
 }
 
-.listUser{
+.dvm-circle:hover {
+    cursor: pointer;
+    background-color: rgb(15, 70, 3);
+}
+
+.listUser {
     width: 1000px;
     height: 800px;
-    border: 1px solid rgb(255, 255, 255);
     position: fixed;
-    top: 5%;
+
 
     background-color: var(--corBase);
     border-radius: 20px;
 
     display: flex;
-    justify-content:baseline;
     align-items: center;
     flex-direction: column;
-
-    text-align: center;
     padding: 10px;
 }
 
-.listUser h1  {
+.listUser h1 {
     color: white;
 }
 
-.userUnique{
+.logoMenu{
+    width: 50px;
+    height: 50px;
+}
+
+.addButton {
+    margin: 5px;
+    background-color: rgb(21, 120, 1);
+    color: white;
+    width: 40px;
+    font-size: 30px;
+    height: 40px;
+
+    border-style: none;
+    font-weight: bolder;
+
+    border-radius: 50px;
+    margin-left: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userUnique {
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    width: 80%;
-    height: 5%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     padding: 10px;
@@ -51,13 +73,14 @@
 
 .userUnique p {
     font-weight: bold;
+    margin: 5px;
 }
 
 .userUnique .ativar {
     background-color: rgb(55, 144, 55);
     border-style: none;
     border-radius: 10px;
-    cursor: pointer;    
+    cursor: pointer;
     color: white;
 }
 
@@ -70,12 +93,12 @@
 }
 
 
-.userUnique .desativar:hover{
+.userUnique .desativar:hover {
     background-color: rgb(171, 0, 0);
     transition: 0.2s;
-} 
+}
 
-.userUnique .ativar:hover{
+.userUnique .ativar:hover {
     background-color: rgb(19, 78, 19);
     transition: 0.2s;
-} 
+}
