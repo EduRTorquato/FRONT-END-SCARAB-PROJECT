@@ -92,6 +92,14 @@
     color: white;
 }
 
+.userUnique .edit {
+    background-color: rgb(62, 101, 255);
+    border-style: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+}
+
 .userUnique .inativo {
     background-color: rgb(145, 145, 145);
     border-style: none;
