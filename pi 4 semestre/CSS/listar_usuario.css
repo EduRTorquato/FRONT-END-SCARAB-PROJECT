@@ -38,7 +38,7 @@
     color: white;
 }
 
-.logoMenu{
+.logoMenu {
     width: 50px;
     height: 50px;
 }
@@ -92,6 +92,18 @@
     color: white;
 }
 
+.userUnique .inativo {
+    background-color: rgb(145, 145, 145);
+    border-style: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.userUnique .inativo:hover {
+    background-color: rgb(95, 95, 95);
+    transition: 0.2s;
+}
 
 .userUnique .desativar:hover {
     background-color: rgb(171, 0, 0);

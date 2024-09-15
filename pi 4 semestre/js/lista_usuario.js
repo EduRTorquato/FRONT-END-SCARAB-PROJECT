@@ -2,6 +2,11 @@
 chamar();
 $('#cpf').mask('000.000.000-00');
 
+
+const user = JSON.parse(sessionStorage.getItem("user"))
+
+console.log(user);
+
 const cpfUser = document.getElementById("cpfUser");
 const estoquistaUser = document.getElementById("estoquistaUser");
 
@@ -372,6 +377,13 @@ function criarUsers(dados) {
 
         buttonActive.innerHTML = "ATIVAR";
         buttonDeactivate.innerHTML = "INATIVAR";
+
+        user.nomeUsuario == dado.nomeUsuario ? buttonActive.disabled = true : buttonActive.disabled = false;
+        user.nomeUsuario == dado.nomeUsuario ? buttonDeactivate.disabled = true : buttonDeactivate.disabled = false;
+
+        user.nomeUsuario == dado.nomeUsuario ? buttonActive.classList.add("inativo") : buttonActive.disabled = false;
+        user.nomeUsuario == dado.nomeUsuario ? buttonDeactivate.classList.add("inativo") : buttonActive.disabled = false;
+
 
 
 
