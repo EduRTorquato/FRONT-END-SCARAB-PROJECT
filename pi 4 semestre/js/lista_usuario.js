@@ -419,7 +419,7 @@ async function salvar() {
                 "email": email.value,
                 "senha": senha.value,
                 "grupo": grupoUsuario.value,
-                "active": objetoEditar.value
+                "active": userAtivo.value
             }
 
 
