@@ -6,7 +6,7 @@ chamar();
 const user = JSON.parse(sessionStorage.getItem("user"))
 
 //BOOLEANO PARA VALIDAR EDIÇÃO.
-var editar = new Boolean(false);
+var editar = false;
 
 //OBJETO GLOBAL PARA EDIÇÃO DE OBJETO.
 var objetoEditar;
@@ -463,6 +463,15 @@ async function salvar() {
             });
 
         } else {
+
+            const objSalvar = {
+                "cpf": cpf.value,
+                "nomeUsuario": nomeUsuario.value,
+                "email": email.value,
+                "senha": senha.value,
+                "grupo": grupoUsuario.value,
+                "active": userAtivo.value
+            }
 
             // Chamar a API para cadastrar o usuário
             await fetch("http://localhost:8080/usuarios", {
