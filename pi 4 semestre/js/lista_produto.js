@@ -49,7 +49,7 @@ addButton.addEventListener("click", function () {
 
 
 async function chamar() {
-    // Chamar a API para carregar os usuários
+    // Chamar a API para carregar os produtos
     await fetch("http://localhost:8080/produtos").then(response => {
         if (response.ok) {
 
@@ -79,7 +79,7 @@ btnSalvar.addEventListener("click", function () {
     console.log(objProduto);
 
 
-    // Chamar a API para cadastrar o usuário
+    // Chamar a API para cadastrar o produto
     fetch("http://localhost:8080/produtos", {
         method: "POST",
         body: JSON.stringify(objProduto),
@@ -94,7 +94,7 @@ btnSalvar.addEventListener("click", function () {
         } else {
             Swal.fire({
                 position: "center",
-                title: "Usuário cadastrado com sucesso",
+                title: "Produto cadastrado com sucesso",
                 showConfirmButton: false,
                 icon: 'success',
                 timer: 1500
@@ -152,7 +152,7 @@ async function criarProdutos(dados) {
         buttonDeactivate.onclick = function () { deactivate(dado) }
 
         buttonEditProduct.onclick = function () {
-            //PREPARA CAMPOS PARA EDIÇÃO DE USUÁRIO.
+            //PREPARA CAMPOS PARA EDIÇÃO DE PRODUTO.
             editar = true;
 
 
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-//FUNÇÃO QUE DESATIVA USUÁRIO
+//FUNÇÃO QUE DESATIVA PRODUTO
 async function deactivate(objetoDesativar) {
 
     console.log(objetoDesativar);
@@ -307,7 +307,7 @@ async function deactivate(objetoDesativar) {
 
             Swal.fire({
                 position: "center",
-                title: "Usuário desativado na base de dados!",
+                title: "Produto desativado na base de dados!",
                 showConfirmButton: false,
                 icon: 'success',
                 timer: 1500
@@ -414,7 +414,7 @@ async function buscaPorNome() {
         Swal.fire({
             position: "top-end",
             icon: "warning",
-            title: "Usuário não encontrado.",
+            title: "Produto não encontrado.",
             showConfirmButton: false,
             timer: 1500
         });
