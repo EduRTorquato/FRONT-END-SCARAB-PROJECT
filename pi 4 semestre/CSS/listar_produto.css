@@ -21,3 +21,9 @@
     cursor: pointer;
     color: white;
 }
+
+.imgSelect{
+    width: 200px;
+    height: 100px;
+    cursor: pointer;
+}

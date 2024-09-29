@@ -277,7 +277,7 @@ function criarUsers(dados) {
         var idUser = document.createElement("p");
         var emailUser = document.createElement("p");
         var nameUser = document.createElement("p");
-        var cpfUser = document.createElement("p");
+      //  var cpfUser = document.createElement("p");
         var tipoUser = document.createElement("p");
         var ativo = document.createElement("p");
 
@@ -330,7 +330,7 @@ function criarUsers(dados) {
         divUser.appendChild(idUser);
         divUser.appendChild(emailUser);
         divUser.appendChild(nameUser);
-        divUser.appendChild(cpfUser);
+        //divUser.appendChild(cpfUser);
         divUser.appendChild(tipoUser);
         divUser.appendChild(ativo);
 
@@ -361,7 +361,7 @@ function criarUsers(dados) {
         idUser.innerHTML = dado.id;
         emailUser.innerHTML = dado.email;
         nameUser.innerHTML = dado.nomeUsuario;
-        cpfUser.innerHTML = dado.cpf;
+       // cpfUser.innerHTML = dado.cpf;
         tipoUser.innerHTML = dado.grupo;
 
         //VALIDAÇÃO PARA MOSTRAR EM TEXTO O VALOR DE 0 OU 1

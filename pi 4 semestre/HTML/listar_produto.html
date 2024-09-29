@@ -21,7 +21,8 @@
         <div class="container-fluid">
             <img src="../IMAGENS/logo(2).png" class="logoMenu" alt="">
 
-            <div class="collapse navbar-collapse" id="navbarNavDropdown" style="display: flex; justify-content: space-between;">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown"
+                style="display: flex; justify-content: space-between;">
                 <ul class="navbar-nav">
                     <li class="nav-item" style="padding-left: 40px;">
                         <a class="nav-link active" aria-current="page" href="./listar.html">Home</a>
@@ -33,7 +34,8 @@
                 </ul>
 
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" id="nomeBusca" type="search" placeholder="Produto" aria-label="Search">
+                    <input class="form-control me-2" id="nomeBusca" type="search" placeholder="Produto"
+                        aria-label="Search">
                     <button class="btn btn-outline-success" id="realizaBusca" type="button">Busca</button>
                 </form>
 
@@ -51,7 +53,7 @@
                     data-bs-target="#modalProduct">+</button>
 
                 <table class="table" id="idTable">
-                    <!-- <thead>
+                  <thead>
                         <tr>
                             <th scope="col">Código Produto</th>
                             <th scope="col">Nome</th>
@@ -64,7 +66,7 @@
                             <th scope="col">Visualizar</th>
                         </tr>
                     </thead>
-                    <tbody>
+                     <!-- <tbody>
                         <tr>
                             <th scope="row">1</th>
                             <td>Mark</td>
@@ -112,9 +114,9 @@
                                     <input type="number" max="999" min="0" class="form-control" id="quantidadeEstoque">
                                 </div>
 
-                                <div class="input-group mb-3">
-                                    <input class="form-control" type="file" name="file" id="formFile">
-                                    <label class="input-group-text" for="formFile">Upload</label>
+                                <div class="input-group mb-3 justify-content-end">
+                                    <button type="button" id="buttonSelectFotos" class="btn btn-success"
+                                        data-bs-toggle="modalImagens">Selecionar foto</button>
                                 </div>
 
                                 <div class="form-floating">
@@ -135,6 +137,52 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <!-- MODAL PARA EXIBIR IMAGENS -->
+
+            <div class="modal fade modal-dialog-scrollable" id="modalFotos" tabindex="-1"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="tituloModal">Selecione Imagens</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="container text-center">
+
+
+                            <table class="table" id="tableImages">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Imagem</th>
+                                        <th scope="col">Selecionar</th>
+                                        <th scope="col">Principal</th>
+                                    </tr>
+                                </thead>
+                                <!-- <tbody>
+                                    <tr>
+                                        <td><img class="imgSelect" id="imgSelect" src="../IMAGENS/imgUpload/walkman.jpg" alt=""></td>
+                                        <td><input class="form-check-input" type="checkbox" id="checkboxLabel" value="" aria-label="..."></td>
+                                        <td><input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value="" aria-label="..."></td>
+                                    </tr>
+                                
+                                </tbody> -->
+                            </table>
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="button" id="btnImagens" class="btn btn-primary">Selecionar Imagens</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
 
 
 

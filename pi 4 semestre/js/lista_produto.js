@@ -1,33 +1,134 @@
-$('#preco').mask('000.000.000.000.000,00', { reverse: true });
+$('#preco').mask('000.000.000.000.000.00', { reverse: true });
 chamar();
 
+
+//ARRAY PARA OS DADOS A SEREM SALVOS
+var arrayImages = [];
+
+const objImageEnviar = {};
+
+//IMAGENS 
+var imagesList = [
+    "../IMAGENS/imgUpload/bip.jpg",
+    "../IMAGENS/imgUpload/vinilb.jpg",
+    "../IMAGENS/imgUpload/vinilrpm.jpg",
+    "../IMAGENS/imgUpload/vitrola.jpg",
+    "../IMAGENS/imgUpload/walkman.jpg",
+]
 
 
 const nomeProduto = document.getElementById("nomeProduto");
 const preco = document.getElementById("preco");
 const quantidadeEstoque = document.getElementById("quantidadeEstoque");
-const formFile = document.getElementById("formFile");
 const descricaoProduto = document.getElementById("descricaoProduto");
 const avaliacao = document.getElementById("avaliacao");
 const btnSalvar = document.getElementById("btnSalvar");
-
 const addButton = document.getElementById("addButton");
-
 const nomeBusca = document.getElementById("nomeBusca");
-
-const modalProduct = new bootstrap.Modal(document.getElementById('modalProduct'));
-
-
+const imgSelect = document.getElementById("imgSelect");
+const btnImagens = document.getElementById("btnImagens");
+const buttonSelectFotos = document.getElementById("buttonSelectFotos");
 const realizaBusca = document.getElementById("realizaBusca");
-
 const idTable = document.getElementById("idTable");
+const tableImages = document.getElementById("tableImages");
+
+const checkboxLabel = document.getElementById("checkboxLabel");
+/// MODAIS ///
+const modalProduct = new bootstrap.Modal(document.getElementById('modalProduct'));
+const modalFotos = new bootstrap.Modal(document.getElementById('modalFotos'));
+/// MODAIS ///
 
 
+
+//CHECKBOX IMAGE
+// checkboxLabel.addEventListener("change", () => {
+//     objImage = {
+//         "principal": false,
+//         "caminho": "/imagens/produto1/TESTE.jpg"
+//     }
+
+//     console.log(objImage);
+
+//     arrayImages.push(objImage);
+
+
+//     console.log(arrayImages);
+// })
+
+
+//BUSCA POR NOME
 realizaBusca.addEventListener("click", () => {
     buscaPorNome();
 })
 
+//ABRE DISPLAY DE FOTOS
+buttonSelectFotos.addEventListener("click", () => {
+    modalFotos.show();
+    modalProduct.hide();
 
+    imagesList.forEach((imagem) => {
+
+      var tableimg = document.createElement("tbody");
+      var rowImg = document.createElement("tr");
+      var imgData = document.createElement("img");
+      var checkBox = document.createElement("input");
+      var radioButton = document.createElement("input");
+      var tdImagem = document.createElement("td");
+      var tdCheckBox = document.createElement("td");
+      var tdRadio = document.createElement("td");
+
+
+      imgData.src = imagem;
+
+
+      imgData.classList.add("imgSelect");
+      
+      //CHECKBOX
+      checkBox.classList.add("form-check-input");
+      checkBox.type = "checkbox";
+
+      radioButton.classList.add("form-check-input");
+      radioButton.type = "radio";
+
+      tableImages.appendChild(tableimg);
+      tableimg.appendChild(rowImg);
+      rowImg.appendChild(tdImagem);
+      rowImg.appendChild(tdCheckBox);
+      rowImg.appendChild(tdRadio);
+
+
+      tdImagem.appendChild(imgData);
+      tdCheckBox.appendChild(checkBox);
+      tdRadio.appendChild(radioButton);
+
+        
+      checkBox.onchange = function(){
+            const objImagem = {
+                caminho: imagem,
+                principal: radioButton.checked
+            }
+
+            arrayImages.push(objImagem);
+
+            console.log(objImagem);
+       };
+
+
+      
+    
+    });
+
+
+})
+
+//FECHA DISPLAY DE FOTOS
+btnImagens.addEventListener("click", () => {
+    modalFotos.hide();
+    modalProduct.show();
+
+})
+
+//ABRE MODAL DE CADASTRO
 addButton.addEventListener("click", function () {
 
     nomeProduto.disabled = false;
@@ -35,19 +136,19 @@ addButton.addEventListener("click", function () {
     quantidadeEstoque.disabled = false;
     descricaoProduto.disabled = false;
     avaliacao.disabled = false;
-    formFile.disabled = false;
 
     nomeProduto.value = '';
     preco.value = '';
     quantidadeEstoque.value = '';
     descricaoProduto.value = '';
     avaliacao.value = '';
-    formFile.value = '';
 
     tituloModal.innerHTML = "Cadastro de Produtos";
 })
 
 
+
+//BUSCAR PRODUTOS NO BACK
 async function chamar() {
     // Chamar a API para carregar os produtos
     await fetch("http://localhost:8080/produtos").then(response => {
@@ -66,14 +167,15 @@ async function chamar() {
     });
 }
 
+//SALVA PRODUTO
 btnSalvar.addEventListener("click", function () {
     const objProduto = {
-        "nomeProduto": nomeProduto.value,
+        "nome": nomeProduto.value,
         "preco": preco.value,
         "quantidadeEstoque": quantidadeEstoque.value,
-        "img": formFile.value,
-        "descricaoProduto": descricaoProduto.value,
-        "avaliacao": avaliacao.value
+        "descricao": descricaoProduto.value,
+        "avaliacao": avaliacao.value,
+        "imagens": arrayImages
     }
 
     console.log(objProduto);
@@ -89,7 +191,7 @@ btnSalvar.addEventListener("click", function () {
 
     }).then(response => {
 
-        if (response.status != 202) {
+        if (response.status != 201) {
             throw new Error("Verifique os dados");
         } else {
             Swal.fire({
@@ -122,7 +224,7 @@ btnSalvar.addEventListener("click", function () {
 })
 
 
-
+// MONTA TABELAS COM PRODUTOS
 async function criarProdutos(dados) {
 
     dados.forEach(function (dado) {
@@ -161,7 +263,6 @@ async function criarProdutos(dados) {
             quantidadeEstoque.disabled = false;
             descricaoProduto.disabled = false;
             avaliacao.disabled = false;
-            formFile.disabled = false;
 
             nomeProduto.value = dado.nome;
             preco.value = dado.preco
@@ -202,7 +303,6 @@ async function criarProdutos(dados) {
             quantidadeEstoque.disabled = true;
             descricaoProduto.disabled = true;
             avaliacao.disabled = true;
-            formFile.disabled = true;
 
             tituloModal.innerHTML = 'Visualizar';
 
@@ -266,36 +366,13 @@ async function criarProdutos(dados) {
 
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-
-    const btnListarProduto = document.getElementById('btnListarProduto');
-    const btnListarUsuario = document.getElementById('btnListarUsuario');
-    const btnListarPedidos = document.getElementById('btnListarPedidos');
-
-    function redirectToIndex(event) {
-        event.preventDefault();
-        window.location.href = '../html/lista_produto.html'; // Redireciona para index.html
-    }
-});
 
 //FUNÇÃO QUE DESATIVA PRODUTO
 async function deactivate(objetoDesativar) {
 
-    console.log(objetoDesativar);
 
-    const objetoDesativarBody = {
-        "id": objetoDesativar.id,
-        "nome": objetoDesativar.nome,
-        "avaliacao": objetoDesativar.avaliacao,
-        "descricao": objetoDesativar.descricao,
-        "preco": objetoDesativar.preco,
-        "quantidadeEstoque": objetoDesativar.quantidadeEstoque,
-
-    }
-
-    await fetch("http://localhost:8080/produtos/desativar", {
+    await fetch(`http://localhost:8080/produtos/${objetoDesativar.id}/desativar`, {
         method: "PUT",
-        body: JSON.stringify(objetoDesativarBody),
         headers: {
             "Content-Type": "application/json",
         },
@@ -333,27 +410,14 @@ async function deactivate(objetoDesativar) {
 }
 
 
-
 //FUNÇÃO QUE ATIVA Produto.
 async function activate(objetoAtivar) {
 
     console.log(objetoAtivar);
 
-    const objetoAtivarBody = {
-        "id": objetoAtivar.id,
-        "nome": objetoAtivar.nome,
-        "avaliacao": objetoAtivar.avaliacao,
-        "descricao": objetoAtivar.descricao,
-        "preco": objetoAtivar.preco,
-        "quantidadeEstoque": objetoAtivar.quantidadeEstoque,
-
-    }
-
-
     // CHAMA O ENDPOINT DE PUT
-    await fetch("http://localhost:8080/produtos/ativar", {
+    await fetch(`http://localhost:8080/produtos/${objetoAtivar.id}/ativar`, {
         method: "PUT",
-        body: JSON.stringify(objetoAtivarBody),
         headers: {
             "Content-Type": "application/json",
         },
@@ -388,6 +452,7 @@ async function activate(objetoAtivar) {
     });
 }
 
+//ENCONTRA OBJETOS POR NOME
 async function buscaPorNome() {
     const nome = nomeBusca.value;
 
