@@ -5,23 +5,23 @@ body, h1, h2, h3, p, ul, li {
     padding: 0;
 }
 
+.backgroundHome{
+    background-color: #003049;
+}
+
 .navbarHome {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #003049;
+    justify-content: space-around;
+    background-color: #D62828;
     padding: 10px 20px;
 }
 
 .camposBarra {
     display: flex;
-    align-items: center;
+   justify-content: space-between;
     width: 100%;
 }
 
-.navbarLogo img {
-    display: block;
-}
 
 .opcoes {
     display: flex;
@@ -31,9 +31,6 @@ body, h1, h2, h3, p, ul, li {
     padding: 0;
 }
 
-.nav-item {
-    margin: 0 10px;
-}
 
 .nav-link {
     text-decoration: none;
