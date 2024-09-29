@@ -16,13 +16,14 @@
     
 }
 /* para texto com link*/
-a{
+.caixa a{
     color: white;
     text-decoration: none; /*remove o sublinhado do links*/
 }
 
 a:hover {
-    background-color: #ee1616; /* Cor de fundo ao passar o mouse */
+    color: rgb(206, 206, 206);
+    transition-duration: 0.3s;
 }
 
 

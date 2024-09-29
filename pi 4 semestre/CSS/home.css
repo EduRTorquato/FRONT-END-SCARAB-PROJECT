@@ -1,113 +1,118 @@
 /* home.css */
 
-body, h1, h2, h3, p, ul, li {
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li {
     margin: 0;
     padding: 0;
 }
 
-.backgroundHome{
+.backgroundHome {
     background-color: #003049;
 }
 
 .navbarHome {
-    display: flex;
-    justify-content: space-around;
     background-color: #D62828;
     padding: 10px 20px;
-}
-
-.camposBarra {
     display: flex;
-   justify-content: space-between;
-    width: 100%;
-}
-
-
-.opcoes {
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
-
-.nav-link {
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-}
-
-.nav-link:hover {
-    text-decoration: underline;
-}
-
-.nav-link.disabled {
-    color: white;
-    pointer-events: none;
-}
-
-.btnBusca {
+.carrinhoLogin {
     display: flex;
     align-items: center;
 }
 
-.form-control {
-    margin-right: 10px;
+.inputSearch {
+   color: black;
+    width: 400px;
+
+    margin: 2px;
 }
 
-.btn-outline-success {
-    border-color: #f4f4f4;
-    color: red;
+.icones {
+    width: 40px;
+    margin: 20px;
 }
 
-.btn-outline-success:hover {
-    background-color: #28a745;
-    color: white;
+.iconeLupa{
+    width: 40px;
 }
-
-
-
-.busca {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    
-    transition: width 0.4s ease;
-}
-
-.busca:hover {
-    width: 300px;
-}
-
-.search-input {
-    width: 80%;
-    height: 40%;
-    padding: 10px;
-    border: none;
-    border-radius: 25px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.busca:hover .search-input {
-    opacity: 1;
-}
-
-.search-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50px;
-    height: 50px;
-    border: none;
-    background: none;
+.iconeLupa:hover{
     cursor: pointer;
 }
 
-.search-button img {
-    width: 100%;
-    height: 100%;
+.user {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+.user p{
+    margin: 0;
+    line-height: 0.7;
+    color: white;
+}
+
+.user a{
+    color: white;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 400px;
+    width: 300px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+}
+
+
+.card img {
+    width: 200px;
+    margin: 5%;
+}
+
+.card .nomeProduto{
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+
+.card .preco{
+    font-weight: bolder;
+    font-size: 30px;
+}
+.card .avaliacao{
+    font-weight: bolder;
+    font-size: 20px;
+    color: rgba(140, 119, 36, 0.955);
+    margin: 10px;
+}
+
+.card .detalhes{
+    font-weight: bolder;
+    font-size: 20px;
+    color: rgba(194, 72, 28, 0.955);
+    text-shadow: 0px 10px 15px;
+    margin: 10px;
+}
+
+
+/* EXIBIR VEÍCULOS */
+.containerCar {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    margin: 5%;
 }

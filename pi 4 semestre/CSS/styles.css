@@ -13,7 +13,6 @@ html {
 body {
     background-color: srgb(255, 255, 255);
 
-    background: radial-gradient(circle, rgba(190,190,190,1) 0%, rgba(199,199,199,1) 100%);
 }
 
 input {
