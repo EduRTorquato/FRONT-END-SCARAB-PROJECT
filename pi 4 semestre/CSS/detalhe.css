@@ -120,3 +120,32 @@ h1 {
     font-weight: 700;
     font-size: 50px;
 }
+
+.carrinhoLogin {
+    display: flex;
+    align-items: center;
+    position: relative; /* Para o ícone do carrinho */
+}
+
+#imgCarrinho {
+    width: 50px; /* Tamanho adequado para o ícone */
+    height: auto; /* Mantém a proporção */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    transition: transform 0.3s; /* Animação ao passar o mouse */
+}
+
+#imgCarrinho:hover {
+    transform: scale(1.1); /* Aumenta o ícone quando o mouse passa */
+}
+
+.carrinho-notification {
+    position: absolute; /* Posiciona a notificação sobre o ícone */
+    top: -10px; /* Ajuste a posição conforme necessário */
+    right: -10px;
+    background-color: red; /* Cor de fundo da notificação */
+    color: white; /* Cor do texto */
+    border-radius: 50%; /* Torna a notificação circular */
+    padding: 5px 10px; /* Espaçamento */
+    font-size: 14px; /* Tamanho da fonte */
+    display: none; /* Inicialmente oculto */
+}

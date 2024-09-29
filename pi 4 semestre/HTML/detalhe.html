@@ -14,7 +14,7 @@
 <body class="backgroundHome">
 
     <nav class="navbarHome">
-        <a class="navbarLogo" href="#">
+        <a class="navbarLogo" href="../HTML/home.html">
             <img src="../IMAGENS/logoBranco.png" alt="logo da página" width="100" height="100">
         </a>
         <div>
@@ -23,8 +23,13 @@
                 <img class="iconeLupa" src="../IMAGENS/lupa.png" alt="">
             </form>
         </div>
+
         <div class="carrinhoLogin">
-            <img class="icones" src="../IMAGENS/carrinho.png" alt="">
+            <!-- Redireciona para a página do carrinho ao clicar na imagem -->
+            <a href="./carrinho.html"> <!-- Substitua 'carrinho.html' pelo caminho da sua página -->
+                <img id="imgCarrinho" class="icones" src="../IMAGENS/carrinho.png" alt="">
+                <span class="carrinho-notification" id="notification">1</span> <!-- Notificação -->
+            </a>
             <img class="icones" src="../IMAGENS/user.png" alt="">
             <div class="user">
                 <div class="container" style="">
@@ -66,7 +71,7 @@
                         <img src="../IMAGENS/imgUpload/bip.jpg" alt="Imagem Principal">
                     </div>
                     <div class="preview-item" data-bs-target="#carouselExample" data-bs-slide-to="1">
-                        <img src="../IMAGENS/imgUpload/bip.jpg"alt=" alt="Imagem 2">
+                        <img src="../IMAGENS/imgUpload/bip.jpg" alt="Imagem 2">
                     </div>
                     <div class="preview-item" data-bs-target="#carouselExample" data-bs-slide-to="2">
                         <img src="../IMAGENS/imgUpload/bip.jpg" alt="Imagem 3">
@@ -114,85 +119,40 @@
     <script src="../js/lista_usuario.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
-<script>
-    function addToCart(name, price) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push({ name, price });
-        localStorage.setItem('cart', JSON.stringify(cart));
-        alert(`${name} adicionado ao carrinho!`);
-    }
-
-    
-</script>
-
-<script>
-    function addToCart(name, price) {
-    const quantity = parseInt(document.getElementById('quantity').value) || 1;
-
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const existingProductIndex = cart.findIndex(item => item.name === name);
-    
-    if (existingProductIndex > -1) {
-        // Atualiza a quantidade e o total
-        cart[existingProductIndex].quantity += quantity;
-        cart[existingProductIndex].totalPrice += price * quantity;
-    } else {
-        // Adiciona o novo produto
-        cart.push({ name, price, quantity, totalPrice: price * quantity });
-    }
-    
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${quantity} unidades de ${name} adicionadas ao carrinho!`);
-}
-
-</script>
-
-    <!--DAQUI PRA BAIXO É SÓ O SCRIPT PARA CALCULAR O CALOR DE COMPRA DO PRODUTO-->
     <script>
-        let freteCalculado = false; // Variável para verificar se o frete já foi calculado
-    
-        document.getElementById('cep').addEventListener('input', function (e) { // Permitir apenas números no campo de CEP
-            this.value = this.value.replace(/[^0-9]/g, '');
-        });
-    
-        function atualizarValorTotal() { // Atualiza o valor total com base na quantidade
+        function addToCart(name, price) {
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProductIndex = cart.findIndex(item => item.name === name);
+            
+            if (existingProductIndex > -1) {
+                // Atualiza a quantidade e o total
+                cart[existingProductIndex].quantity += quantity;
+                cart[existingProductIndex].totalPrice += price * quantity;
+            } else {
+                // Adiciona o novo produto
+                cart.push({ name, price, quantity, totalPrice: price * quantity });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${quantity} unidades de ${name} adicionadas ao carrinho! Clique no ícone de carrinho para ver todos os itens e finalizar sua compra.`);
+        }
+
+        // Atualiza o valor total com base na quantidade
+        document.getElementById('quantity').addEventListener('input', atualizarValorTotal);
+
+        function atualizarValorTotal() {
             let valorUnitario = 119.99;
-            let quantidade = parseInt(document.getElementById('quantity').value) || 0; // Default para 0 se não for um número
+            let quantidade = parseInt(document.getElementById('quantity').value) || 0;
             let novoValor = valorUnitario * quantidade;
-    
+
             document.getElementById('valor-total').innerText = 'R$ ' + novoValor.toFixed(2).replace('.', ',');
         }
-    
-        // Atualiza o valor total automaticamente
-        document.getElementById('quantity').addEventListener('input', atualizarValorTotal);
-    
-        document.querySelector('.ok-button').addEventListener('click', function() {
-            let cep = document.getElementById('cep').value;
-            if (cep === '') {
-                alert('Por favor, digite um CEP válido.');
-                return;
-            }
-    
-            if (!freteCalculado) { // Verifica se o frete já foi calculado
-                let valorAtual = parseFloat(document.getElementById('valor-total').innerText.replace('R$', '').replace(',', '.'));
-                let valoresFrete = [5, 25, 50];
-                let freteAleatorio = valoresFrete[Math.floor(Math.random() * valoresFrete.length)];
-                let novoValor = valorAtual + freteAleatorio;
-    
-                // Atualiza o valor total no HTML
-                document.getElementById('valor-total').innerText = 'R$ ' + novoValor.toFixed(2).replace('.', ',');
-                freteCalculado = true; // Marca que o frete foi calculado
-            } else {
-                alert("O frete já foi calculado.");
-            }
-        });
-    
-        // Atualiza o valor total inicialmente
-        atualizarValorTotal();
-    </script>
-    
 
-           <!--ACABA AQUI O SCRIPT PARA CALCULAR O CALOR DE COMPRA DO PRODUTO-->
+        // Outros scripts para calcular o frete e funcionalidades adicionais...
+
+    </script>
 
     <script>
         const stars = document.querySelectorAll('.star');
