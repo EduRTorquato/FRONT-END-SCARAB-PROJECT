@@ -81,7 +81,7 @@
     cursor: pointer;
 }
 
-/* Estilo para o rodapé */
+
 footer {
     display: flex;
     justify-content: center;
@@ -90,7 +90,7 @@ footer {
 
 }
 
-/* Estilo para o logo */
+
 .logo01 {
     border-radius: 20px;
     color: black;

@@ -86,7 +86,7 @@
                 
                 <div class="shipping">
                     <label for="cep">Calcular frete e prazo de entrega:</label>
-                    <input type="text" id="cep" name="cep" placeholder="Digite seu CEP">
+                    <input type="text" id="cep" name="cep" placeholder="Digite seu CEP" required>
                     <button class="ok-button">OK</button>
                     <div class="total-valor">
                         <h4>Valor Total: <span id="valor-total">R$ 119,99</span></h4>
@@ -98,7 +98,8 @@
                     </div>
                     
                 </div>
-                <button class="buy-button">COMPRAR</button>
+                <button class="buy-button" onclick="addToCart('Nome do Produto', 119.99)">COMPRAR</button>
+
             </div>
         </div>
         <div class="description">
@@ -113,7 +114,38 @@
     <script src="../js/lista_usuario.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
+<script>
+    function addToCart(name, price) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({ name, price });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${name} adicionado ao carrinho!`);
+    }
 
+    
+</script>
+
+<script>
+    function addToCart(name, price) {
+    const quantity = parseInt(document.getElementById('quantity').value) || 1;
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingProductIndex = cart.findIndex(item => item.name === name);
+    
+    if (existingProductIndex > -1) {
+        // Atualiza a quantidade e o total
+        cart[existingProductIndex].quantity += quantity;
+        cart[existingProductIndex].totalPrice += price * quantity;
+    } else {
+        // Adiciona o novo produto
+        cart.push({ name, price, quantity, totalPrice: price * quantity });
+    }
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${quantity} unidades de ${name} adicionadas ao carrinho!`);
+}
+
+</script>
 
     <!--DAQUI PRA BAIXO É SÓ O SCRIPT PARA CALCULAR O CALOR DE COMPRA DO PRODUTO-->
     <script>
