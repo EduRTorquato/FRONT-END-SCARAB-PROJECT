@@ -117,49 +117,48 @@
 
     <!--DAQUI PRA BAIXO É SÓ O SCRIPT PARA CALCULAR O CALOR DE COMPRA DO PRODUTO-->
     <script>
-        
-        document.getElementById('cep').addEventListener('input', function (e) { // permitir apenas números no campo de CEP
+        let freteCalculado = false; // Variável para verificar se o frete já foi calculado
+    
+        document.getElementById('cep').addEventListener('input', function (e) { // Permitir apenas números no campo de CEP
             this.value = this.value.replace(/[^0-9]/g, '');
         });
     
-        
-        function atualizarValorTotal() { //  atualiza o valor total com base na quantidade
-    
+        function atualizarValorTotal() { // Atualiza o valor total com base na quantidade
             let valorUnitario = 119.99;
-  
-            let quantidade = parseInt(document.getElementById('quantity').value);
-    
+            let quantidade = parseInt(document.getElementById('quantity').value) || 0; // Default para 0 se não for um número
             let novoValor = valorUnitario * quantidade;
-
+    
             document.getElementById('valor-total').innerText = 'R$ ' + novoValor.toFixed(2).replace('.', ',');
         }
     
-        //  atualiza o valor total automaticamente
+        // Atualiza o valor total automaticamente
         document.getElementById('quantity').addEventListener('input', atualizarValorTotal);
     
         document.querySelector('.ok-button').addEventListener('click', function() {
-            
             let cep = document.getElementById('cep').value;
             if (cep === '') {
                 alert('Por favor, digite um CEP válido.');
                 return;
             }
-
-            let valorAtual = parseFloat(document.getElementById('valor-total').innerText.replace('R$', '').replace(',', '.'));
- 
-            let valoresFrete = [5, 25, 50];
-
-            let freteAleatorio = valoresFrete[Math.floor(Math.random() * valoresFrete.length)];
-
-            let novoValor = valorAtual + freteAleatorio;
-            
-            // Atualiza o valor total no HTML
-            document.getElementById('valor-total').innerText = 'R$ ' + novoValor.toFixed(2).replace('.', ',');
+    
+            if (!freteCalculado) { // Verifica se o frete já foi calculado
+                let valorAtual = parseFloat(document.getElementById('valor-total').innerText.replace('R$', '').replace(',', '.'));
+                let valoresFrete = [5, 25, 50];
+                let freteAleatorio = valoresFrete[Math.floor(Math.random() * valoresFrete.length)];
+                let novoValor = valorAtual + freteAleatorio;
+    
+                // Atualiza o valor total no HTML
+                document.getElementById('valor-total').innerText = 'R$ ' + novoValor.toFixed(2).replace('.', ',');
+                freteCalculado = true; // Marca que o frete foi calculado
+            } else {
+                alert("O frete já foi calculado.");
+            }
         });
     
         // Atualiza o valor total inicialmente
         atualizarValorTotal();
     </script>
+    
 
            <!--ACABA AQUI O SCRIPT PARA CALCULAR O CALOR DE COMPRA DO PRODUTO-->
 
