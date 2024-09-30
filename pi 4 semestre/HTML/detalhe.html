@@ -92,18 +92,21 @@
                 <div class="shipping">
                     <label for="cep">Calcular frete e prazo de entrega:</label>
                     <input type="text" id="cep" name="cep" placeholder="Digite seu CEP" required>
-                    <button class="ok-button">OK</button>
+                    <button class="ok-button" disabled>OK</button> <!-- Botão inicialmente desabilitado -->
                     <div class="total-valor">
                         <h4>Valor Total: <span id="valor-total">R$ 119,99</span></h4>
-
+                        <div class="shipping-info">
+                            <h4>Valor do Frete: <span id="valor-frete">R$ 0,00</span></h4>
+                        </div>
                         <div class="quantity">
                             <label for="quantity">Quantidade:</label>
                             <input type="number" id="quantity" name="quantity" min="1" value="1">
                         </div>
                     </div>
-                    
                 </div>
                 <button class="buy-button" onclick="addToCart('Nome do Produto', 119.99)">COMPRAR</button>
+                </div>
+                
 
             </div>
         </div>
@@ -153,21 +156,89 @@
         // Outros scripts para calcular o frete e funcionalidades adicionais...
 
     </script>
-
     <script>
-        const stars = document.querySelectorAll('.star');
-        stars.forEach(star => {
-            star.addEventListener('click', () => {
-                const rating = star.getAttribute('data-value');
-                stars.forEach(s => {
-                    s.classList.remove('filled');
-                });
-                for (let i = 0; i < rating; i++) {
-                    stars[i].classList.add('filled');
+        document.addEventListener('DOMContentLoaded', function() {
+            let freteAdicionado = false;
+            let valorFrete = 0; // Variável para armazenar o valor do frete
+    
+            function addToCart(name, price) {
+                const cep = document.getElementById('cep').value.trim();
+                const quantity = parseInt(document.getElementById('quantity').value) || 1;
+    
+                if (!cep) {
+                    alert("Por favor, insira seu CEP antes de adicionar o produto ao carrinho.");
+                    return;
                 }
+    
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const existingProductIndex = cart.findIndex(item => item.name === name);
+                
+                if (existingProductIndex > -1) {
+                    cart[existingProductIndex].quantity += quantity;
+                    cart[existingProductIndex].totalPrice += price * quantity;
+                } else {
+                    cart.push({ name, price, quantity, totalPrice: price * quantity });
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`${quantity} unidades de ${name} adicionadas ao carrinho! Clique no ícone de carrinho para ver todos os itens e finalizar sua compra.`);
+            }
+    
+            const cepInput = document.getElementById('cep');
+            const okButton = document.querySelector('.ok-button');
+    
+            cepInput.addEventListener('input', function() {
+                okButton.disabled = !this.value.trim();
+            });
+    
+            okButton.addEventListener('click', function() {
+                if (!freteAdicionado) {
+                    valorFrete = calcularFrete(); // Armazena o valor do frete
+                    atualizarValorTotalComFrete(valorFrete);
+                    freteAdicionado = true;
+                } else {
+                    alert("O frete já foi adicionado!");
+                }
+            });
+    
+            function calcularFrete() {
+                const freteValores = [5, 20, 50];
+                const randomIndex = Math.floor(Math.random() * freteValores.length);
+                const valor = freteValores[randomIndex];
+                document.getElementById('valor-frete').innerText = 'R$ ' + valor.toFixed(2).replace('.', ','); // Atualiza o valor do frete exibido
+                return valor; // Retorna o valor do frete escolhido
+            }
+    
+            function atualizarValorTotalComFrete(frete) {
+                let valorUnitario = 119.99;
+                let quantidade = parseInt(document.getElementById('quantity').value) || 0;
+                let novoValor = (valorUnitario * quantidade) + frete;
+    
+                document.getElementById('valor-total').innerText = 'R$ ' + novoValor.toFixed(2).replace('.', ',');
+            }
+    
+            document.getElementById('quantity').addEventListener('input', atualizarValorTotal);
+    
+            function atualizarValorTotal() {
+                let valorUnitario = 119.99;
+                let quantidade = parseInt(document.getElementById('quantity').value) || 0;
+                let novoValor = valorUnitario * quantidade;
+    
+                document.getElementById('valor-total').innerText = 'R$ ' + novoValor.toFixed(2).replace('.', ',');
+            }
+    
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    const rating = star.getAttribute('data-value');
+                    stars.forEach(s => {
+                        s.classList.remove('filled');
+                    });
+                    for (let i = 0; i < rating; i++) {
+                        stars[i].classList.add('filled');
+                    }
+                });
             });
         });
     </script>
-
-</body>
-</html>
+    
