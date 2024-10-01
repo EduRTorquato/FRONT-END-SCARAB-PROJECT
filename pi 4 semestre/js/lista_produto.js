@@ -41,8 +41,6 @@ const modalProduct = new bootstrap.Modal(document.getElementById('modalProduct')
 const modalFotos = new bootstrap.Modal(document.getElementById('modalFotos'));
 /// MODAIS ///
 
-
-
 //CHECKBOX IMAGE
 // checkboxLabel.addEventListener("change", () => {
 //     objImage = {
@@ -69,57 +67,62 @@ buttonSelectFotos.addEventListener("click", () => {
     modalFotos.show();
     modalProduct.hide();
 
+
     imagesList.forEach((imagem) => {
 
-      var tableimg = document.createElement("tbody");
-      var rowImg = document.createElement("tr");
-      var imgData = document.createElement("img");
-      var checkBox = document.createElement("input");
-      var radioButton = document.createElement("input");
-      var tdImagem = document.createElement("td");
-      var tdCheckBox = document.createElement("td");
-      var tdRadio = document.createElement("td");
+        var tableimg = document.createElement("tbody");
+        var rowImg = document.createElement("tr");
+        var imgData = document.createElement("img");
+        var checkBox = document.createElement("input");
+        var radioButton = document.createElement("input");
+        var tdImagem = document.createElement("td");
+        var tdCheckBox = document.createElement("td");
+        var tdRadio = document.createElement("td");
 
 
-      imgData.src = imagem;
+        imgData.src = imagem;
 
 
-      imgData.classList.add("imgSelect");
-      
-      //CHECKBOX
-      checkBox.classList.add("form-check-input");
-      checkBox.type = "checkbox";
+        imgData.classList.add("imgSelect");
 
-      radioButton.classList.add("form-check-input");
-      radioButton.type = "radio";
+        //CHECKBOX
+        checkBox.classList.add("form-check-input");
+        checkBox.type = "checkbox";
 
-      tableImages.appendChild(tableimg);
-      tableimg.appendChild(rowImg);
-      rowImg.appendChild(tdImagem);
-      rowImg.appendChild(tdCheckBox);
-      rowImg.appendChild(tdRadio);
+        radioButton.classList.add("form-check-input");
+        radioButton.type = "radio";
+
+        tableImages.appendChild(tableimg);
+        tableimg.appendChild(rowImg);
+        rowImg.appendChild(tdImagem);
+        rowImg.appendChild(tdCheckBox);
+        rowImg.appendChild(tdRadio);
 
 
-      tdImagem.appendChild(imgData);
-      tdCheckBox.appendChild(checkBox);
-      tdRadio.appendChild(radioButton);
+        tdImagem.appendChild(imgData);
+        tdCheckBox.appendChild(checkBox);
+        tdRadio.appendChild(radioButton);
 
-        
-      checkBox.onchange = function(){
-            const objImagem = {
-                caminho: imagem,
-                principal: radioButton.checked
+
+        checkBox.onchange = function () {
+
+
+            if (checkBox.checked == true) {
+                const objImagem = {
+                    caminho: imagem,
+                    principal: radioButton.checked
+                }
+                arrayImages.push(objImagem);
+
+            } else {
+                arrayImages.pop();
             }
+            console.log(arrayImages);
+        };
 
-            arrayImages.push(objImagem);
-
-            console.log(objImagem);
-       };
-
-
-      
-    
     });
+
+    imagesList = [];
 
 
 })
