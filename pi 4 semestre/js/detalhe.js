@@ -1,7 +1,20 @@
+var dado = JSON.parse(sessionStorage.getItem("produto"));
+
+getProduct(dado);
+
+
+// DADOS DA TELA
+descricaoProduto = document.getElementById("descricaoProduto");
+preco = document.getElementById("preco");
+nomeProduto = document.getElementById("nomemProduto");
+carrosselItem = document.getElementById("carrosselItem");
+valorTotal = document.getElementById("valorTotal"); 
+const addCart = document.getElementById("addtoCart");
+
 
 
 function addToCart(name, price) {
-    const quantity = parseInt(document.getElementById('quantity').value) || 1;
+    const quantity = parseInt(document.getElementById('quantity').value);
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const existingProductIndex = cart.findIndex(item => item.name === name);
@@ -22,12 +35,43 @@ function addToCart(name, price) {
 // Atualiza o valor total com base na quantidade
 document.getElementById('quantity').addEventListener('input', atualizarValorTotal);
 
+//Atualiza valores
 function atualizarValorTotal() {
-    let valorUnitario = 119.99;
+    let valorUnitario = dado.preco;
     let quantidade = parseInt(document.getElementById('quantity').value) || 0;
     let novoValor = valorUnitario * quantidade;
 
-    document.getElementById('valor-total').innerText = 'R$ ' + novoValor.toFixed(2).replace('.', ',');
+    document.getElementById('valorTotal').innerText = 'R$ ' + novoValor.toFixed(2).replace('.', ',');
+}
+
+//Monta o produto selecionado na tela
+function getProduct(dado){
+
+
+    console.log(dado);
+
+
+    nomeProduto.innerHTML = dado.nome;
+    descricaoProduto.innerHTML = dado.descricao;
+    preco.innerHTML = "R$ " + dado.preco;
+    valorTotal.innerHTML  = "R$ " + dado.preco;
+    
+
+    dado.imagens.forEach ( element =>{ 
+        console.log(element);
+
+        const divImgCarrossel = document.createElement("div");
+        const imgProdutos = document.createElement("img");
+
+        divImgCarrossel.classList.add("carousel-item");
+        
+        element.principal ? divImgCarrossel.classList.add("active") : divImgCarrossel.classList.add("inactive");
+        
+        carrosselItem.appendChild(divImgCarrossel);
+        divImgCarrossel.appendChild(imgProdutos);
+
+        imgProdutos.src = element.caminho;
+    })
 }
 
 // Outros scripts para calcular o frete e funcionalidades adicionais...
@@ -84,21 +128,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function atualizarValorTotalComFrete(frete) {
-        let valorUnitario = 119.99;
+        let valorUnitario = dado.preco;
         let quantidade = parseInt(document.getElementById('quantity').value) || 0;
         let novoValor = (valorUnitario * quantidade) + frete;
 
-        document.getElementById('valor-total').innerText = 'R$ ' + novoValor.toFixed(2).replace('.', ',');
+        document.getElementById('valorTotal').innerText = 'R$ ' + novoValor.toFixed(2).replace('.', ',');
     }
 
     document.getElementById('quantity').addEventListener('input', atualizarValorTotal);
 
     function atualizarValorTotal() {
-        let valorUnitario = 119.99;
+        let valorUnitario = dado.preco;
         let quantidade = parseInt(document.getElementById('quantity').value) || 0;
         let novoValor = valorUnitario * quantidade;
 
-        document.getElementById('valor-total').innerText = 'R$ ' + novoValor.toFixed(2).replace('.', ',');
+        document.getElementById('valorTotal').innerText = 'R$ ' + novoValor.toFixed(2).replace('.', ',');
     }
 
     const stars = document.querySelectorAll('.star');
@@ -115,21 +159,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-//BUSCAR PRODUTOS NO BACK
-async function chamar() {
-    // Chamar a API para carregar os produtos
-    await fetch("http://localhost:8080/produtos").then(response => {
-        if (response.ok) {
+addCart.addEventListener("click", function(){
 
-        }
-        return response.json();
-    }).then((data) => {
+    addToCart(dado.nome, dado.preco);
 
-        console.log(data);
-       // criarProdutos(data);
-
-
-    }).catch((error) => {
-        console.error(error);
-    });
-}
+})

@@ -54,6 +54,15 @@ li {
     font-weight: bold;
 }
 
+.descricao{
+    font-weight: bolder;
+    font-size: 12px;
+}
+
+.btn{
+    margin: 05px;
+}
+
 .user p{
     margin: 0;
     line-height: 0.7;
@@ -84,6 +93,13 @@ li {
     margin: 5%;
     border-radius: 5px;
 }
+
+.card img:hover {
+    width: 251px;
+    height: 201px;
+    transition-duration: 0.1s;
+}
+
 
 .card .nomeProduto{
     font-weight: bolder;
