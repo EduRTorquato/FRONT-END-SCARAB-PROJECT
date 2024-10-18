@@ -7,8 +7,14 @@ var arrayImages = [];
 
 const objImageEnviar = {};
 
+var isEdit = false;
+
 //IMAGENS 
 var imagesList = [
+
+]
+
+var imagesDefault = [
     "../IMAGENS/imgUpload/bip.jpg",
     "../IMAGENS/imgUpload/vinilb.jpg",
     "../IMAGENS/imgUpload/vinilrpm.jpg",
@@ -41,6 +47,7 @@ const modalProduct = new bootstrap.Modal(document.getElementById('modalProduct')
 const modalFotos = new bootstrap.Modal(document.getElementById('modalFotos'));
 /// MODAIS ///
 
+
 //CHECKBOX IMAGE
 // checkboxLabel.addEventListener("change", () => {
 //     objImage = {
@@ -58,6 +65,7 @@ const modalFotos = new bootstrap.Modal(document.getElementById('modalFotos'));
 
 
 //BUSCA POR NOME
+
 realizaBusca.addEventListener("click", () => {
     buscaPorNome();
 })
@@ -67,63 +75,19 @@ buttonSelectFotos.addEventListener("click", () => {
     modalFotos.show();
     modalProduct.hide();
 
+    if (isEdit) {
+        console.log('TÁ EDITANDO')
 
-    imagesList.forEach((imagem) => {
+        imagesDefault = [];
+        putImagesOnArray(imagesList);
+        imagesList = [];
+        
 
-        var tableimg = document.createElement("tbody");
-        var rowImg = document.createElement("tr");
-        var imgData = document.createElement("img");
-        var checkBox = document.createElement("input");
-        var radioButton = document.createElement("input");
-        var tdImagem = document.createElement("td");
-        var tdCheckBox = document.createElement("td");
-        var tdRadio = document.createElement("td");
-
-
-        imgData.src = imagem;
-
-
-        imgData.classList.add("imgSelect");
-
-        //CHECKBOX
-        checkBox.classList.add("form-check-input");
-        checkBox.type = "checkbox";
-
-        radioButton.classList.add("form-check-input");
-        radioButton.type = "radio";
-
-        tableImages.appendChild(tableimg);
-        tableimg.appendChild(rowImg);
-        rowImg.appendChild(tdImagem);
-        rowImg.appendChild(tdCheckBox);
-        rowImg.appendChild(tdRadio);
-
-
-        tdImagem.appendChild(imgData);
-        tdCheckBox.appendChild(checkBox);
-        tdRadio.appendChild(radioButton);
-
-
-        checkBox.onchange = function () {
-
-
-            if (checkBox.checked == true) {
-                const objImagem = {
-                    caminho: imagem,
-                    principal: radioButton.checked
-                }
-                arrayImages.push(objImagem);
-
-            } else {
-                arrayImages.pop();
-            }
-            console.log(arrayImages);
-        };
-
-    });
-
-    imagesList = [];
-
+    } else {
+        imagesList = [];
+        putImagesOnArray(imagesDefault);
+        imagesDefault = [];
+    }
 
 })
 
@@ -132,10 +96,13 @@ btnImagens.addEventListener("click", () => {
     modalFotos.hide();
     modalProduct.show();
 
+
 })
 
 //ABRE MODAL DE CADASTRO
 addButton.addEventListener("click", function () {
+
+    isEdit = false;
 
     nomeProduto.disabled = false;
     preco.disabled = false;
@@ -233,6 +200,8 @@ btnSalvar.addEventListener("click", function () {
 // MONTA TABELAS COM PRODUTOS
 async function criarProdutos(dados) {
 
+    console.log(isEdit);
+
     dados.forEach(function (dado) {
 
         console.log(dado);
@@ -260,8 +229,10 @@ async function criarProdutos(dados) {
         buttonDeactivate.onclick = function () { deactivate(dado) }
 
         buttonEditProduct.onclick = function () {
+
+
             //PREPARA CAMPOS PARA EDIÇÃO DE PRODUTO.
-            editar = true;
+            isEdit = true;
 
 
             nomeProduto.disabled = false;
@@ -275,6 +246,10 @@ async function criarProdutos(dados) {
             quantidadeEstoque.value = dado.quantidadeEstoque;
             descricaoProduto.value = dado.descricao;
             avaliacao.value = dado.avaliacao;
+
+            dado.imagens.forEach(element => {
+                imagesList.push(element.caminho);
+            });
 
             // MONTA OBJETO COM CAMPOS QUE SERÃO UTILIZADOS NAS TRANSAÇÕES DE DADOS.
             // var objEditar = {
@@ -298,21 +273,25 @@ async function criarProdutos(dados) {
 
         buttonVisualize.onclick = function () {
 
-            nomeProduto.value = dado.nome;
-            preco.value = dado.preco
-            quantidadeEstoque.value = dado.quantidadeEstoque;
-            descricaoProduto.value = dado.descricao;
-            avaliacao.value = dado.avaliacao;
+            console.log(JSON.stringify(dado));
+            sessionStorage.setItem("produto", JSON.stringify(dado));
+            window.location = "./detalhe.html"
 
-            nomeProduto.disabled = true;
-            preco.disabled = true;
-            quantidadeEstoque.disabled = true;
-            descricaoProduto.disabled = true;
-            avaliacao.disabled = true;
+            // nomeProduto.value = dado.nome;
+            // preco.value = dado.preco
+            // quantidadeEstoque.value = dado.quantidadeEstoque;
+            // descricaoProduto.value = dado.descricao;
+            // avaliacao.value = dado.avaliacao;
 
-            tituloModal.innerHTML = 'Visualizar';
+            // nomeProduto.disabled = true;
+            // preco.disabled = true;
+            // quantidadeEstoque.disabled = true;
+            // descricaoProduto.disabled = true;
+            // avaliacao.disabled = true;
 
-            modalProduct.show();
+            // tituloModal.innerHTML = 'Visualizar';
+
+            // modalProduct.show();
         }
 
         //MONTA O HTML DA LISTAGEM.
@@ -368,10 +347,7 @@ async function criarProdutos(dados) {
 
 
     });
-
-
 }
-
 
 //FUNÇÃO QUE DESATIVA PRODUTO
 async function deactivate(objetoDesativar) {
@@ -491,5 +467,59 @@ async function buscaPorNome() {
         });
     });
 
+}
+
+async function putImagesOnArray(params) {
+    params.forEach((imagem) => {
+
+        var tableimg = document.createElement("tbody");
+        var rowImg = document.createElement("tr");
+        var imgData = document.createElement("img");
+        var checkBox = document.createElement("input");
+        var radioButton = document.createElement("input");
+        var tdImagem = document.createElement("td");
+        var tdCheckBox = document.createElement("td");
+        var tdRadio = document.createElement("td");
+
+
+        imgData.src = imagem;
+
+
+        imgData.classList.add("imgSelect");
+
+        //CHECKBOX
+        checkBox.classList.add("form-check-input");
+        checkBox.type = "checkbox";
+
+        radioButton.classList.add("form-check-input");
+        radioButton.type = "radio";
+
+        tableImages.appendChild(tableimg);
+        tableimg.appendChild(rowImg);
+        rowImg.appendChild(tdImagem);
+        rowImg.appendChild(tdCheckBox);
+        rowImg.appendChild(tdRadio);
+
+
+        tdImagem.appendChild(imgData);
+        tdCheckBox.appendChild(checkBox);
+        tdRadio.appendChild(radioButton);
+
+
+        checkBox.onchange = function () {
+
+            if (checkBox.checked == true) {
+                const objImagem = {
+                    caminho: imagem,
+                    principal: radioButton.checked
+                }
+                arrayImages.push(objImagem);
+
+            } else {
+                arrayImages.pop();
+            }
+            console.log(arrayImages);
+        };
+    });
 }
 

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login ou Cadastro</title>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
+	<link rel="stylesheet" href="../CSS/loginUsuario.css">
+	<link rel="icon" href="../img/logos/katchauRed.png">
+	<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css" rel="stylesheet">
+
+</head>
+
+<body class="loginScreen">
+	<!-- partial:index.partial.html -->
+
+	<!-- <img src="../img/iconCadastro.png" class="imgPersonagemLogin" alt=""> -->
+	
+	<!-- <img src="..//img/logos/katchauRed.png" class="imgLogoLogin" alt=""> -->
+	
+	<div class="section">
+		<div class="container">
+			<div class="row full-height justify-content-center">
+				<div class="col-12 text-center align-self-center py-5">
+					<div class="section pb-5 pt-5 pt-sm-2 text-center">
+						<h6 class="mb-0 pb-3"><span>Login </span><span>Cadastrar</span></h6>
+						<input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
+						<label for="reg-log"></label>
+						<div class="card-3d-wrap mx-auto">
+							<div class="card-3d-wrapper">
+								<div class="card-front">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3">Login</h4>
+											<div class="form-group">
+												<input type="email" itemid="usuarioLogin" name="logemail" class="form-style"
+													placeholder="Seu Email" id="emailLogin" autocomplete="off">
+												<i class="input-icon uil uil-at"></i>
+											</div>
+											<div class="form-group mt-2">
+												<input type="password" itemid="usuarioLogin" name="logpass" class="form-style"
+													placeholder="Sua Password" id="senhaLogin" autocomplete="off">
+												<i class="input-icon uil uil-lock-alt"></i>
+											</div>
+											<a href="#" id="form-login" class="btn mt-4">Entrar</a>
+											<!-- <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Esqueceu a senha?</a></p> -->
+										</div>
+									</div>
+								</div>
+								<div class="card-back">
+									<div class="center-wrap">
+										<form class="section text-center">
+											<h4 class="mb-4 pb-3">Cadastro</h4>
+											<div class="form-group">
+												<input type="text" name="logname" class="form-style"
+													placeholder="Nome Completo" id="nome" required autocomplete="off">
+												<i class="input-icon uil uil-user"></i>
+											</div>
+											<div class="form-group mt-2">
+												<input type="email" name="logemail" class="form-style"
+													placeholder="Seu Email" id="email" required autocomplete="off">
+												<i class="input-icon uil uil-at"></i>
+											</div>
+											<div class="form-group mt-2">
+												<input type="number" name="cpf" class="form-style"
+													placeholder="CPF" id="cpf" required autocomplete="off">
+												<i class="input-icon uil uil-file-minus"></i>
+											</div>
+											<div class="form-group mt-2">
+												<input type="text" name="genero" class="form-style"
+													placeholder="Gênero" id="genero" required autocomplete="off">
+												<i class="input-icon uil uil-users-alt"></i>
+											</div>
+											<div class="form-group mt-2">
+												<input type="date" name="dataNasc" class="form-style"
+													placeholder="Data de Nascimento" id="dataNasc" required ="off">
+												<i class="input-icon uil  uil-calender"></i>
+											</div>
+											<div class="form-group mt-2">
+												<input type="password" name="logpass" class="form-style"
+													placeholder="Sua Senha" id="senha" required autocomplete="off">
+												<i class="input-icon uil uil-lock-alt"></i>
+											</div>
+											<div class="form-group mt-2">
+												<input type="password" name="confirmSenha" class="form-style"
+													placeholder="Confirmar Senha" id="senha" required autocomplete="off">
+												<i class="input-icon uil uil-lock-alt"></i>
+											</div>
+											<button id="form-cadastro" class="btn mt-4">cadastrar</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- partial -->
+	<script src="../js/cadastro.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.all.min.js"></script>
+</body>
+
+
+</html>
