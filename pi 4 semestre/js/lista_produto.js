@@ -55,12 +55,12 @@ const modalFotos = new bootstrap.Modal(document.getElementById('modalFotos'));
 //         "caminho": "/imagens/produto1/TESTE.jpg"
 //     }
 
-//     console.log(objImage);
+//     (objImage);
 
 //     arrayImages.push(objImage);
 
 
-//     console.log(arrayImages);
+//     (arrayImages);
 // })
 
 
@@ -76,7 +76,7 @@ buttonSelectFotos.addEventListener("click", () => {
     modalProduct.hide();
 
     if (isEdit) {
-        console.log('TÁ EDITANDO')
+        ('TÁ EDITANDO')
 
         imagesDefault = [];
         putImagesOnArray(imagesList);
@@ -131,7 +131,7 @@ async function chamar() {
         return response.json();
     }).then((data) => {
 
-        console.log(data);
+        (data);
         criarProdutos(data);
 
 
@@ -151,7 +151,7 @@ btnSalvar.addEventListener("click", function () {
         "imagens": arrayImages
     }
 
-    console.log(objProduto);
+    (objProduto);
 
 
     // Chamar a API para cadastrar o produto
@@ -184,7 +184,7 @@ btnSalvar.addEventListener("click", function () {
         return response.text();
     }).catch((error) => {
 
-        console.log(error);
+        (error);
         Swal.fire({
             position: "top-end",
             icon: "warning",
@@ -200,11 +200,11 @@ btnSalvar.addEventListener("click", function () {
 // MONTA TABELAS COM PRODUTOS
 async function criarProdutos(dados) {
 
-    console.log(isEdit);
+    (isEdit);
 
     dados.forEach(function (dado) {
 
-        console.log(dado);
+        (dado);
 
         var tbody = document.createElement("tbody");
         var rowTable = document.createElement("tr");
@@ -273,7 +273,7 @@ async function criarProdutos(dados) {
 
         buttonVisualize.onclick = function () {
 
-            console.log(JSON.stringify(dado));
+            (JSON.stringify(dado));
             sessionStorage.setItem("produto", JSON.stringify(dado));
             window.location = "./detalhe.html"
 
@@ -380,7 +380,7 @@ async function deactivate(objetoDesativar) {
         return response.text();
     }).catch((error) => {
 
-        console.log(error);
+        (error);
         Swal.fire({
             position: "top-end",
             icon: "warning",
@@ -395,7 +395,7 @@ async function deactivate(objetoDesativar) {
 //FUNÇÃO QUE ATIVA Produto.
 async function activate(objetoAtivar) {
 
-    console.log(objetoAtivar);
+    (objetoAtivar);
 
     // CHAMA O ENDPOINT DE PUT
     await fetch(`http://localhost:8080/produtos/${objetoAtivar.id}/ativar`, {
@@ -440,7 +440,7 @@ async function buscaPorNome() {
 
     const endpointMontado = `http://localhost:8080/produtos/produto/${nome}`;
 
-    console.log(endpointMontado);
+    (endpointMontado);
 
     await fetch(endpointMontado).then(response => {
         if (response.ok) {
@@ -452,7 +452,7 @@ async function buscaPorNome() {
 
         idTable.innerHTML = '';;
 
-        console.log(dado);
+        (dado);
         criarProdutos(dado);
 
     }).catch((error) => {
@@ -518,7 +518,7 @@ async function putImagesOnArray(params) {
             } else {
                 arrayImages.pop();
             }
-            console.log(arrayImages);
+            (arrayImages);
         };
     });
 }

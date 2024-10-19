@@ -33,7 +33,7 @@ function criaCardsProdutos(data) {
 
         if (element.ativo) {
 
-            console.log(element)
+            (element)
 
             var card = document.createElement("div");
             var image = document.createElement("img");
@@ -89,7 +89,7 @@ function criaCardsProdutos(data) {
 
         }else {
 
-            console.log("Inativo")
+            ("Inativo")
         }
 
 
@@ -101,7 +101,7 @@ function criaCardsProdutos(data) {
 
 function setDados(dados) {
 
-    console.log(JSON.stringify(dados));
+    (JSON.stringify(dados));
     sessionStorage.setItem("produto", JSON.stringify(dados));
     window.location = "./detalhe.html"
 }

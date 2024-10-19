@@ -1,4 +1,13 @@
+const listaCarrinho = document.getElementById("listCarrinho");
+
+
+
+displayCart();
+
 function addToCart(product) {
+
+    
+    
     const cep = document.getElementById('cep').value;
 
     // Verifica se o CEP foi preenchido
@@ -9,6 +18,7 @@ function addToCart(product) {
 
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const existingProduct = cart.find(item => item.name === product.name);
+
 
     if (existingProduct) {
         existingProduct.quantity += product.quantity;
@@ -24,30 +34,94 @@ function addToCart(product) {
 }
 
 function displayCart() {
-    const cartList = document.getElementById('cart-list');
+    const cartList = document.getElementById('listCarrinho');
     cartList.innerHTML = ''; // Limpa a lista antes de mostrar os produtos
 
     const cart = JSON.parse(localStorage.getItem('cart')) || []; // Recupera o carrinho
+
     let grandTotal = 0; // Variável para calcular o total geral
 
-    cart.forEach(product => {
-        const li = document.createElement('li');
-        li.textContent = `${product.name} - R$ ${product.totalPrice.toFixed(2)} - ${product.quantity} unidade(s)`;
-        
-        // Criar botão de remoção
-        const removeButton = document.createElement('button');
-        removeButton.textContent = '🗑️';
-        removeButton.onclick = () => removeFromCart(product.name); // Passa o nome do produto
 
-        li.appendChild(removeButton);
-        cartList.appendChild(li);
+    cart.forEach(product => {
+
+        console.log(product);
+
+        // ("Produtos adicionados");
+        // (product);
+        // ("Produtos adicionados");
+
+ 
+        const rowProduct = document.createElement("div");
+        const itemLine = document.createElement("div");
+        const imgProduct = document.createElement("img");
+        const colNome = document.createElement("div");
+        const nomeProduct = document.createElement("h5");
+        const descricao = document.createElement("p");
+
+        const colQuantidade = document.createElement("div");
+        const titleQtd = document.createElement("h5");
+        const inputQtd = document.createElement("input");
+
+        const divValue = document.createElement("div");
+        const valueTitle = document.createElement("h5");
+        const value = document.createElement("p");
+
+        rowProduct.classList.add("row");
+        itemLine.classList.add("item");
+        
+        colNome.classList.add("col");
+        colQuantidade.classList.add("col");
+        colQuantidade.classList.add("quantidade");
+
+        divValue.classList.add("col");
+        inputQtd.style.width = "100px";
+
+
+        listaCarrinho.appendChild(rowProduct);
+        rowProduct.appendChild(itemLine);
+        itemLine.appendChild(imgProduct);
+        
+        itemLine.appendChild(colNome);
+        colNome.appendChild(nomeProduct);
+        colNome.appendChild(descricao);
+
+        itemLine.appendChild(colQuantidade);
+        colQuantidade.appendChild(titleQtd);
+        colQuantidade.appendChild(inputQtd);
+
+        itemLine.appendChild(divValue);
+        divValue.appendChild(valueTitle);
+        divValue.appendChild(value);
+
+        nomeProduct.innerHTML = product.name;
+        imgProduct.src = product.pic;
+        inputQtd.value = product.quantity;
+        descricao.innerHTML = product.descricao;
+        value.innerHTML = product.price;
+
+
+        titleQtd.innerHTML = 'Quantidade'
+        valueTitle.innerHTML = 'Valor'
+
+        
+
+
+        // li.textContent = `${product.name} - R$ ${product.totalPrice.toFixed(2)} - ${product.quantity} unidade(s)`;
+        
+        // // Criar botão de remoção
+        // const removeButton = document.createElement('button');
+        // removeButton.textContent = '🗑️';
+        // removeButton.onclick = () => removeFromCart(product.name); // Passa o nome do produto
+
+        // itemLine.appendChild(removeButton);
+        // cartList.appendChild(li);
         
         // Soma os totais
         grandTotal += product.totalPrice;
     });
 
     // Atualiza o total geral no HTML
-    document.getElementById('total').textContent = `Total: R$ ${grandTotal.toFixed(2)}`;
+    document.getElementById('total').textContent = `${grandTotal.toFixed(2)}`;
 }
 
 function removeFromCart(productName) {
@@ -93,4 +167,3 @@ function finalizePurchase() {
 }
 
 // Inicializa a exibição do carrinho
-displayCart();

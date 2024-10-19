@@ -1,5 +1,8 @@
 var dado = JSON.parse(sessionStorage.getItem("produto"));
 
+
+sessionStorage.clear();
+
 getProduct(dado);
 
 
@@ -13,19 +16,25 @@ const addCart = document.getElementById("addtoCart");
 
 
 
-function addToCart(name, price) {
+function addToCart(name, price, pic ,descricao) {
+
     const quantity = parseInt(document.getElementById('quantity').value);
+
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const existingProductIndex = cart.findIndex(item => item.name === name);
-    
+
     if (existingProductIndex > -1) {
         // Atualiza a quantidade e o total
         cart[existingProductIndex].quantity += quantity;
         cart[existingProductIndex].totalPrice += price * quantity;
     } else {
         // Adiciona o novo produto
-        cart.push({ name, price, quantity, totalPrice: price * quantity });
+        console.log("ADICIONOU");
+        
+        cart.push({ name, pic, descricao, price, quantity, totalPrice: price * quantity });
+
+        console.log({ name, pic, descricao, price, quantity, totalPrice: price * quantity });
     }
     
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -46,11 +55,6 @@ function atualizarValorTotal() {
 
 //Monta o produto selecionado na tela
 function getProduct(dado){
-
-
-    console.log(dado);
-
-
     nomeProduto.innerHTML = dado.nome;
     descricaoProduto.innerHTML = dado.descricao;
     preco.innerHTML = "R$ " + dado.preco;
@@ -58,7 +62,7 @@ function getProduct(dado){
     
 
     dado.imagens.forEach ( element =>{ 
-        console.log(element);
+        (element);
 
         const divImgCarrossel = document.createElement("div");
         const imgProdutos = document.createElement("img");
@@ -161,6 +165,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 addCart.addEventListener("click", function(){
 
-    addToCart(dado.nome, dado.preco);
+
+    (dado);
+
+    addToCart(dado.nome, dado.preco, dado.imagens[0].caminho, dado.descricao);
 
 })

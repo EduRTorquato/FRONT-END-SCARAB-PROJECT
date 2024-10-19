@@ -61,7 +61,7 @@ async function chamar() {
         return response.json();
     }).then((data) => {
 
-        console.log(data);
+        (data);
         criarUsers(data);
 
     }).catch((error) => {
@@ -184,8 +184,8 @@ async function deactivate(objetoDesativar) {
             throw new Error("Verifique os dados");
         } else {
 
-            console.log("OBJETO DESATIVADO")
-            console.log(objetoDesativarBody)
+            ("OBJETO DESATIVADO")
+            (objetoDesativarBody)
 
             Swal.fire({
                 position: "center",
@@ -203,7 +203,7 @@ async function deactivate(objetoDesativar) {
         return response.text();
     }).catch((error) => {
 
-        console.log(error);
+        (error);
         Swal.fire({
             position: "top-end",
             icon: "warning",
@@ -432,7 +432,7 @@ async function salvar() {
                 },
 
             }).then(response => {
-                console.log(response.status);
+                (response.status);
 
                 if (response.status != 202) {
                     throw new Error("Verifique os dados");
@@ -503,7 +503,7 @@ async function salvar() {
                 return response.text();
             }).catch((error) => {
 
-                console.log(error);
+                (error);
                 Swal.fire({
                     position: "top-end",
                     icon: "warning",
@@ -522,7 +522,7 @@ async function buscaPorNome() {
 
     const endpointMontado = `http://localhost:8080/usuarios/usuario/${nome}`;
 
-    console.log(endpointMontado);
+    (endpointMontado);
 
     await fetch(endpointMontado).then(response => {
         if (response.ok) {
@@ -531,7 +531,7 @@ async function buscaPorNome() {
         return response.json();
     }).then((dado) => {
 
-        console.log(dado);
+        (dado);
 
          //PREPARA CAMPOS PARA EDIÇÃO DE USUÁRIO.
          editar = true;

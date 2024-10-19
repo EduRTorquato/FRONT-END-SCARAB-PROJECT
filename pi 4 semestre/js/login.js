@@ -26,7 +26,7 @@ btnEntrar.addEventListener("click", (event) => {
 
     } else {
 
-        console.log(usuario);
+        (usuario);
         // Chamar a API para fazer login
         fetch("http://localhost:8080/usuarios/login", {
             method: "POST",
@@ -36,7 +36,7 @@ btnEntrar.addEventListener("click", (event) => {
             },
         })
             .then(response => {
-                console.log(response.status);
+                (response.status);
                 if (response.status == 400) {
                     throw new Error(JSON.stringify("Usuário ou senha incorretos."));;
                 } else if (response.status == 423) {

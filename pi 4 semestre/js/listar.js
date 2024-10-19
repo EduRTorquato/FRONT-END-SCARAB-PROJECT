@@ -43,13 +43,13 @@ async function avisaUsuario() {
 
 async function getUserData() {
 
-    console.log(JSON.parse(sessionStorage.getItem("user")).email);
+    (JSON.parse(sessionStorage.getItem("user")).email);
 
     const email = JSON.parse(sessionStorage.getItem("user")).email;
 
     const endpointMontado = `http://localhost:8080/usuarios/email/${email}`;
 
-    console.log(endpointMontado);
+    (endpointMontado);
 
     await fetch(endpointMontado).then(response => {
         if (response.ok) {
@@ -58,12 +58,12 @@ async function getUserData() {
         return response.json();
     }).then((data) => {
 
-        console.log(data);
+        (data);
 
 
 
         if (data.grupo == "ESTOQUISTA") {
-            console.log(data.grupo);
+            (data.grupo);
             //btnListarUsuario.addEventListener('click', avisaUsuario);
             btnListarUsuario.style.visibility = "hidden";
         } else {
@@ -82,10 +82,10 @@ async function getUserData() {
 
 
 async function deactivate(params) {
-    console.log(params)
+    (params)
 }
 
 async function activate(params) {
-    console.log(params);
-    console.log("a")
+    (params);
+    ("a")
 }
