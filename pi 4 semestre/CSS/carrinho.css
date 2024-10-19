@@ -1,224 +1,275 @@
+/* Estilos Gerais */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f9; /* Mantém o fundo claro */
     color: #333;
     margin: 0;
-}
-
-.backgroundPay {
-    background-color: #003049;
-}
-
-.seleciona {
-    font-size: 18px;
-}
-
-.container {
-
-    margin: 50px auto;
-    padding: 20px;
-
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-h1,
-h2 {
-    text-align: center;
-}
-
-ul {
-    list-style-type: none;
     padding: 0;
 }
 
-li {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
-.payment-fields {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    /* Alinha os campos verticalmente */
-}
-
-input {
-    width: 100%;
-    /* Ajusta a largura dos inputs */
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.hidden {
-    display: none;
-    /* Classe para ocultar campos */
-}
-
-.qrcode {
-    width: 300px;
-    height: 220px;
-    text-align: center;
-    display: flex;
-    position: relative;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    border: none;
-
+.backgroundPay {
+    background-color: #003049; /* Cor de fundo azul escuro */
 }
 
 .navbarPay {
-    background-color: #D62828;
-    padding: 10px 20px;
+    background-color: #D62828; /* Cor vermelha para a navbar */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px;
+    color: white;
 }
 
-.metodo {
-    font-weight: 700;
+.navbarLogo img {
+    width: 120px;
 }
 
-.remove-button {
-    background: red;
-    border: none;
-    font-size: 60px;
-    /* Tamanho do ícone */
-    cursor: pointer;
+.carrinhoLogin .icones {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+.titleCarrinho {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    margin: 40px 0;
+}
+
+/* Layout do Carrinho */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.col {
+    flex: 1;
+    margin: 10px;
 }
 
 .carrinho {
-    border: 1px solid black;
-    width: 500px;
-    height: 500px;
-    background: #F2EFDF;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
 
-.resumo {
-    border: 1px solid black;
-    width: 400px;
-    height: 270px;
-    margin-bottom: 30px;
-    background: #F2EFDF;
+.item {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.entrega {
-    border: 1px solid black;
-    width: 400px;
-    height: 200px;
-    background: #F2EFDF;
+.item:last-child {
+    border-bottom: none;
+}
+
+img {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+h5 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+input[type="number"] {
+    width: 50px;
     text-align: center;
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.btn-danger {
+    background-color: #dc3545; /* Botão "Remover" vermelho */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-danger:hover {
+    background-color: #c82333;
+}
+
+button.btn-sm {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+}
+
+/* Botões de quantidade */
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Resumo do carrinho */
+.resumo {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
 
 .title {
-    font-size: 30px;
-    background-color: white;
-    font-weight: bolder;
+    font-size: 1.5rem;
+    color: #D62828; /* Cor vermelha para o título */
+    margin-bottom: 20px;
 }
 
-.lineSeparation {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.textResuming {
-    font-size: 25px;
+.valueLines {
+    margin-bottom: 20px;
 }
 
 .values {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.textResuming {
+    font-size: 1rem;
+    color: #666;
+}
+
+.lineSeparation {
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+#totalProdutos, #frete, #total {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Calculadora de Frete */
+.entrega {
+    margin-top: 5%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
 
 .calcularCepCarrinho {
     display: flex;
-    margin: 10px;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
 }
 
-.calcularCepCarrinho input {
-    border: 1px solid;
-
-}
-
-.calcularCepCarrinho button {
-    margin-left: 10px;
-    border-radius: 50px;
-}
-
-.textPrice {
-    display: flex;
-    text-align: center;
-    justify-content: center;
+input[type="text"] {
+    width: 70%;
     padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-.shipping {
-    font-weight: bolder;
-}
-
-.item {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+button#btnFrete {
+    width: 20%;
     padding: 10px;
-}
-
-.item img {
-    width: 100px;
-    height: auto;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-.nomeDescricao {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.nomeDescricao p {
-    font-size: 10px;
-}
-
-.quantidade {
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    margin-right: 20px;
-    margin-top: 3px;
-}
-.titleCarrinho{
+    font-size: 1rem;
     color: white;
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
+    background-color: #28a745; /* Cor verde para calcular frete */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button#btnFrete:disabled {
+    background-color: #ccc;
+}
+
+button#btnFrete:hover {
+    background-color: #218838;
+}
+
+/* Estilização adicional */
+.shipping {
+    font-size: 1.1rem;
+    color: #007bff;
+}
+
+.shipping p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.btn-sm {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+}
+
+@media (max-width: 768px) {
+    .col {
+        flex: 1 100%;
+        margin: 0;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .carrinho {
+        padding: 10px;
+    }
+
+    .resumo {
+        margin-top: 20px;
+    }
+
+    .titleCarrinho {
+        font-size: 1.8rem;
+    }
+
+    .textResuming {
+        font-size: 0.9rem;
+    }
+
+    .shipping {
+        font-size: 0.9rem;
+    }
 }

@@ -8,9 +8,11 @@
     <link rel="icon" href="../IMAGENS/logo(2).png">
     <link href="sweetalert2.min.css">
     <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/carrinho.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Para usar ícones -->
 </head>
 
 <body class="backgroundPay">
@@ -21,116 +23,39 @@
 
         <div class="carrinhoLogin">
             <img class="icones" src="../IMAGENS/user.png" alt="">
-            <div class="user">
-
-            </div>
-        </div>
-
+            <div class="user"></div>
         </div>
     </nav>
 
     <h1 class="titleCarrinho">Seu Carrinho</h1>
 
     <div class="container justify-content-center d-md-flex p-5">
-
         <div class="row">
-
             <div class="col">
                 <div id="listCarrinho" class="carrinho">
-
-                   <div class="row">
-                        <div class="item">
-                            <img src="../IMAGENS/imgUpload/vinilb.jpg" alt="">
-
-                            <div class="col" style="margin: 5px;">
-                                <h5>Vinil Billy Joel</h5>
-                                <p> culpa consequatur.</p>
-                            </div>
-                            <div class="col quantidade">
-                                <h5>Quantidade<h5>
-                                <input style="width: 100px;" type="number" min="0">
-                            </div>
-                            <div class="col" style="margin: 5px;">
-                                <h5>Valor</h5>
-                                <p>R$ 1999,99</p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="item">
-                            <img src="../IMAGENS/imgUpload/vinilb.jpg" alt="">
-
-                            <div class="col" style="margin: 5px;">
-                                <h5>Vinil Billy Joel</h5>
-                                <p> culpa consequatur.</p>
-                            </div>
-                            <div class="col quantidade" style="">
-                                <h5>Quantidade<h5>
-                                        <input style="width: 100px;" type="number" min="0">
-                            </div>
-                            <div class="col" style="margin: 5px;">
-                                <h5>Valor</h5>
-                                <p>R$ 1999,99</p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="item">
-                            <img src="../IMAGENS/imgUpload/vinilb.jpg" alt="">
-
-                            <div class="col" style="margin: 5px;">
-                                <h5>Vinil Billy Joel</h5>
-                                <p> culpa consequatur.</p>
-                            </div>
-                            <div class="col quantidade" style="">
-                                <h5>Quantidade<h5>
-                                        <input style="width: 100px;" type="number" min="0">
-                            </div>
-                            <div class="col" style="margin: 5px;">
-                                <h5>Valor</h5>
-                                <p>R$ 1999,99</p>
-                            </div>
-
-                        </div>
-                    </div> 
+                    <!-- Itens do carrinho - Adicionados com JavaScript -->
                 </div>
-
             </div>
-
 
             <div class="col">
                 <div class="resumo">
                     <h1 class="title"> <i class="bi bi-file-text"></i> Resumo</h1>
-
-
                     <div class="valueLines">
-
                         <div class="values">
                             <p class="textResuming">Valor dos produtos:</p>
-                            <p style="font-weight: bolder; font-size: 20px;"> 1289,99</p>
+                            <p id="totalProdutos" style="font-weight: bolder; font-size: 20px;"> 00,00</p>
                         </div>
-
                         <hr class="lineSeparation">
-
                         <div class="values">
                             <p class="textResuming">Frete:</p>
-                            <p style="font-weight: bolder; font-size: 20px;"> 1289,99</p>
+                            <p id="frete" style="font-weight: bolder; font-size: 20px;"> 00,00</p> <!-- Exibição do frete calculado -->
                         </div>
-
                         <hr class="lineSeparation">
-
                         <div class="values">
                             <p class="textResuming">Total à vista:</p>
-                            <p id="total" style="font-weight: bolder; font-size: 20px;"> 1289,99</p>
+                            <p id="total" style="font-weight: bolder; font-size: 20px;"> 00,00</p>
                         </div>
-
                     </div>
-
-
                 </div>
 
                 <div class="entrega">
@@ -138,55 +63,202 @@
                     <label for="cep">Calcular frete e prazo de entrega:</label>
                     <div class="calcularCepCarrinho">
                         <input type="text" id="cep" name="cep" placeholder="Digite seu CEP" required>
-                        <button class="ok-button" disabled>OK</button> <!-- Botão inicialmente desabilitado -->
+                        <button id="btnFrete" class="ok-button">OK</button> <!-- Botão habilitado -->
                     </div>
-                    <div class="textPrice">
-                        <p>Frete: </p>
-                        <p class="shipping"> 89,99</p>
+                    <div id="freteExibido" class="frete-exibido" style="font-weight: bolder; font-size: 20px; margin-top: 10px;">
+                        <!-- Aqui o valor do frete será exibido após o cálculo -->
                     </div>
                 </div>
-
-
             </div>
-
         </div>
-
-
-        <!-- <form id="payment-form">
-            <select  class="seleciona" id="payment-method" onchange="togglePaymentFields()">
-                <option value="">Selecione um método de pagamento</option>
-                <option value="credit-card">Cartão de Crédito</option>
-                <option value="pix">PIX</option>
-               
-            </select>
-            <div class="cartao" id="credit-card-fields" class="payment-fields" style="display: none;">
-                <input type="text" placeholder="Número do Cartão" required>
-                <input type="text" placeholder="Nome no Cartão" required>
-                <input type="text" placeholder="Data de Validade (MM/AA)" required>
-                <input type="text" placeholder="CVV" required>
-            </div>
-            <div class="pix" id="pix-fields" class="payment-fields" style="display: none;">
-                <input class="qrcode" type="image" src="../IMAGENS/QR CODE SCARAB.png" required>
-            </div>
-           
-            
-
-            <h2 id="total">Total: R$ 0.00</h2>
-           
-
-            <button class="btn-finalizar" type="button" onclick="finalizePurchase()">Finalizar Compra</button>
-        </form>  -->
     </div>
 
+    <script>
+        let freteCalculado = false;  // Variável para controlar se o frete já foi calculado
+        let totalProdutos = 0;  // Variável para armazenar o valor total dos produtos
+        let produtosCarrinho = [
+            {
+                id: 1,
+                name: "Vinil Billy Joel",
+                descricao: "culpa consequatur.",
+                price: 1999.99,
+                pic: "../IMAGENS/imgUpload/vinilb.jpg",
+                quantity: 1
+            },
+            {
+                id: 2,
+                name: "Vinil Billy Joel",
+                descricao: "culpa consequatur.",
+                price: 1999.99,
+                pic: "../IMAGENS/imgUpload/vinilb.jpg",
+                quantity: 2
+            },
+            {
+                id: 3,
+                name: "Vinil Billy Joel",
+                descricao: "culpa consequatur.",
+                price: 1999.99,
+                pic: "../IMAGENS/imgUpload/vinilb.jpg",
+                quantity: 3
+            }
+        ];
 
+        // Exibe os itens no carrinho
+        function displayCart() {
+            const cartList = document.getElementById('listCarrinho');
+            cartList.innerHTML = '';
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-    <script src="../js/carrinho.js"></script>
+            produtosCarrinho.forEach(product => {
+                const rowProduct = document.createElement("div");
+                const itemLine = document.createElement("div");
+                const imgProduct = document.createElement("img");
+                const colNome = document.createElement("div");
+                const nomeProduct = document.createElement("h5");
+                const descricao = document.createElement("p");
+
+                const colQuantidade = document.createElement("div");
+                const titleQtd = document.createElement("h5");
+                const inputQtd = document.createElement("input");
+                const divValue = document.createElement("div");
+                const valueTitle = document.createElement("h5");
+                const value = document.createElement("p");
+
+                const divLixeira = document.createElement("div");
+                const lixeira = document.createElement("i");
+
+                const btnRemover = document.createElement("button");
+
+                rowProduct.classList.add("row");
+                itemLine.classList.add("item");
+
+                colNome.classList.add("col");
+                colQuantidade.classList.add("col");
+                colQuantidade.classList.add("quantidade");
+
+                divValue.classList.add("col");
+
+                inputQtd.type = "number";
+                inputQtd.min = 1;
+                inputQtd.value = product.quantity;
+                inputQtd.style.width = "50px";
+                inputQtd.classList.add("input-qtd");
+
+                divLixeira.classList.add("col");
+                lixeira.classList.add("fa", "fa-trash", "text-danger", "lixeira");
+
+                // Botão de remover
+                btnRemover.innerHTML = "Remover";
+                btnRemover.classList.add("btn", "btn-danger", "btn-sm", "me-2");
+
+                cartList.appendChild(rowProduct);
+                rowProduct.appendChild(itemLine);
+                itemLine.appendChild(imgProduct);
+
+                itemLine.appendChild(colNome);
+                colNome.appendChild(nomeProduct);
+                colNome.appendChild(descricao);
+
+                itemLine.appendChild(colQuantidade);
+                colQuantidade.appendChild(titleQtd);
+                colQuantidade.appendChild(inputQtd);
+
+                itemLine.appendChild(divValue);
+                divValue.appendChild(valueTitle);
+                divValue.appendChild(value);
+
+                itemLine.appendChild(divLixeira);
+                divLixeira.appendChild(lixeira);
+                itemLine.appendChild(btnRemover); // Adiciona o botão "Remover" ao item
+
+                nomeProduct.innerHTML = product.name;
+                imgProduct.src = product.pic;
+                value.innerHTML = `R$ ${(product.price * product.quantity).toFixed(2)}`;
+                valueTitle.innerHTML = "Valor";
+
+                inputQtd.addEventListener("input", function() {
+                    let qtd = parseInt(inputQtd.value);
+                    if (qtd < 1) {
+                        inputQtd.value = 1;
+                    }
+                    product.quantity = parseInt(inputQtd.value);
+                    updateCart();
+                });
+
+                lixeira.addEventListener("click", function() {
+                    removeProductFromCart(product.id);
+                });
+
+                // Evento do botão "Remover"
+                btnRemover.addEventListener("click", function() {
+                    removeProductFromCart(product.id);
+                });
+
+                totalProdutos += product.price * product.quantity;
+            });
+
+            document.getElementById('totalProdutos').textContent = `R$ ${totalProdutos.toFixed(2)}`;
+            updateTotal();
+        }
+
+        // Atualiza o valor total no resumo
+        function updateTotal() {
+            const frete = parseFloat(document.getElementById('frete').textContent.replace("R$ ", ""));
+            const totalFinal = (totalProdutos + frete).toFixed(2);
+            document.getElementById('total').textContent = `R$ ${totalFinal}`;
+        }
+
+        // Remove um produto do carrinho
+        function removeProductFromCart(id) {
+            const productIndex = produtosCarrinho.findIndex(p => p.id === id);
+            if (productIndex > -1) {
+                produtosCarrinho.splice(productIndex, 1);
+                updateCart();
+            }
+        }
+
+        // Atualiza o carrinho quando a quantidade é alterada
+        function updateCart() {
+            totalProdutos = 0;
+            displayCart();
+        }
+
+        // Função para calcular o frete
+        function calcularFrete() {
+            if (freteCalculado) {
+                // Exibe o alerta informando que o frete já foi calculado
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Aviso!',
+                    text: 'O frete já foi calculado.',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+
+            // Simula o cálculo do frete
+            const fretes = [15, 20, 50];
+            const freteEscolhido = fretes[Math.floor(Math.random() * fretes.length)];
+
+            document.getElementById('frete').textContent = `R$ ${freteEscolhido.toFixed(2)}`;
+            document.getElementById('freteExibido').textContent = `Frete: R$ ${freteEscolhido.toFixed(2)}`; // Atualiza o valor exibido abaixo do CEP
+            
+            updateTotal();
+            
+            // Marca o frete como calculado
+            freteCalculado = true;
+
+            // Desabilita o botão após calcular o frete
+            document.getElementById('btnFrete').disabled = true;
+        }
+
+        // Adiciona evento ao botão de calcular frete
+        document.getElementById('btnFrete').addEventListener('click', function() {
+            calcularFrete();
+        });
+
+        // Exibe os itens no carrinho ao carregar a página
+        displayCart();
+    </script>
 </body>
-
 
 </html>

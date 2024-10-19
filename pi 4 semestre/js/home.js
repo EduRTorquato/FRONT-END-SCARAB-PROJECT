@@ -90,7 +90,10 @@ function criaCardsProdutos(data) {
         }else {
 
             ("Inativo")
+
         }
+
+        
 
 
     });
