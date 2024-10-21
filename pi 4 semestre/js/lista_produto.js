@@ -75,16 +75,21 @@ buttonSelectFotos.addEventListener("click", () => {
     modalFotos.show();
     modalProduct.hide();
 
+    console.log(isEdit);
+
     if (isEdit) {
         ('TÁ EDITANDO')
 
-        imagesDefault = [];
+
+        console.log(imagesList);
+
         putImagesOnArray(imagesList);
         imagesList = [];
-        
 
     } else {
-        imagesList = [];
+        //imagesList = [];
+
+
         putImagesOnArray(imagesDefault);
         imagesDefault = [];
     }
@@ -130,8 +135,6 @@ async function chamar() {
         }
         return response.json();
     }).then((data) => {
-
-        (data);
         criarProdutos(data);
 
 
@@ -151,7 +154,7 @@ btnSalvar.addEventListener("click", function () {
         "imagens": arrayImages
     }
 
-    (objProduto);
+        (objProduto);
 
 
     // Chamar a API para cadastrar o produto
@@ -200,11 +203,10 @@ btnSalvar.addEventListener("click", function () {
 // MONTA TABELAS COM PRODUTOS
 async function criarProdutos(dados) {
 
-    (isEdit);
 
     dados.forEach(function (dado) {
 
-        (dado);
+
 
         var tbody = document.createElement("tbody");
         var rowTable = document.createElement("tr");
@@ -229,8 +231,6 @@ async function criarProdutos(dados) {
         buttonDeactivate.onclick = function () { deactivate(dado) }
 
         buttonEditProduct.onclick = function () {
-
-
             //PREPARA CAMPOS PARA EDIÇÃO DE PRODUTO.
             isEdit = true;
 
@@ -247,20 +247,10 @@ async function criarProdutos(dados) {
             descricaoProduto.value = dado.descricao;
             avaliacao.value = dado.avaliacao;
 
+
             dado.imagens.forEach(element => {
                 imagesList.push(element.caminho);
             });
-
-            // MONTA OBJETO COM CAMPOS QUE SERÃO UTILIZADOS NAS TRANSAÇÕES DE DADOS.
-            // var objEditar = {
-            //     "id": dado.id,
-            //     "cpf": dado.cpf,
-            //     "nomeUsuario": dado.nomeUsuario,
-            //     "email": dado.email,
-            //     "senha": dado.senha,
-            //     "active": dado.active,
-            //     "grupo": dado.grupo
-            // }
 
             tituloModal.innerHTML = 'Editar';
 
@@ -520,6 +510,9 @@ async function putImagesOnArray(params) {
             }
             (arrayImages);
         };
+
     });
+    
+
 }
 

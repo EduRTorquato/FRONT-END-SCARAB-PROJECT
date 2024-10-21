@@ -25,8 +25,6 @@ btnEntrar.addEventListener("click", (event) => {
         });
 
     } else {
-
-        (usuario);
         // Chamar a API para fazer login
         fetch("http://localhost:8080/usuarios/login", {
             method: "POST",

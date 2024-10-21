@@ -13,6 +13,7 @@ valorTotal = document.getElementById("valorTotal");
 const addCart = document.getElementById("addtoCart");
 
 function addToCart(name, price, pic, descricao) {
+
     const quantity = parseInt(document.getElementById('quantity').value);
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -24,8 +25,6 @@ function addToCart(name, price, pic, descricao) {
         cart[existingProductIndex].totalPrice += price * quantity;
     } else {
         // Adiciona o novo produto
-        console.log("ADICIONOU");
-        
         cart.push({ name, pic, descricao, price, quantity, totalPrice: price * quantity });
 
         console.log({ name, pic, descricao, price, quantity, totalPrice: price * quantity });
