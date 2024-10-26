@@ -59,7 +59,7 @@
 											</div>
 											<div class="form-group mt-2">
 												<input type="email" name="logemail" class="form-style"
-													placeholder="Seu Email" id="email" required autocomplete="off">
+													placeholder="Seu Email" id="emailCadastro" required autocomplete="off">
 												<i class="input-icon uil uil-at"></i>
 											</div>
 											<div class="form-group mt-2">
@@ -68,9 +68,15 @@
 												<i class="input-icon uil uil-file-minus"></i>
 											</div>
 											<div class="form-group mt-2">
-												<input type="text" name="genero" class="form-style"
-													placeholder="Gênero" id="genero" required autocomplete="off">
+
+												<select class="form-style" id="genero">
+													<option selected>Gênero</option>
+													<option value="mulher">Mulher</option>
+													<option value="homem">Homem</option>
+													<option value="naoDefinido">Não responder</option>
+												</select>
 												<i class="input-icon uil uil-users-alt"></i>
+												
 											</div>
 											<div class="form-group mt-2">
 												<input type="date" name="dataNasc" class="form-style"
@@ -79,15 +85,15 @@
 											</div>
 											<div class="form-group mt-2">
 												<input type="password" name="logpass" class="form-style"
-													placeholder="Sua Senha" id="senha" required autocomplete="off">
+													placeholder="Sua Senha" id="senhaCadastro" required autocomplete="off">
 												<i class="input-icon uil uil-lock-alt"></i>
 											</div>
 											<div class="form-group mt-2">
 												<input type="password" name="confirmSenha" class="form-style"
-													placeholder="Confirmar Senha" id="senha" required autocomplete="off">
+													placeholder="Confirmar Senha" id="confirmSenha" required autocomplete="off">
 												<i class="input-icon uil uil-lock-alt"></i>
 											</div>
-											<button id="form-cadastro" class="btn mt-4">cadastrar</button>
+											<button id="cadastrar" type="button" class="btn mt-4">cadastrar</button>
 										</form>
 									</div>
 								</div>

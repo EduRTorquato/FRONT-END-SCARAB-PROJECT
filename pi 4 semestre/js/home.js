@@ -1,6 +1,9 @@
 chamarProdutos();
+getUserData();
 
 const containerCard = document.getElementById("containerCard");
+
+const userProfile = document.getElementById("userProfile");
 
 //BUSCAR PRODUTOS NO BACK
 async function chamarProdutos() {
@@ -41,7 +44,7 @@ function criaCardsProdutos(data) {
             var preco = document.createElement("p");
             var link = document.createElement('a');
             var button = document.createElement("button");
-            var span= document.createElement("span");
+            var span = document.createElement("span");
             var description = document.createElement("p");
 
 
@@ -87,17 +90,60 @@ function criaCardsProdutos(data) {
             button.innerHTML = "Comprar"
             button.onclick = function () { setDados(element) }
 
-        }else {
+        } else {
 
             ("Inativo")
 
         }
 
-        
+
 
 
     });
 
+
+}
+
+async function getUserData() {
+
+    console.log(JSON.parse(sessionStorage.getItem("client")).email);
+
+    const email = JSON.parse(sessionStorage.getItem("client")).email;
+
+    const endpointMontado = `http://localhost:8080/cliente/email/${email}`;
+
+    console.log(endpointMontado);
+
+    await fetch(endpointMontado).then(response => {
+        if (response.ok) {
+
+        }
+        return response.json();
+    }).then((data) => {
+
+        console.log(data);
+
+        sessionStorage.setItem("user", JSON.stringify(data));
+
+        userProfile.innerHTML= data.nome;
+
+        logout = document.createElement("a");
+
+        userProfile.appendChild(logout);
+
+        logout.innerHTML = "Logout"
+
+        logout.style = "color: white; cursor: pointer;";
+
+        logout.onclick = function(){
+            window.location.href = "loginUsuario.html";
+            sessionStorage.removeItem("client");
+        }
+
+
+    }).catch((error) => {
+        console.error(error);
+    });
 
 }
 

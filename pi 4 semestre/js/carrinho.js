@@ -58,7 +58,6 @@ function displayCart() {
         const price = document.createElement("p");
 
         const divLixeira = document.createElement("div");
-        //const lixeira = document.createElement("i");
 
         const btnRemover = document.createElement("button");
 
@@ -109,15 +108,22 @@ function displayCart() {
         valueTitle.innerHTML = "Valor";
 
         inputQtd.addEventListener("input", function () {
-            let qtd = parseInt(inputQtd.value);
 
-            priceUpdated = product.price * qtd;
+            console.log(inputQtd.value);
 
-            price.innerHTML = `R$ ${(priceUpdated).toFixed(2)}`;
-        
-            //product.quantity = parseInt(inputQtd.value);
+            console.log(price)
 
-            totalProdutos = totalProdutos + priceUpdated;
+            price.innerHTML = `R$ ${(product.price * inputQtd.value).toFixed(2)}`;
+
+            if(inputQtd.value > product.quantity){
+                totalProdutos += product.price * product.quantity;
+                
+            }else if(inputQtd.value < product.quantity){
+                totalProdutos -= product.price * product.quantity;
+                
+            }
+
+            document.getElementById('totalProdutos').textContent = `R$ ${totalProdutos.toFixed(2)}`;
 
         });
 
