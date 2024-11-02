@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.css": "css",
+        "plyconfig.json": "jsonc"
+    },
+    "liveServer.settings.port": 5501
+}

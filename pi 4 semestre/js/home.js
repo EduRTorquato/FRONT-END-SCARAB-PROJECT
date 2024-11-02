@@ -5,6 +5,8 @@ const containerCard = document.getElementById("containerCard");
 
 const userProfile = document.getElementById("userProfile");
 
+const userProfilePic = document.getElementById("userProfilePic");
+
 //BUSCAR PRODUTOS NO BACK
 async function chamarProdutos() {
     // Chamar a API para carregar os produtos
@@ -29,6 +31,13 @@ function verificaPrincipal(array) {
 
     return principalItem ? principalItem.caminho : "../IMAGENS/imgUpload/noimg.jpg";
 }
+
+userProfilePic.addEventListener("click", function () {
+
+    window.location.href = "perfilUsuario.html";
+
+}
+)
 
 function criaCardsProdutos(data) {
 
@@ -125,7 +134,7 @@ async function getUserData() {
 
         sessionStorage.setItem("user", JSON.stringify(data));
 
-        userProfile.innerHTML= data.nome;
+        userProfile.innerHTML = data.nome;
 
         logout = document.createElement("a");
 
@@ -135,7 +144,7 @@ async function getUserData() {
 
         logout.style = "color: white; cursor: pointer;";
 
-        logout.onclick = function(){
+        logout.onclick = function () {
             window.location.href = "loginUsuario.html";
             sessionStorage.removeItem("client");
         }

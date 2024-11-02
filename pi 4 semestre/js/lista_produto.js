@@ -430,7 +430,6 @@ async function buscaPorNome() {
 
     const endpointMontado = `http://localhost:8080/produtos/produto/${nome}`;
 
-    (endpointMontado);
 
     await fetch(endpointMontado).then(response => {
         if (response.ok) {
