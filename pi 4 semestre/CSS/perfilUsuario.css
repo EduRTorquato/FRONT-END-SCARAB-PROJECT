@@ -52,7 +52,8 @@
 }
 
 .listItens {
-  position: fixed;
+  padding-top: 5rem;
+  height: 500px;
   top: 40%;
   left: 3%;
 }
@@ -65,8 +66,8 @@
 .infoProfile {
   text-align: center;
   position: fixed;
-  top: 20%;
-  left: 6.3%;
+  top: 19%;
+  left: 4.5%;
 
 }
 

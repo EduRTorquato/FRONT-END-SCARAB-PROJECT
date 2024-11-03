@@ -36,6 +36,7 @@ li {
 }
 
 .icones {
+    cursor: pointer;
     width: 40px;
     margin: 20px;
 }

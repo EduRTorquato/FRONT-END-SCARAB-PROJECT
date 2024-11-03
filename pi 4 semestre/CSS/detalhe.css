@@ -6,14 +6,10 @@ body {
 }
 
 .product-container {
-
     display: flex;
     justify-content: center;
 }
 
-.quantity{
-
-}
 
 .quantity input{
     border: 1px solid black;
@@ -42,17 +38,16 @@ body {
 }
 
 .product-content {
-
-    width: 120vh;
+    width: 100vh;
     height: 80vh;
-
     margin: 15px;
     background-color: #fff;
-    padding: 10px;
+    padding: 0px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     display: flex;
     align-items: center;
+    justify-content: space-around;
 }
 
 .product-images {
@@ -125,9 +120,7 @@ body {
 }
 
 .price {
-
     text-align: center;
-    margin: 250px;
 }
 
 .star-rating {

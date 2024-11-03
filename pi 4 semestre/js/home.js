@@ -2,9 +2,7 @@ chamarProdutos();
 getUserData();
 
 const containerCard = document.getElementById("containerCard");
-
 const userProfile = document.getElementById("userProfile");
-
 const userProfilePic = document.getElementById("userProfilePic");
 
 //BUSCAR PRODUTOS NO BACK
@@ -33,9 +31,7 @@ function verificaPrincipal(array) {
 }
 
 userProfilePic.addEventListener("click", function () {
-
     window.location.href = "perfilUsuario.html";
-
 }
 )
 
@@ -101,12 +97,7 @@ function criaCardsProdutos(data) {
 
         } else {
 
-            ("Inativo")
-
         }
-
-
-
 
     });
 
@@ -146,7 +137,7 @@ async function getUserData() {
 
         logout.onclick = function () {
             window.location.href = "loginUsuario.html";
-            sessionStorage.removeItem("client");
+            sessionStorage.clear();
         }
 
 

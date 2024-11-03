@@ -21,10 +21,31 @@ const cpf_id = document.getElementById("cpf_id");
 const dataNascimento_id = document.getElementById("dataNascimento_id");
 
 
+
+function formatDate(dataNascimento) {
+
+    console.log(dataNascimento);
+
+    var data = new Date(dataNascimento.split('.')[0]);
+
+    // Extrair o ano, mês e dia
+    const ano = data.getFullYear();
+    const mes = String(data.getMonth() + 1).padStart(2, '0'); // Mês começa em 0
+    const dia = String(data.getDate()).padStart(2, '0');
+
+    var novaData = `${ano}-${mes}-${dia}`;
+
+    return novaData;
+}
+
+
+
+//console.log((JSON.parse(sessionStorage.getItem("user")).dataNasc).getFullYear());
+
+
+
 //ICONES 
 const saveData = document.getElementById("saveData");
-
-
 
 //NOME
 nome_id.innerHTML = JSON.parse(sessionStorage.getItem("user")).nome;
@@ -36,14 +57,17 @@ nomeCompleto_id.value = JSON.parse(sessionStorage.getItem("user")).nome;
 emailDado_id.value = JSON.parse(sessionStorage.getItem("user")).email;
 genero_id.value = JSON.parse(sessionStorage.getItem("user")).genero;
 cpf_id.value = JSON.parse(sessionStorage.getItem("user")).cpf;
-dataNascimento_id.value = JSON.parse(sessionStorage.getItem("user")).dataNasc;
+dataNascimento_id.value = formatDate(JSON.parse(sessionStorage.getItem("user")).dataNasc);
+
+
+
+
 
 
 
 
 
 saveData.addEventListener("click", function(){
-    
     salvaEndereco();
 });
 
@@ -67,7 +91,6 @@ async function salvaEndereco() {
         "principal": principal_id.checked,
         "clienteId":  1
     }
-
 
     console.log(objetoAddress);
     

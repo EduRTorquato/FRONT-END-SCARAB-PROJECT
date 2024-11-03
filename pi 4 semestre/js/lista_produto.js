@@ -154,8 +154,6 @@ btnSalvar.addEventListener("click", function () {
         "imagens": arrayImages
     }
 
-        (objProduto);
-
 
     // Chamar a API para cadastrar o produto
     fetch("http://localhost:8080/produtos", {

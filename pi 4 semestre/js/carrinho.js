@@ -1,37 +1,39 @@
 let freteCalculado = false;  // Variável para controlar se o frete já foi calculado
-let totalProdutos = 0;  // Variável para armazenar o valor total dos produtos
+let totalProdutosFrete = 0;  // Variável para armazenar o valor total dos produtos
+let totalFinal = 0;
 
-let produtosCarrinho = [
-    {
-        id: 1,
-        name: "Vinil Billy Joel",
-        descricao: "culpa consequatur.",
-        price: 1999.99,
-        pic: "../IMAGENS/imgUpload/vinilb.jpg",
-        quantity: 1
-    },
-    {
-        id: 2,
-        name: "Vinil Billy Joel",
-        descricao: "culpa consequatur.",
-        price: 1999.99,
-        pic: "../IMAGENS/imgUpload/vinilb.jpg",
-        quantity: 2
-    },
-    {
-        id: 3,
-        name: "Vinil Billy Joel",
-        descricao: "culpa consequatur.",
-        price: 1999.99,
-        pic: "../IMAGENS/imgUpload/vinilb.jpg",
-        quantity: 3
-    }
-];
+// let produtosCarrinho = [
+//     {
+//         id: 1,
+//         name: "Vinil Billy Joel",
+//         descricao: "culpa consequatur.",
+//         price: 1999.99,
+//         pic: "../IMAGENS/imgUpload/vinilb.jpg",
+//         quantity: 1
+//     },
+//     {
+//         id: 2,
+//         name: "Vinil Billy Joel",
+//         descricao: "culpa consequatur.",
+//         price: 1999.99,
+//         pic: "../IMAGENS/imgUpload/vinilb.jpg",
+//         quantity: 2
+//     },
+//     {
+//         id: 3,
+//         name: "Vinil Billy Joel",
+//         descricao: "culpa consequatur.",
+//         price: 1999.99,
+//         pic: "../IMAGENS/imgUpload/vinilb.jpg",
+//         quantity: 3
+//     }
+// ];
+
+const btnFinsh = document.getElementById("btnFinsh");
+
 
 // Exibe os itens no carrinho
 function displayCart() {
-
-    console.log('ENTROU AQUI')
 
     const cartList = document.getElementById('listCarrinho');
     cartList.innerHTML = '';
@@ -39,10 +41,13 @@ function displayCart() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     let grandTotal = 0;
 
-    console.log(cart);
+    const total = document.getElementById("total");
 
 
     cart.forEach(product => {
+
+   
+
         const rowProduct = document.createElement("div");
         const itemLine = document.createElement("div");
         const imgProduct = document.createElement("img");
@@ -105,45 +110,48 @@ function displayCart() {
         nomeProduct.innerHTML = product.name;
         imgProduct.src = product.pic;
         price.innerHTML = `R$ ${(product.price * product.quantity).toFixed(2)}`;
-        valueTitle.innerHTML = "Valor";
+        valueTitle.innerHTML = "Valor";      
+        grandTotal += product.totalPrice;
+
+
+
+        total.textContent = `R$ ${grandTotal.toFixed(2)}`;
+        
 
         inputQtd.addEventListener("input", function () {
 
-            console.log(inputQtd.value);
-
-            console.log(price)
-
+            grandTotal = 0;
             price.innerHTML = `R$ ${(product.price * inputQtd.value).toFixed(2)}`;
 
-            if(inputQtd.value > product.quantity){
-                totalProdutos += product.price * product.quantity;
-                
-            }else if(inputQtd.value < product.quantity){
-                totalProdutos -= product.price * product.quantity;
-                
-            }
+            product.totalPrice = product.price * inputQtd.value;
 
-            document.getElementById('totalProdutos').textContent = `R$ ${totalProdutos.toFixed(2)}`;
+            cart.forEach(product => {   
 
+                    grandTotal += product.totalPrice;
+            });
+            console.log(grandTotal);
+            totalProdutosFrete = grandTotal;
+
+            total.textContent = `R$ ${grandTotal}`;
+            
+            grandTotal = 0;
         });
 
         // Evento do botão "Remover"
         btnRemover.addEventListener("click", function () {
             removeFromCart(product.name);
         });
-
-        totalProdutos += product.price * product.quantity;
     });
 
-    document.getElementById('totalProdutos').textContent = `R$ ${totalProdutos.toFixed(2)}`;
+    document.getElementById('totalProdutosFrete').textContent = `R$ ${totalProdutosFrete.toFixed(2)}`;
     updateTotal();
 }
 
 // Atualiza o valor total no resumo
 function updateTotal() {
     const frete = parseFloat(document.getElementById('frete').textContent.replace("R$ ", ""));
-    const totalFinal = (totalProdutos + frete).toFixed(2);
-    document.getElementById('total').textContent = `R$ ${totalFinal}`;
+    const totalFinal = (totalProdutosFrete + frete).toFixed(2);
+    document.getElementById('totalProdutosFrete').textContent = `R$ ${totalFinal}`;
 }
 
 // Remove um produto do carrinho
@@ -196,6 +204,10 @@ function calcularFrete() {
 document.getElementById('btnFrete').addEventListener('click', function () {
     calcularFrete();
 });
+
+btnFinsh.addEventListener("click", function () {
+    console.log(JSON.parse(localStorage.getItem('cart')));
+})
 
 // Exibe os itens no carrinho ao carregar a página
 displayCart();

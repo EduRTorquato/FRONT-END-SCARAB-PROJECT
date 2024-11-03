@@ -1,6 +1,31 @@
 var dado = JSON.parse(sessionStorage.getItem("produto"));
+var user = JSON.parse(sessionStorage.getItem("user"));
 
-sessionStorage.clear();
+//sessionStorage.clear();
+
+const containerCard = document.getElementById("containerCard");
+const userProfile = document.getElementById("userProfile");
+const userProfilePic = document.getElementById("userProfilePic");
+
+setaDados();
+
+
+function setaDados(){
+    userProfile.innerHTML = user.nome;
+
+    logout = document.createElement("a");
+
+    userProfile.appendChild(logout);
+
+    logout.innerHTML = "Logout"
+
+    logout.style = "color: white; cursor: pointer;";
+
+    logout.onclick = function () {
+        window.location.href = "loginUsuario.html";
+        sessionStorage.clear();
+    }
+}
 
 getProduct(dado);
 
