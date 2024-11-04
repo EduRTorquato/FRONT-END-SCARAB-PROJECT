@@ -1,12 +1,12 @@
-
+html, body {
+  height: 100%;
+  margin: 0;
+}
 
 .backgroundConta {
   background-color: #EAEAEA;
-}
-
-.sidebar-sticky {
-  margin-top: 200px;
-  text-align: center
+  height: 100%;
+  display: flex;
 }
 
 .sideBar {
@@ -14,9 +14,10 @@
   border-radius: 10px;
   box-shadow: 1px 1px 10px 1px;
   width: 300px;
-  height: 100%;
-  position: relative;
-  margin: 50px;
+  height: calc(100% - 150px);
+  position: fixed;
+  top: 30px;
+  left: 0;
 }
 
 .informations {
@@ -24,18 +25,45 @@
   border-radius: 10px;
   box-shadow: 10px 10px 50px;
   width: 1200px;
-  height: 600px;
+  height: calc(80% - 150px);
   position: fixed;
-  top: 8%;
-  right: 10%;
+  top: 2%;
+  right: 5%;
+  overflow: auto; /* Permite rolagem se necessário */
+  margin: 80px 0; /* Ajuste a margem conforme necessário */
 }
 
-.imgPerfil {
-  width: 100px;
-  height: 100px;
-  border: 4px solid #E21C41;
-  ;
-  border-radius: 50px;
+.footerBarConta {
+  background-color: #003049;
+  position: absolute;
+  color: white;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  bottom: 0;
+}
+
+.dataShow {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr; /* Um único coluna para endereços */
+  height: calc(100% - 200px);
+  justify-content: space-evenly;
+}
+
+.columnAddress {
+  margin: 20px;
+  padding: 20px; /* Adiciona um pouco de espaçamento */
+  max-height: 400px; /* Limita a altura da coluna */
+  overflow-y: auto; /* Permite rolagem vertical */
+}
+
+.titles {
+  font-size: 50px;
+  font-weight: 750;
+  color: #E21C41;
+  margin: 25px;
+  margin-left: 70px;
 }
 
 .emailInfo {
@@ -53,9 +81,8 @@
 
 .listItens {
   padding-top: 5rem;
-  height: 500px;
-  top: 40%;
-  left: 3%;
+  height: 500px; /* Pode ser ajustado conforme necessário */
+  overflow: auto; /* Permite rolagem interna se necessário */
 }
 
 .listItens a {
@@ -68,17 +95,14 @@
   position: fixed;
   top: 19%;
   left: 4.5%;
-
 }
 
 .logoMenu {
   width: 70px;
-
   opacity: 70%;
   margin-top: 500px;
   margin-left: 110px;
 }
-
 
 .fotoFundo {
   height: 200px;
@@ -86,32 +110,36 @@
   opacity: 50%;
 }
 
-
-.centeredLine {
-  margin: 50px;
-  height: 400px;
-  border-left: 2px solid rgb(180, 177, 177);
-
-}
-
-.footerBarConta {
-  background-color: #003049;
-  bottom: 000px;
-  position: absolute;
-  height: 150px;
-  color: white;
-}
-
-.dataShow {
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  height: 500px;
-  justify-content: space-evenly;
-}
-
 .columnData {
   margin: 25px;
+}
+
+.address-item {
+  display: flex;
+  justify-content: space-between; /* Coloca os itens nos extremos */
+  align-items: center; /* Alinha verticalmente */
+  margin-bottom: 15px; /* Espaço entre os endereços */
+  padding: 10px; /* Espaço interno */
+}
+
+.btn-excluir {
+  background-color: #ff4d4d; /* Cor de fundo vermelha */
+  color: white; /* Cor do texto */
+  border: none; /* Sem borda */
+  border-radius: 4px; /* Bordas arredondadas */
+  padding: 5px 10px; /* Espaçamento interno */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+}
+
+.btn-excluir:hover {
+  background-color: #ff1a1a; /* Cor mais escura ao passar o mouse */
+}
+
+.informacoesAddcar {
+  font-weight: 300;
+  margin: 10px;
+  display: flex;
+  text-align: center;
 }
 
 .saveData {
@@ -129,45 +157,4 @@
 
 .saveData:hover {
   background-color: var(--hover);
-}
-
-.columnAddress {
-  margin: 20px;
-  margin-right: 50px;
-  margin-left: 50px;
-}
-
-.titles {
-  font-size: 50px;
-  font-weight: 750;
-  color: #E21C41;
-  margin: 25px;
-  margin-left: 70px;
-}
-
-.logoProfile {
-  width: 200px;
-  top: 10%;
-  position: absolute;
-  left: 45%;
-}
-
-.informacoesAddcar {
-  font-weight: 300;
-  margin: 10px;
-  display: flex;
-  text-align: center;
-  grid-template-columns: auto auto auto;
-  position: relative;
-}
-
-.addAddres {
-  color: #E21C41;
-  background-color: #ffffff;
-  position: fixed;
-  font-weight: 700;
-
-  border-radius: 25px;
-  border-style: none;
-  transition-duration: 0.2s;
 }
