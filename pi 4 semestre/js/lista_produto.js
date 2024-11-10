@@ -22,7 +22,7 @@ var imagesDefault = [
     "../IMAGENS/imgUpload/walkman.jpg",
     "../IMAGENS/imgUpload/comando.jpg",
     "../IMAGENS/imgUpload/minigame.jpg",
-    "../IMAGENS/imgUpload/malandro.jpg",
+   
 ]
 
 
