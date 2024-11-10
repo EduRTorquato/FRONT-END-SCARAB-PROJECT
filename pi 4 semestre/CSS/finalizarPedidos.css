@@ -1,0 +1,293 @@
+/* Estilos Gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f9; /* Mantém o fundo claro */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.backgroundPay {
+    background-color: #003049; /* Cor de fundo azul escuro */
+}
+
+.navbarPay {
+    background-color: #D62828; /* Cor vermelha para a navbar */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.navbarLogo img {
+    width: 120px;
+}
+
+.carrinhoLogin .icones {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+.carrinhoLogin .icones {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+.icones:hover{
+    width: 45px;
+    height: 45px;
+    transition-duration: 0.2s;
+}
+
+.titleCarrinho {
+    padding: 20px;
+    font-weight: 600;
+    color: white;
+    height: 100px;
+    background-color: rgb(6, 22, 61);
+}
+
+/* Layout do Carrinho */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.col {
+    flex: 1;
+    margin: 10px;
+}
+
+.carrinho {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.item {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+img {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+h5 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+input[type="number"] {
+    width: 50px;
+    text-align: center;
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.btn-danger {
+    background-color: #dc3545; /* Botão "Remover" vermelho */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-danger:hover {
+    background-color: #c82333;
+}
+
+button.btn-sm {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+}
+
+/* Botões de quantidade */
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Resumo do carrinho */
+.resumo {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 1.5rem;
+    color: #D62828; /* Cor vermelha para o título */
+    margin-bottom: 20px;
+}
+
+.valueLines {
+    margin-bottom: 20px;
+}
+
+.values {
+    margin-bottom: 10px;
+}
+
+.textResuming {
+    font-size: 1rem;
+    color: #666;
+}
+
+.lineSeparation {
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+#totalProdutos, #frete, #total {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Calculadora de Frete */
+.entrega {
+    width: 500px;
+    margin-top: 5%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tableAddress{
+    display: flex;
+    align-items: center;
+}
+
+.calcularCepCarrinho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button#btnFrete {
+    width: 20%;
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    background-color: #28a745; /* Cor verde para calcular frete */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button#btnFrete:disabled {
+    background-color: #ccc;
+}
+
+button#btnFrete:hover {
+    background-color: #218838;
+}
+
+/* Estilização adicional */
+.shipping {
+    font-size: 1.1rem;
+    color: #007bff;
+}
+
+.shipping p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.btn-sm {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+}
+
+@media (max-width: 768px) {
+    .col {
+        flex: 1 100%;
+        margin: 0;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .carrinho {
+        padding: 10px;
+    }
+
+    .resumo {
+        margin-top: 20px;
+    }
+
+    .titleCarrinho {
+        font-size: 1.8rem;
+    }
+
+    .textResuming {
+        font-size: 0.9rem;
+    }
+
+    .shipping {
+        font-size: 0.9rem;
+    }
+}

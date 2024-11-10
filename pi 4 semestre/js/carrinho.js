@@ -1,33 +1,9 @@
 let freteCalculado = false;  // Variável para controlar se o frete já foi calculado
 let totalProdutosFrete = 0;  // Variável para armazenar o valor total dos produtos
-let totalFinal = 0;
+let totalFinalGlobal = 0;
 
-// let produtosCarrinho = [
-//     {
-//         id: 1,
-//         name: "Vinil Billy Joel",
-//         descricao: "culpa consequatur.",
-//         price: 1999.99,
-//         pic: "../IMAGENS/imgUpload/vinilb.jpg",
-//         quantity: 1
-//     },
-//     {
-//         id: 2,
-//         name: "Vinil Billy Joel",
-//         descricao: "culpa consequatur.",
-//         price: 1999.99,
-//         pic: "../IMAGENS/imgUpload/vinilb.jpg",
-//         quantity: 2
-//     },
-//     {
-//         id: 3,
-//         name: "Vinil Billy Joel",
-//         descricao: "culpa consequatur.",
-//         price: 1999.99,
-//         pic: "../IMAGENS/imgUpload/vinilb.jpg",
-//         quantity: 3
-//     }
-// ];
+const userCard = JSON.parse(sessionStorage.getItem("user"));
+
 
 const btnFinsh = document.getElementById("btnFinsh");
 
@@ -152,6 +128,7 @@ function updateTotal() {
     const frete = parseFloat(document.getElementById('frete').textContent.replace("R$ ", ""));
     const totalFinal = (totalProdutosFrete + frete).toFixed(2);
     document.getElementById('totalProdutosFrete').textContent = `R$ ${totalFinal}`;
+
 }
 
 // Remove um produto do carrinho
@@ -191,6 +168,11 @@ function calcularFrete() {
     document.getElementById('frete').textContent = `R$ ${freteEscolhido.toFixed(2)}`;
     document.getElementById('freteExibido').textContent = `Frete: R$ ${freteEscolhido.toFixed(2)}`; // Atualiza o valor exibido abaixo do CEP
 
+
+
+    totalFinalGlobal = (freteEscolhido + totalProdutosFrete).toFixed(2);
+
+
     updateTotal();
 
     // Marca o frete como calculado
@@ -206,7 +188,27 @@ document.getElementById('btnFrete').addEventListener('click', function () {
 });
 
 btnFinsh.addEventListener("click", function () {
-    console.log(JSON.parse(localStorage.getItem('cart')));
+
+
+    console.log(totalFinalGlobal);
+
+    console.log(JSON.parse(localStorage.getItem('cart')).length);
+    
+    const date = new Date();
+
+    const pedido = {
+        "client_id": userCard.id,
+        "data_compra": date.toISOString(),
+        "qtd_itens": JSON.parse(localStorage.getItem('cart')).length,
+        "valor_compra": totalFinalGlobal
+        
+    }
+
+    sessionStorage.setItem("order", JSON.stringify(pedido));
+
+    window.location.href = "finalizarPedidos.html";
+
+
 })
 
 // Exibe os itens no carrinho ao carregar a página

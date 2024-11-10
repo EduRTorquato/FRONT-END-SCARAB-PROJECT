@@ -1,7 +1,8 @@
+//LOGOUT
+const id_sair = document.getElementById("id_sair");
 
-console.log(JSON.parse(sessionStorage.getItem("user")));
-
-const cep_id = document.getElementById("cep_id"); 
+//DADOS ENDEREÇO
+const cep_id = document.getElementById("cep_id");
 const endereco_id = document.getElementById("endereco_id");
 const cidade_id = document.getElementById("cidade_id");
 const complemento_id = document.getElementById("complemento_id");
@@ -10,10 +11,13 @@ const numero_id = document.getElementById("numero_id");
 const bairro_id = document.getElementById("bairro_id");
 const principal_id = document.getElementById("principal_id");
 
+
+//NOME E EMAIL
 const nome_id = document.getElementById("nome_id");
 const email_id = document.getElementById("email_id");
 
 
+//DADOS USUÁRIOS
 const nomeCompleto_id = document.getElementById("nomeCompleto_id");
 const emailDado_id = document.getElementById("emailDado_id");
 const genero_id = document.getElementById("genero_id");
@@ -22,10 +26,8 @@ const dataNascimento_id = document.getElementById("dataNascimento_id");
 
 
 
+//FORMATAÇÃO DAS DATAS
 function formatDate(dataNascimento) {
-
-    console.log(dataNascimento);
-
     var data = new Date(dataNascimento.split('.')[0]);
 
     // Extrair o ano, mês e dia
@@ -34,15 +36,14 @@ function formatDate(dataNascimento) {
     const dia = String(data.getDate()).padStart(2, '0');
 
     var novaData = `${ano}-${mes}-${dia}`;
-
     return novaData;
 }
 
-
-
-//console.log((JSON.parse(sessionStorage.getItem("user")).dataNasc).getFullYear());
-
-
+//LOGOUT
+id_sair.addEventListener("click", function () {
+    window.location.href = "loginUsuario.html";
+    sessionStorage.clear();
+})
 
 //ICONES 
 const saveData = document.getElementById("saveData");
@@ -51,7 +52,6 @@ const saveData = document.getElementById("saveData");
 nome_id.innerHTML = JSON.parse(sessionStorage.getItem("user")).nome;
 email_id.innerHTML = JSON.parse(sessionStorage.getItem("user")).email;
 
-
 //DADOS INPUT
 nomeCompleto_id.value = JSON.parse(sessionStorage.getItem("user")).nome;
 emailDado_id.value = JSON.parse(sessionStorage.getItem("user")).email;
@@ -59,28 +59,11 @@ genero_id.value = JSON.parse(sessionStorage.getItem("user")).genero;
 cpf_id.value = JSON.parse(sessionStorage.getItem("user")).cpf;
 dataNascimento_id.value = formatDate(JSON.parse(sessionStorage.getItem("user")).dataNasc);
 
-
-
-
-
-
-
-
-
-saveData.addEventListener("click", function(){
-    salvaEndereco();
-});
-
-cep_id.addEventListener('blur', function(){
+cep_id.addEventListener('blur', function () {
     consultaCep();
 })
 
-
-
-
-
-
-async function salvaEndereco() {
+async function salvaDados() {
     const objetoAddress = {
         "numero": numero_id.value,
         "complemento": complemento_id.value,
@@ -89,13 +72,13 @@ async function salvaEndereco() {
         "cidade": cidade_id.value,
         "uf": inputState.value,
         "principal": principal_id.checked,
-        "clienteId":  1
+        "clienteId": 1,
+        "rua": endereco_id.value
     }
 
     console.log(objetoAddress);
-    
-}
 
+}
 
 async function consultaCep() {
     // Chamar a API para carregar os produtos
@@ -119,7 +102,7 @@ async function consultaCep() {
 }
 
 saveData.addEventListener("click", function () {
-    
+
     const objetoAddress = {
         "numero": numero_id.value,
         "complemento": complemento_id.value,
@@ -128,7 +111,8 @@ saveData.addEventListener("click", function () {
         "cidade": cidade_id.value,
         "uf": inputState.value,
         "principal": principal_id.checked,
-        "clienteId":  JSON.parse(sessionStorage.getItem("user")).id
+        "rua": endereco_id.value,
+        "clienteId": JSON.parse(sessionStorage.getItem("user")).id
     }
 
     console.log(objetoAddress);

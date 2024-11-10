@@ -1,0 +1,161 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .backgroundConta {
+    background-color: #EAEAEA;
+    height: 100%;
+    display: flex;
+  }
+  
+  .sideBar {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px 1px;
+    width: 300px;
+    height: calc(100% - 150px);
+    position: fixed;
+    top: 30px;
+    left: 0;
+  }
+  
+  .informations {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 10px 10px 50px;
+    width: 1200px;
+    height: calc(80% - 150px);
+    position: fixed;
+    top: 2%;
+    right: 5%;
+    overflow: auto; /* Permite rolagem se necessário */
+    margin: 80px 0; /* Ajuste a margem conforme necessário */
+  }
+  
+  .footerBarConta {
+    background-color: #003049;
+    position: absolute;
+    color: white;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    bottom: 0;
+  }
+  
+  .dataShow {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr; /* Um único coluna para endereços */
+    height: calc(100% - 200px);
+    justify-content: space-evenly;
+  }
+  
+  .columnAddress {
+    margin: 20px;
+    padding: 20px; /* Adiciona um pouco de espaçamento */
+    max-height: 400px; /* Limita a altura da coluna */
+    overflow-y: auto; /* Permite rolagem vertical */
+  }
+  
+  .titles {
+    font-size: 50px;
+    font-weight: 750;
+    color: #E21C41;
+    margin: 25px;
+    margin-left: 70px;
+  }
+  
+  .emailInfo {
+    opacity: 50%;
+  }
+  
+  .linkList {
+    padding-right: 40px;
+    padding-bottom: 30px;
+    font-weight: 650;
+    opacity: 80%;
+    cursor: pointer;
+    list-style: none;
+  }
+  
+  .listItens {
+    padding-top: 5rem;
+    height: 500px; /* Pode ser ajustado conforme necessário */
+    overflow: auto; /* Permite rolagem interna se necessário */
+  }
+  
+  .listItens a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .infoProfile {
+    text-align: center;
+    position: fixed;
+    top: 19%;
+    left: 4.5%;
+  }
+  
+  .logoMenu {
+    width: 70px;
+    opacity: 70%;
+    margin-top: 500px;
+    margin-left: 110px;
+  }
+  
+  .fotoFundo {
+    height: 200px;
+    width: 300px;
+    opacity: 50%;
+  }
+  
+  .columnData {
+    margin: 25px;
+  }
+  
+  .address-item {
+    display: flex;
+    justify-content: space-between; /* Coloca os itens nos extremos */
+    align-items: center; /* Alinha verticalmente */
+    margin-bottom: 15px; /* Espaço entre os endereços */
+    padding: 10px; /* Espaço interno */
+  }
+  
+  .btn-excluir {
+    background-color: #ff4d4d; /* Cor de fundo vermelha */
+    color: white; /* Cor do texto */
+    border: none; /* Sem borda */
+    border-radius: 4px; /* Bordas arredondadas */
+    padding: 5px 10px; /* Espaçamento interno */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  }
+  
+  .btn-excluir:hover {
+    background-color: #ff1a1a; /* Cor mais escura ao passar o mouse */
+  }
+  
+  .informacoesAddcar {
+    font-weight: 300;
+    margin: 10px;
+    display: flex;
+    text-align: center;
+  }
+  
+  .saveData {
+    background-color: #E21C41;
+    position: fixed;
+    font-weight: 700;
+    color: white;
+    border-radius: 25px;
+    border-style: none;
+    width: 200px;
+    margin-top: 115px;
+    margin-left: 490px;
+    transition-duration: 0.2s;
+  }
+  
+  .saveData:hover {
+    background-color: var(--hover);
+  }
+  

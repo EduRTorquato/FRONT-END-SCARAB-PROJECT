@@ -264,22 +264,6 @@ async function criarProdutos(dados) {
             (JSON.stringify(dado));
             sessionStorage.setItem("produto", JSON.stringify(dado));
             window.location = "./detalhe.html"
-
-            // nomeProduto.value = dado.nome;
-            // preco.value = dado.preco
-            // quantidadeEstoque.value = dado.quantidadeEstoque;
-            // descricaoProduto.value = dado.descricao;
-            // avaliacao.value = dado.avaliacao;
-
-            // nomeProduto.disabled = true;
-            // preco.disabled = true;
-            // quantidadeEstoque.disabled = true;
-            // descricaoProduto.disabled = true;
-            // avaliacao.disabled = true;
-
-            // tituloModal.innerHTML = 'Visualizar';
-
-            // modalProduct.show();
         }
 
         //MONTA O HTML DA LISTAGEM.
@@ -330,8 +314,6 @@ async function criarProdutos(dados) {
 
         // //VALIDAÇÃO PARA MOSTRAR EM TEXTO O VALOR DE 0 OU 1
         dado.ativo == true ? tdStatus.innerHTML = "Ativo" : tdStatus.innerHTML = "Inativo";
-
-
 
 
     });
