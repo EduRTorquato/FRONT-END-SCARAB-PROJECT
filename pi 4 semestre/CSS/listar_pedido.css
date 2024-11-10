@@ -1,0 +1,29 @@
+.table .ativar {
+    background-color: rgb(55, 144, 55);
+    border-style: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.table .desativar {
+    background-color: rgb(227, 49, 49);
+    border-style: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.table .edit {
+    background-color: rgb(62, 101, 255);
+    border-style: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.imgSelect{
+    width: 200px;
+    height: 100px;
+    cursor: pointer;
+}

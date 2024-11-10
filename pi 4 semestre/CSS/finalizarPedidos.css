@@ -241,6 +241,17 @@ button#btnFrete:disabled {
     background-color: #ccc;
 }
 
+.btnFinsh{
+    background-color:#D62828;;
+    color: white;
+    border-radius: 5px;
+}
+
+.btnFinsh:hover{
+    transition-duration: 1s;
+    background-color: #8d1414;;
+}
+
 button#btnFrete:hover {
     background-color: #218838;
 }

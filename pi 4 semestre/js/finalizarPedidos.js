@@ -1,11 +1,21 @@
+
 // Recupera o usuário do sessionStorage
 const user = JSON.parse(sessionStorage.getItem("user"));
 
+//Componente de endereços
 const enderecos = document.getElementById("enderecos");
 
+//Coleta dados do pedido
 const dadosPedido = JSON.parse(sessionStorage.getItem("order"));
 
+//Valor total da compra
 const valorTotalCompra = document.getElementById("valorTotalCompra");
+
+const btnFinsh = document.getElementById("btnFinsh");
+
+const inputState = document.getElementById("inputState");
+
+let addressFinish = null;
 
 
 console.log(dadosPedido);
@@ -15,10 +25,9 @@ valorTotalCompra.innerHTML = dadosPedido.valor_compra;
 findById(user.id);
 
 // Exibe os itens no carrinho ao carregar a página
-displayCart();
-
+displayOrders();
 // Exibe os itens no carrinho
-function displayCart() {
+function displayOrders() {
 
     const cartList = document.getElementById('listCarrinho');
     cartList.innerHTML = '';
@@ -31,7 +40,7 @@ function displayCart() {
 
     cart.forEach(product => {
 
-   
+
 
         const rowProduct = document.createElement("div");
         const itemLine = document.createElement("div");
@@ -90,18 +99,18 @@ function displayCart() {
         divValue.appendChild(price);
 
         itemLine.appendChild(divLixeira);
-      //itemLine.appendChild(btnRemover); // Adiciona o botão "Remover" ao item
+        //itemLine.appendChild(btnRemover); // Adiciona o botão "Remover" ao item
 
         nomeProduct.innerHTML = product.name;
         imgProduct.src = product.pic;
         price.innerHTML = `R$ ${(product.price * product.quantity).toFixed(2)}`;
-        valueTitle.innerHTML = "Valor";      
+        valueTitle.innerHTML = "Valor";
         grandTotal += product.totalPrice;
 
 
 
-      //  total.textContent = `R$ ${grandTotal.toFixed(2)}`;
-        
+        //  total.textContent = `R$ ${grandTotal.toFixed(2)}`;
+
 
         inputQtd.addEventListener("input", function () {
 
@@ -110,15 +119,15 @@ function displayCart() {
 
             product.totalPrice = product.price * inputQtd.value;
 
-            cart.forEach(product => {   
+            cart.forEach(product => {
 
-                    grandTotal += product.totalPrice;
+                grandTotal += product.totalPrice;
             });
             console.log(grandTotal);
             totalProdutosFrete = grandTotal;
 
             total.textContent = `R$ ${grandTotal}`;
-            
+
             grandTotal = 0;
         });
 
@@ -144,9 +153,9 @@ async function findById(userId) {
         console.log(dados);
 
         loadAddress(dados);
-        
+
         // Chama a função para exibir os endereços
-       // displayAddresses(dados);
+        // displayAddresses(dados);
     } catch (error) {
         console.error("Erro ao buscar endereços:", error);
         Swal.fire({
@@ -180,6 +189,10 @@ async function loadAddress(params) {
 
         tableAddress.classList.add("tableAddress");
 
+        radioButton.onchange = function () {
+            addressFinish = dado.id
+        };
+
         street.innerHTML = dado.complemento + dado.cep
 
         // tdCheckBox.appendChild(checkBox);
@@ -187,6 +200,71 @@ async function loadAddress(params) {
 
 
     });
-    
+
 
 }
+
+btnFinsh.addEventListener("click", function () {
+
+    let finishedOrder = {
+        "clientId": user.id,
+        "dataCompra": dadosPedido.data_compra,
+        "enderecoId": addressFinish,
+        "qtdItens": dadosPedido.qtd_itens,
+        "valorCompra": dadosPedido.valor_compra,
+        "metodoPgto": inputState.value
+    }
+
+    fetch("http://localhost:8080/pedidos", {
+        method: "POST",
+        body: JSON.stringify(finishedOrder),
+        headers: {
+            "Content-Type": "application/json",
+        },
+
+    }).then(response => {
+
+        if (response.status != 202) {
+            throw new Error("Verifique os dados");
+        } else if (addressFinish == null) {
+            Swal.fire({
+                position: "center",
+                title: "Defina um endereço para entrega!",
+                showConfirmButton: false,
+                icon: 'warning',
+                timer: 1500
+            })
+        }
+        else {
+            Swal.fire({
+                position: "center",
+                title: "Pedido Finalizado!",
+                showConfirmButton: false,
+                icon: 'success',
+                timer: 1500
+            })
+
+            setTimeout(function () {
+                window.location.href = "home.html";
+                localStorage.removeItem('cart');
+
+            }, 2000);
+
+
+        }
+        return response.text();
+    }).catch((error) => {
+
+        (error);
+        Swal.fire({
+            position: "top-end",
+            icon: "warning",
+            title: "Verifique os dados novamente!",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    });
+
+
+    console.log(finishedOrder);
+})
