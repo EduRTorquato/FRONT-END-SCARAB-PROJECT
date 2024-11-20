@@ -2,10 +2,11 @@
 // Recupera o usuário do sessionStorage
 const user = JSON.parse(sessionStorage.getItem("user"));
 
-sessionStorage.setItem("finishingOrder", true);
+
+
 
 //Componente de endereços
-const enderecos = document.getElementById("enderecos");
+const enderecoId = document.getElementById("enderecoId");
 
 //Coleta dados do pedido
 const dadosPedido = JSON.parse(sessionStorage.getItem("order"));
@@ -17,17 +18,17 @@ const btnFinsh = document.getElementById("btnFinsh");
 
 const inputState = document.getElementById("inputState");
 
-let addressFinish = null;
 
-
-console.log(dadosPedido);
+//SETA VALORES IMPORTANTES DO RESUMO
+const finishedOrder = JSON.parse(sessionStorage.getItem("finishedOrder"));
+findAddressById(finishedOrder.enderecoId);
+inputState.value = finishedOrder.metodoPgto;
 valorTotalCompra.innerHTML = dadosPedido.valor_compra;
 
-//Encontra os dados do usuário
-findById(user.id);
 
 // Exibe os itens no carrinho ao carregar a página
 displayOrders();
+
 // Exibe os itens no carrinho
 function displayOrders() {
 
@@ -139,86 +140,66 @@ function displayOrders() {
         // });
     });
 }
-// Função que busca os endereços do usuário
-async function findById(userId) {
 
-    console.log(user);
-    const endpoint = `http://localhost:8080/endereco/cliente/${userId}`;
 
-    try {
-        const response = await fetch(endpoint);
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
-        const dados = await response.json();
+// Função que busca o endereço do usuário
+async function findAddressById(addressId) {
 
-        console.log(dados);
+    console.log(addressId);
+    const endpoint = `http://localhost:8080/endereco/${addressId}`;
 
-        loadAddress(dados);
-
-        // Chama a função para exibir os endereços
-        // displayAddresses(dados);
-    } catch (error) {
-        console.error("Erro ao buscar endereços:", error);
-        Swal.fire({
-            position: "top-end",
-            icon: "warning",
-            title: "Usuário não encontrado.",
-            showConfirmButton: false,
-            timer: 1500
-        });
+    const response = await fetch(endpoint);
+    if (!response.ok) {
+        throw new Error("Network response was not ok");
     }
+    const dados = await response.json();
+    const enderecoMontado = "Bairro: " + dados.bairro + ", " + dados.rua + " Número: " + dados.numero;
+    enderecoId.textContent = enderecoMontado;
 }
 
-async function loadAddress(params) {
-
-    params.forEach((dado) => {
-
-        var tableAddress = document.createElement("tbody");
-        var rowStreet = document.createElement("tr");
-        var street = document.createElement("p");
-        var radioButton = document.createElement("input");
-        var tdRadio = document.createElement("td");
-
-
-        radioButton.classList.add("form-check-input");
-        radioButton.type = "radio";
-
-        enderecos.appendChild(tableAddress);
-        tableAddress.appendChild(rowStreet);
-        rowStreet.appendChild(tdRadio);
-        rowStreet.appendChild(street);
-
-        tableAddress.classList.add("tableAddress");
-
-        radioButton.onchange = function () {
-            addressFinish = dado.id
-        };
-
-        street.innerHTML = dado.complemento + dado.cep
-
-        // tdCheckBox.appendChild(checkBox);
-        tdRadio.appendChild(radioButton);
-
-
-    });
-
-
-}
 
 btnFinsh.addEventListener("click", function () {
 
-    const finishedOrder = {
-        "clientId": user.id,
-        "dataCompra": dadosPedido.data_compra,
-        "enderecoId": addressFinish,
-        "qtdItens": dadosPedido.qtd_itens,
-        "valorCompra": dadosPedido.valor_compra,
-        "metodoPgto": inputState.value
-    }
-
     console.log(finishedOrder);
 
-    sessionStorage.setItem("finishedOrder", JSON.stringify(finishedOrder));
-    window.location.href = "resumoPedido.html";
+    fetch("http://localhost:8080/pedidos", {
+        method: "POST",
+        body: JSON.stringify(finishedOrder),
+        headers: {
+            "Content-Type": "application/json",
+        },
+
+    }).then(response => {
+
+        if (response.status != 202) {
+            throw new Error("Verifique os dados");
+        }else {
+            Swal.fire({
+                position: "center",
+                title: "Pedido Finalizado!",
+                showConfirmButton: false,
+                icon: 'success',
+                timer: 1500
+            })
+
+            setTimeout(function () {
+                window.location.href = "home.html";
+                localStorage.removeItem('cart');
+
+            }, 2000);
+
+
+        }
+        return response.text();
+    }).catch((error) => {
+
+        (error);
+        Swal.fire({
+            position: "top-end",
+            icon: "warning",
+            title: "Verifique os dados novamente!",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    });
 })

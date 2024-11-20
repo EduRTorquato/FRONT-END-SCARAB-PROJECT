@@ -2,6 +2,8 @@
 const user = JSON.parse(sessionStorage.getItem("user"));
 const id_sair = document.getElementById("id_sair");
 
+
+
 // Busca os dados do usuário e os endereços
 fetchUserData();
 findById(user.id);
@@ -30,7 +32,7 @@ async function fetchUserData() {
 
 // Função que busca os endereços do usuário
 async function findById(userId) {
-    const endpoint = `http://localhost:8080/endereco/${userId}`;
+    const endpoint = `http://localhost:8080/endereco/cliente/${userId}`;
 
     try {
         const response = await fetch(endpoint);

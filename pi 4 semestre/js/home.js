@@ -106,44 +106,48 @@ function criaCardsProdutos(data) {
 
 async function getUserData() {
 
-    console.log(JSON.parse(sessionStorage.getItem("client")).email);
-
-    const email = JSON.parse(sessionStorage.getItem("client")).email;
-
-    const endpointMontado = `http://localhost:8080/cliente/email/${email}`;
-
-    console.log(endpointMontado);
-
-    await fetch(endpointMontado).then(response => {
-        if (response.ok) {
-
-        }
-        return response.json();
-    }).then((data) => {
-
-        console.log(data);
-
-        sessionStorage.setItem("user", JSON.stringify(data));
-
-        userProfile.innerHTML = data.nome;
-
-        logout = document.createElement("a");
-
-        userProfile.appendChild(logout);
-
-        logout.innerHTML = "Logout"
-
-        logout.style = "color: white; cursor: pointer;";
-
-        logout.onclick = function () {
-            window.location.href = "loginUsuario.html";
-            sessionStorage.clear();
-        }
+    if (sessionStorage.getItem("client") == null) {
+        console.log("Cliente Nulo!")
+    } else {
 
 
-    }).catch((error) => {
-        console.error(error);
-    });
+        const email = JSON.parse(sessionStorage.getItem("client")).email;
+
+        const endpointMontado = `http://localhost:8080/cliente/email/${email}`;
+
+        console.log(endpointMontado);
+
+        await fetch(endpointMontado).then(response => {
+            if (response.ok) {
+
+            }
+            return response.json();
+        }).then((data) => {
+
+            console.log(data);
+
+            sessionStorage.setItem("user", JSON.stringify(data));
+
+            userProfile.innerHTML = data.nome;
+
+            logout = document.createElement("a");
+
+            userProfile.appendChild(logout);
+
+            logout.innerHTML = "Logout"
+
+            logout.style = "color: white; cursor: pointer;";
+
+            logout.onclick = function () {
+                window.location.href = "loginUsuario.html";
+                sessionStorage.clear();
+            }
+
+
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
 
 }
 

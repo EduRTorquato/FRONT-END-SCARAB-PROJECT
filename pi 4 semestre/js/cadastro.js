@@ -10,6 +10,10 @@ dataNasc = document.getElementById("dataNasc");
 senhaCadastro = document.getElementById("senhaCadastro");
 confirmSenha = document.getElementById("confirmSenha");
 
+const finishingOrder = sessionStorage.getItem("finishingOrder");
+console.log(finishingOrder);
+
+
 
 cadastrar.addEventListener("click", function () {
 
@@ -123,7 +127,14 @@ btnEntrar.addEventListener("click", (event) => {
             .then(data => {
                 // Redirecionar para outra página após o login bem-sucedido
                 sessionStorage.setItem("client", JSON.stringify(usuario));
-                window.location.href = "home.html";
+
+                console.log(finishingOrder == true);
+
+                if(finishingOrder == true){
+                    window.location.href = "finalizarPedidos.html";
+                }else{    
+                    window.location.href = "home.html";
+                }
             })
             .catch(error => {
                 console.error(error);

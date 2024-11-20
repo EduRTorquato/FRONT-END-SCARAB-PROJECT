@@ -11,20 +11,24 @@ setaDados();
 
 
 function setaDados(){
-    userProfile.innerHTML = user.nome;
 
-    logout = document.createElement("a");
-
-    userProfile.appendChild(logout);
-
-    logout.innerHTML = "Logout"
-
-    logout.style = "color: white; cursor: pointer;";
-
-    logout.onclick = function () {
-        window.location.href = "loginUsuario.html";
-        sessionStorage.clear();
+    if(user != null){   
+        userProfile.innerHTML = user.nome;
+        
+        logout = document.createElement("a");
+        
+        userProfile.appendChild(logout);
+        
+        logout.innerHTML = "Logout"
+        
+        logout.style = "color: white; cursor: pointer;";
+        
+        logout.onclick = function () {
+            window.location.href = "loginUsuario.html";
+            sessionStorage.clear();
+        }
     }
+    
 }
 
 getProduct(dado);

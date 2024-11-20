@@ -22,7 +22,7 @@ function displayCart() {
 
     cart.forEach(product => {
 
-   
+
 
         const rowProduct = document.createElement("div");
         const itemLine = document.createElement("div");
@@ -86,13 +86,13 @@ function displayCart() {
         nomeProduct.innerHTML = product.name;
         imgProduct.src = product.pic;
         price.innerHTML = `R$ ${(product.price * product.quantity).toFixed(2)}`;
-        valueTitle.innerHTML = "Valor";      
+        valueTitle.innerHTML = "Valor";
         grandTotal += product.totalPrice;
 
 
 
         total.textContent = `R$ ${grandTotal.toFixed(2)}`;
-        
+
 
         inputQtd.addEventListener("input", function () {
 
@@ -101,15 +101,15 @@ function displayCart() {
 
             product.totalPrice = product.price * inputQtd.value;
 
-            cart.forEach(product => {   
+            cart.forEach(product => {
 
-                    grandTotal += product.totalPrice;
+                grandTotal += product.totalPrice;
             });
             console.log(grandTotal);
             totalProdutosFrete = grandTotal;
 
             total.textContent = `R$ ${grandTotal}`;
-            
+
             grandTotal = 0;
         });
 
@@ -192,21 +192,39 @@ btnFinsh.addEventListener("click", function () {
 
     console.log(totalFinalGlobal);
 
-    console.log(JSON.parse(localStorage.getItem('cart')).length);
-    
-    const date = new Date();
+    if (userCard != null) {
 
-    const pedido = {
-        "client_id": userCard.id,
-        "data_compra": date.toISOString(),
-        "qtd_itens": JSON.parse(localStorage.getItem('cart')).length,
-        "valor_compra": totalFinalGlobal
-        
+        console.log(JSON.parse(localStorage.getItem('cart')).length);
+
+        const date = new Date();
+
+        const pedido = {
+            "client_id": userCard.id,
+            "data_compra": date.toISOString(),
+            "qtd_itens": JSON.parse(localStorage.getItem('cart')).length,
+            "valor_compra": totalFinalGlobal
+
+        }
+
+        sessionStorage.setItem("order", JSON.stringify(pedido));
+
+        window.location.href = "finalizarPedidos.html";
+    } else {
+        Swal.fire({
+            title: "Atenção",
+            text: "É necessário estar logado para finalizar a compra!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Login"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href="loginUsuario.html"
+                sessionStorage.setItem("finishingOrder", true);
+            }
+        });
     }
-
-    sessionStorage.setItem("order", JSON.stringify(pedido));
-
-    window.location.href = "finalizarPedidos.html";
 
 
 })

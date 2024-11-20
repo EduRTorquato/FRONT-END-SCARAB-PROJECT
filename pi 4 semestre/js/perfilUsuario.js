@@ -11,6 +11,9 @@ const numero_id = document.getElementById("numero_id");
 const bairro_id = document.getElementById("bairro_id");
 const principal_id = document.getElementById("principal_id");
 
+const finishingOrder = sessionStorage.getItem("finishingOrder");
+console.log(finishingOrder);
+
 
 //NOME E EMAIL
 const nome_id = document.getElementById("nome_id");
@@ -139,9 +142,29 @@ saveData.addEventListener("click", function () {
                 timer: 1500
             })
 
-            setTimeout(function () {
-                location.reload();
-            }, 2000);
+            if (finishingOrder) {
+                Swal.fire({
+                    title: "Endereço Cadastrado",
+                    text: "Deseja retornar para finalizar a compra?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Retornar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "finalizarPedidos.html"
+                    }
+                });
+            } else {
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
+            }
+
+
+
+
 
 
         }
