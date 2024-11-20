@@ -181,7 +181,7 @@ async function loadAddress(params) {
         var tdRadio = document.createElement("td");
 
 
-        radioButton.classList.add("form-check-input");
+    
         radioButton.type = "radio";
 
         enderecos.appendChild(tableAddress);
@@ -190,12 +190,14 @@ async function loadAddress(params) {
         rowStreet.appendChild(street);
 
         tableAddress.classList.add("tableAddress");
+        street.classList.add("rowStreet");
+
 
         radioButton.onchange = function () {
             addressFinish = dado.id
         };
 
-        street.innerHTML = dado.complemento + dado.cep
+        street.innerHTML = dado.rua + ", " + dado.numero + ", " + dado.bairro +  " - " + dado.cidade; 
 
         // tdCheckBox.appendChild(checkBox);
         tdRadio.appendChild(radioButton);

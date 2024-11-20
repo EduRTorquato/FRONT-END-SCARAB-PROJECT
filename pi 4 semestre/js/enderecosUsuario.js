@@ -1,6 +1,7 @@
 // Recupera o usuário do sessionStorage
 const user = JSON.parse(sessionStorage.getItem("user"));
 const id_sair = document.getElementById("id_sair");
+const idTable = document.getElementById("idTable");
 
 
 
@@ -58,37 +59,41 @@ async function findById(userId) {
 // Função para exibir os endereços
 function displayAddresses(enderecos) {
     const columnAddress = document.querySelector('.columnAddress');
-    columnAddress.innerHTML = ''; // Limpa a coluna antes de adicionar novos dados
 
-    // Verifica se há endereços
-    if (!enderecos || enderecos.length === 0) {
-        columnAddress.innerHTML = '<p>Nenhum endereço encontrado.</p>';
-        return;
-    }
+
 
     // Itera sobre os endereços e cria elementos HTML para cada um
     enderecos.forEach(endereco => {
-        const addressElement = document.createElement('div');
-        addressElement.classList.add('address-item');
 
-        // Define valores padrão se as propriedades estiverem undefined
-        const {
-            titulo = '',
-            rua = 'Rua não disponível',
-            numero = 'Número não disponível',
-            bairro = 'Bairro não disponível',
-            cidade = 'Cidade não disponível',
-            estado = 'Estado não disponível',
-            principal = false,
-            id
-        } = endereco;
+        console.log(endereco);
 
-        // Verifica se é o endereço principal e altera o título se necessário
-        const tituloDestaque = principal ? `<strong>${titulo} (Endereço Principal)</strong>` : titulo;
 
-        addressElement.innerHTML = `
-            <h5>${tituloDestaque}</h5>
-            <p>${rua}, ${numero}, ${bairro}, ${cidade}, ${estado}</p>`;
-        columnAddress.appendChild(addressElement);
+        var tbody = document.createElement("tbody");
+        var rowTable = document.createElement("tr");
+        var tdBairro = document.createElement("td");
+        var tdRua = document.createElement("td");
+        var tdNumero = document.createElement("td");
+        var tdCep = document.createElement("td");
+        var tdCidade = document.createElement("td");
+        var tdPrincipal = document.createElement("td");
+
+
+        idTable.appendChild(tbody);
+        tbody.appendChild(rowTable);
+        rowTable.appendChild(tdBairro);
+        rowTable.appendChild(tdRua);
+        rowTable.appendChild(tdNumero);
+        rowTable.appendChild(tdCep);
+        rowTable.appendChild(tdCidade);
+        rowTable.appendChild(tdPrincipal);
+
+
+        tdBairro.innerHTML = endereco.bairro;
+        tdRua.innerHTML = endereco.rua;
+        tdNumero.innerHTML = endereco.numero;
+        tdCep.innerHTML = endereco.cep;
+        tdCidade.innerHTML = endereco.cidade;
+        endereco.principal ? tdPrincipal.innerHTML = "Sim" : tdPrincipal.innerHTML = "Não";
+
     });
 }

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Login ou Cadastro</title>
+    <title>Pedidos</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
     <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
     <link rel="stylesheet" href="../CSS/pedidosCliente.css">
@@ -26,14 +26,11 @@
 
         <div class="listItens">
             <ul>
-                <a href="home.html">
-                    <li class="linkList" id="home"> <i class="bi bi-house"></i> Home </li>
-                </a>
-                <li class="linkList"> <i class="bi bi-person"></i> Meus Dados </li>
-                <li id="id_favoritos" class="linkList"> <i class="bi bi-star"></i> Endereços </li>
-                <a href="enderecosUsuario.html">
-                    <li id="id_favoritos" class="linkList"> <i class="bi bi-file-earmark-text"></i> Pedidos </li>
-                </a>
+                <a href="home.html"> <li class="linkList" id="home"> <i class="bi bi-house"></i> Home </li>  </a>  
+                <a href="perfilUsuario.html"> <li class="linkList"> <i class="bi bi-person"></i> Meus Dados </li></a>
+                <a href="enderecosUsuario.html"> <li id="id_favoritos" class="linkList"> <i class="bi bi-star"></i> Endereços </li></a>  
+                <li id="id_favoritos" class="linkList"> <i class="bi bi-file-earmark-text"></i> Pedidos </li>
+                
                 <li id="id_sair" class="linkList"> <i class="bi bi-door-open"></i> Sair </li>
             </ul>
 
@@ -48,7 +45,6 @@
                 <tr>
                     <th scope="col">Código Pedido</th>
                     <th scope="col">Itens</th>
-
                     <th scope="col">Valor Total</th>
                     <th scope="col">Método Pgto</th>
                     <th scope="col">Endereço</th>

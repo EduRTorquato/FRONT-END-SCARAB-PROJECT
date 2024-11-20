@@ -163,6 +163,7 @@ button.btn-sm {
 /* Resumo do carrinho */
 .resumo {
     background-color: white;
+    height: 100%;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
@@ -171,7 +172,6 @@ button.btn-sm {
 .title {
     font-size: 1.5rem;
     color: #D62828; /* Cor vermelha para o título */
-    margin-bottom: 20px;
 }
 
 .valueLines {
@@ -208,18 +208,22 @@ button.btn-sm {
 }
 
 .tableAddress{
-    display: flex;
     align-items: center;
+}
+.rowStreet{
+    padding-top: 15px;
+    padding-left: 10px;
+    font-weight: bolder;
 }
 
 
 .addAddres{
     all: unset;
-    font-size: 25px;
+    font-size: 15px;
     font-weight: bolder;
     color: #D62828; /* Cor vermelha para o título */
-    top: 82%;
-    left: 53%;
+    top: 86%;
+    left: 70%;
     position: relative;
     cursor: pointer;
 }

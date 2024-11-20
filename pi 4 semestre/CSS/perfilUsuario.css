@@ -13,10 +13,11 @@
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 1px 1px 10px 1px;
-  width: 350px;
-  height: 100%;
-  position: relative;
-  margin: 50px;
+  width: 300px;
+  height: calc(100% - 150px);
+  position: fixed;
+  top: 30px;
+  left: 0;
 }
 
 .informations {
@@ -52,9 +53,9 @@
 }
 
 .listItens {
-  position: fixed;
-  top: 40%;
-  left: 3%;
+  padding-top: 5rem;
+  height: 500px;
+  overflow: auto;
 }
 
 .listItens a {
@@ -64,10 +65,6 @@
 
 .infoProfile {
   text-align: center;
-  position: fixed;
-  top: 20%;
-  left: 6.3%;
-
 }
 
 .logoMenu {
@@ -81,7 +78,7 @@
 
 .fotoFundo {
   height: 200px;
-  width: 350px;
+  width: 300px;
   opacity: 50%;
 }
 

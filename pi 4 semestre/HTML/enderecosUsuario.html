@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Login ou Cadastro</title>
+    <title>Endereço</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
     <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
     <link rel="stylesheet" href="../CSS/enderecoUsuario.css">
@@ -26,10 +26,16 @@
 
         <div class="listItens">
             <ul>
-                <a href="home.html"><li class="linkList" id="home"> <i class="bi bi-house"></i> Home </li></a>
-                <li class="linkList"> <i class="bi bi-person"></i> Meus Dados </li>
-              <li id="id_favoritos" class="linkList"> <i class="bi bi-star"></i> Endereços </li>
-                <a href="enderecosUsuario.html"><li id="id_favoritos" class="linkList"> <i class="bi bi-file-earmark-text"></i> Pedidos </li> </a>
+                <a href="home.html">
+                    <li class="linkList" id="home"> <i class="bi bi-house"></i> Home </li>
+                </a>
+                <a href="perfilUsuario.html">
+                    <li class="linkList"> <i class="bi bi-person"></i> Meus Dados </li>
+                </a>
+                <li id="id_favoritos" class="linkList"> <i class="bi bi-star"></i> Endereços </li>
+                <a href="pedidosCliente.html">
+                    <li id="id_favoritos" class="linkList"> <i class="bi bi-file-earmark-text"></i> Pedidos </li>
+                </a>
                 <li id="id_sair" class="linkList"> <i class="bi bi-door-open"></i> Sair </li>
             </ul>
 
@@ -39,21 +45,36 @@
     <div class="informations">
         <h1 class="titles">Endereços</h1>
 
-        <div class="dataShow">
-            <div class="columnData">
-                <!-- Coluna de dados adicionais, se necessário -->
-            </div>
 
-            <div class="columnAddress">
-                <!-- Endereços serão exibidos aqui -->
-            </div>
-        </div>
+        <table class="table" id="idTable">
+            <thead>
+                <tr>
+                    <th scope="col">Bairro</th>
+                    <th scope="col">Rua</th>
+                    <th scope="col">Número</th>
+                    <th scope="col">CEP</th>
+                    <th scope="col">Cidade</th>
+                    <th scope="col">Principal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td scope="row">1</td>
+                    <td>15</td>
+                    <td>205,00</td>
+                    <td>Cartão de Crédito</td>
+                    <td>Rua dos Passarinhos, 20</td>
+                </tr> -->
+            </tbody>
+        </table>
     </div>
 
     <footer class="footerBarConta">
         <section class="informacoesAddcar">
-            <p style="width: 50%; font-size: 12px;">"SCARAB: onde a paixão por colecionáveis encontra o seu próximo tesouro."</p>
-            <p style="width: 50%; font-size: 12px;">O projeto foi um conceito criado pelos alunos Eduardo Ribeiro Torquato</p>
+            <p style="width: 50%; font-size: 12px;">"SCARAB: onde a paixão por colecionáveis encontra o seu próximo
+                tesouro."</p>
+            <p style="width: 50%; font-size: 12px;">O projeto foi um conceito criado pelos alunos Eduardo Ribeiro
+                Torquato</p>
         </section>
     </footer>
 

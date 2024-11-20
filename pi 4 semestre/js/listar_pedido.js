@@ -18,7 +18,7 @@ const statusPedido = document.getElementById("statusPedido");
 const checkboxLabel = document.getElementById("checkboxLabel");
 /// MODAIS ///
 const modalProduct = new bootstrap.Modal(document.getElementById('modalProduct'));
-const modalFotos = new bootstrap.Modal(document.getElementById('modalFotos'));
+// const modalFotos = new bootstrap.Modal(document.getElementById('modalFotos'));
 /// MODAIS ///
 
 //BUSCAR PEDIDOS NO BACK
@@ -94,7 +94,7 @@ async function criarPedidos(dados) {
 
         // //SETA CADA CAMPO INDIVIDUALMENTE
         tdCodigo.innerHTML = dado.id;
-        buscaPorNome(dado.id).then(nome => { tdNome.innerHTML = nome });
+        buscaPorNome(dado.clientId).then(nome => { tdNome.innerHTML = nome });
         tdQuantidade.innerHTML = dado.qtdItens;
         tdValor.innerHTML = dado.valorCompra;
         tdStatus.innerHTML = dado.metodoPgto;
@@ -111,7 +111,7 @@ async function criarPedidos(dados) {
 
 
 async function buscaPorNome(id) {
-    const endpointMontado = `http://localhost:8080/cliente/${id}`;
+    const endpointMontado = `http://localhost:8080/cliente/${10}`;
 
     try {
         const response = await fetch(endpointMontado);
@@ -119,7 +119,6 @@ async function buscaPorNome(id) {
         // Verifica se a resposta é OK
         if (response.ok) {
             const dado = await response.json();  // Converte a resposta para JSON
-            console.log(dado.nome);
             return dado.nome;  // Retorna o nome do cliente
         } else {
             throw new Error('Erro ao buscar dados');
