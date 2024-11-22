@@ -65,9 +65,6 @@ function displayAddresses(enderecos) {
     // Itera sobre os endereços e cria elementos HTML para cada um
     enderecos.forEach(endereco => {
 
-        console.log(endereco);
-
-
         var tbody = document.createElement("tbody");
         var rowTable = document.createElement("tr");
         var tdBairro = document.createElement("td");

@@ -75,7 +75,6 @@ async function findAddressById(addressId) {
         const data = await response.json(); // Aguarda e processa o JSON
         const enderecoFormatado = `Bairro: ${data.bairro}, ${data.rua} Número: ${data.numero}`;
 
-        console.log(enderecoFormatado);
         return enderecoFormatado; // Retorna os dados formatados
     } catch (error) {
         console.error("Erro ao buscar endereço:", error.message);
@@ -103,9 +102,6 @@ function displayData(dados) {
     dados.forEach(function (dado) {
 
         let enderecoUser;
-
-        console.log(dado);
-
         var tbody = document.createElement("tbody");
         var rowTable = document.createElement("tr");
         var tdCodigo = document.createElement("td");
@@ -141,13 +137,7 @@ function displayData(dados) {
         rowTable.appendChild(tdStatus);
         rowTable.appendChild(buttonVisualize);
 
-        //Botão Visualizar
-        // rowTable.appendChild(tdVisualizar);
-        // tdVisualizar.appendChild(buttonVisualize);
-        // findAddressById(1) // S
-        //     .then((endereco) => {
-        //         console.log("Endereço formatado:", endereco);
-        //     })
+
         // //SETA CADA CAMPO INDIVIDUALMENTE
         tdCodigo.innerHTML = dado.id;
         // buscaPorNome(dado.id).then(nome => { tdItens.innerHTML = nome });
@@ -164,9 +154,6 @@ function displayData(dados) {
 
 
         buttonVisualize.onclick = function () {
-            console.log("Deve abrir um modal com detalhes do pedidos");
-
-            console.log(dado);
 
             const pedido = {
                 "client_id": dado.clientId,
@@ -189,9 +176,5 @@ function displayData(dados) {
         tdData.innerHTML = formatDate(dado.dataCompra);
 
         // buttonVisualize.innerHTML = "Visualizar"
-
-        // console.log(dado);
-        // console.log(formatDate(dado.dataCompra));
-
     });
 }

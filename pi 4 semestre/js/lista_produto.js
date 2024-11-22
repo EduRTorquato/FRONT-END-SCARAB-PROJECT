@@ -75,14 +75,8 @@ buttonSelectFotos.addEventListener("click", () => {
     modalFotos.show();
     modalProduct.hide();
 
-    console.log(isEdit);
 
     if (isEdit) {
-        ('TÁ EDITANDO')
-
-
-        console.log(imagesList);
-
         putImagesOnArray(imagesList);
         imagesList = [];
 

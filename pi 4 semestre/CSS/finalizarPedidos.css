@@ -218,13 +218,11 @@ button.btn-sm {
 
 
 .addAddres{
+    float: right;
     all: unset;
     font-size: 15px;
     font-weight: bolder;
     color: #D62828; /* Cor vermelha para o título */
-    top: 86%;
-    left: 70%;
-    position: relative;
     cursor: pointer;
 }
 

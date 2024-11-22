@@ -3,7 +3,7 @@ $('#cpf').mask('000.000.000-00');
 chamar();
 
 //BUSCA DADOS DO USUÁRIO LOGADO
-const user = JSON.parse(sessionStorage.getItem("user"))
+const user = JSON.parse(sessionStorage.getItem("userBackOffice"))
 
 //BOOLEANO PARA VALIDAR EDIÇÃO.
 var editar = false;

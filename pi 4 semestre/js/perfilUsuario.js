@@ -12,8 +12,6 @@ const bairro_id = document.getElementById("bairro_id");
 const principal_id = document.getElementById("principal_id");
 
 const finishingOrder = sessionStorage.getItem("finishingOrder");
-console.log(finishingOrder);
-
 
 //NOME E EMAIL
 const nome_id = document.getElementById("nome_id");
@@ -79,21 +77,16 @@ async function salvaDados() {
         "rua": endereco_id.value
     }
 
-    console.log(objetoAddress);
-
 }
 
 async function consultaCep() {
     // Chamar a API para carregar os produtos
-    var cep = '04776100';
-
     await fetch(`https://viacep.com.br/ws/${cep_id.value}/json/`).then(response => {
         if (response.ok) {
 
         }
         return response.json();
     }).then((data) => {
-        console.log(data);
         endereco_id.value = data.logradouro;
         cidade_id.value = data.localidade;
         inputState.value = data.uf;
@@ -151,6 +144,7 @@ saveData.addEventListener("click", function () {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         window.location.href = "finalizarPedidos.html"
+                        sessionStorage.removeItem("finishingOrder");
                     }
                 });
             } else {

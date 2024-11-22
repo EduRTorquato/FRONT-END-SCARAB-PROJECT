@@ -126,7 +126,6 @@ function displayOrders() {
 
                 grandTotal += product.totalPrice;
             });
-            console.log(grandTotal);
             totalProdutosFrete = grandTotal;
 
             total.textContent = `R$ ${grandTotal}`;
@@ -145,7 +144,6 @@ function displayOrders() {
 // Função que busca o endereço do usuário
 async function findAddressById(addressId) {
 
-    console.log(addressId);
     const endpoint = `http://localhost:8080/endereco/${addressId}`;
 
     const response = await fetch(endpoint);
@@ -160,7 +158,6 @@ async function findAddressById(addressId) {
 
 btnFinsh.addEventListener("click", function () {
 
-    console.log(finishedOrder);
 
     fetch("http://localhost:8080/pedidos", {
         method: "POST",

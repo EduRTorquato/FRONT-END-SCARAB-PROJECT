@@ -47,7 +47,7 @@ btnEntrar.addEventListener("click", (event) => {
             })
             .then(data => {
                 // Redirecionar para outra página após o login bem-sucedido
-                sessionStorage.setItem("user", JSON.stringify(usuario));
+                sessionStorage.setItem("userBackOffice", JSON.stringify(usuario));
                 window.location.href = "listar.html";
             })
             .catch(error => {

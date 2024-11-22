@@ -77,8 +77,6 @@ async function criarPedidos(dados) {
 
                 alteraStatus(dado.id, statusPedido.value);
 
-                console.log(dado.id, statusPedido.value);
-
             })
 
             // statusPedido.value = "Em preparação";
@@ -135,15 +133,13 @@ async function criarPedidos(dados) {
                 tdStatus.innerHTML = "Finalizado";
                 break;
             default:
-                console.log("Cor não reconhecida.");
+                break;
         }
 
         buttonVisualize.innerHTML = "Visualizar"
         buttonChangeStatus.innerHTML = "Alterar"
 
         buttonVisualize.onclick = function () {
-            console.log(dado);
-
             const pedido = {
                 "client_id": dado.clientId,
                 "data_compra": dado.dataCompra,
@@ -246,8 +242,7 @@ async function findAddressById(addressId) {
 
         const data = await response.json(); // Aguarda e processa o JSON
         const enderecoFormatado = `Bairro: ${data.bairro}, ${data.rua} Número: ${data.numero}`;
-
-        // console.log(enderecoFormatado);
+        
         return enderecoFormatado; // Retorna os dados formatados
     } catch (error) {
         console.error("Erro ao buscar endereço:", error.message);

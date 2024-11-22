@@ -115,17 +115,12 @@ async function getUserData() {
 
         const endpointMontado = `http://localhost:8080/cliente/email/${email}`;
 
-        console.log(endpointMontado);
-
         await fetch(endpointMontado).then(response => {
             if (response.ok) {
 
             }
             return response.json();
         }).then((data) => {
-
-            console.log(data);
-
             sessionStorage.setItem("user", JSON.stringify(data));
 
             userProfile.innerHTML = data.nome;

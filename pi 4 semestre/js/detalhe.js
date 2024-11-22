@@ -55,8 +55,6 @@ function addToCart(name, price, pic, descricao) {
     } else {
         // Adiciona o novo produto
         cart.push({ name, pic, descricao, price, quantity, totalPrice: price * quantity });
-
-        console.log({ name, pic, descricao, price, quantity, totalPrice: price * quantity });
     }
     
     localStorage.setItem('cart', JSON.stringify(cart));

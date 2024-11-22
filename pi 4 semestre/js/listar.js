@@ -42,7 +42,6 @@ async function avisaUsuario() {
 }
 
 logout.addEventListener("click", function(){
-    console.log('LOGOUT');
     sessionStorage.clear();
     window.location.href = "login.html";
 })
@@ -51,9 +50,9 @@ logout.addEventListener("click", function(){
 
 async function getUserData() {
 
-    (JSON.parse(sessionStorage.getItem("user")).email);
+    (JSON.parse(sessionStorage.getItem("userBackOffice")).email);
 
-    const email = JSON.parse(sessionStorage.getItem("user")).email;
+    const email = JSON.parse(sessionStorage.getItem("userBackOffice")).email;
 
     const endpointMontado = `http://localhost:8080/usuarios/email/${email}`;
 
@@ -79,7 +78,7 @@ async function getUserData() {
         }
 
 
-        sessionStorage.setItem("user", JSON.stringify(data));
+        sessionStorage.setItem("userBackOffice", JSON.stringify(data));
 
 
     }).catch((error) => {

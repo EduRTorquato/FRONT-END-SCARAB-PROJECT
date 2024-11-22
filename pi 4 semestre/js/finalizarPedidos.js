@@ -2,7 +2,7 @@
 // Recupera o usuário do sessionStorage
 const user = JSON.parse(sessionStorage.getItem("user"));
 
-sessionStorage.setItem("finishingOrder", true);
+
 
 //Componente de endereços
 const enderecos = document.getElementById("enderecos");
@@ -19,8 +19,6 @@ const inputState = document.getElementById("inputState");
 
 let addressFinish = null;
 
-
-console.log(dadosPedido);
 valorTotalCompra.innerHTML = dadosPedido.valor_compra;
 
 //Encontra os dados do usuário
@@ -125,7 +123,6 @@ function displayOrders() {
 
                 grandTotal += product.totalPrice;
             });
-            console.log(grandTotal);
             totalProdutosFrete = grandTotal;
 
             total.textContent = `R$ ${grandTotal}`;
@@ -142,7 +139,6 @@ function displayOrders() {
 // Função que busca os endereços do usuário
 async function findById(userId) {
 
-    console.log(user);
     const endpoint = `http://localhost:8080/endereco/cliente/${userId}`;
 
     try {
@@ -151,9 +147,6 @@ async function findById(userId) {
             throw new Error("Network response was not ok");
         }
         const dados = await response.json();
-
-        console.log(dados);
-
         loadAddress(dados);
 
         // Chama a função para exibir os endereços
@@ -219,8 +212,6 @@ btnFinsh.addEventListener("click", function () {
         "metodoPgto": inputState.value
     }
 
-    console.log(finishedOrder);
-
-    sessionStorage.setItem("finishedOrder", JSON.stringify(finishedOrder));
+    sessionStorage.setItem("finishingOrder", true);
     window.location.href = "resumoPedido.html";
 })

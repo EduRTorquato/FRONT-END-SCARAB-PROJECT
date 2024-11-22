@@ -105,7 +105,6 @@ function displayCart() {
 
                 grandTotal += product.totalPrice;
             });
-            console.log(grandTotal);
             totalProdutosFrete = grandTotal;
 
             total.textContent = `R$ ${grandTotal}`;
@@ -133,8 +132,6 @@ function updateTotal() {
 
 // Remove um produto do carrinho
 function removeFromCart(productName) {
-
-    console.log(productName);
 
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const updatedCart = cart.filter(product => product.name !== productName);
@@ -189,12 +186,7 @@ document.getElementById('btnFrete').addEventListener('click', function () {
 
 btnFinsh.addEventListener("click", function () {
 
-
-    console.log(totalFinalGlobal);
-
     if (userCard != null) {
-
-        console.log(JSON.parse(localStorage.getItem('cart')).length);
 
         const date = new Date();
 
@@ -222,6 +214,7 @@ btnFinsh.addEventListener("click", function () {
             if (result.isConfirmed) {
                 window.location.href="loginUsuario.html"
                 sessionStorage.setItem("finishingOrder", true);
+
             }
         });
     }

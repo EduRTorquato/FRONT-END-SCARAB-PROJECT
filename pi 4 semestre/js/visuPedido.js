@@ -1,13 +1,8 @@
 
 // Recupera o usuário do sessionStorage
 const user = JSON.parse(sessionStorage.getItem("user"));
-
 const estoquista = JSON.parse(sessionStorage.getItem("estoquista"));
-
-
 const orderVisu = JSON.parse(sessionStorage.getItem("orderVisu"));
-
-console.log(orderVisu);
 
 
 //Componente de endereços
@@ -48,8 +43,6 @@ function displayOrders() {
 
 // Função que busca o endereço do usuário
 async function findAddressById(addressId) {
-
-    console.log(addressId);
     const endpoint = `http://localhost:8080/endereco/${addressId}`;
 
     const response = await fetch(endpoint);
@@ -62,10 +55,6 @@ async function findAddressById(addressId) {
 }
 
 btnVoltar.addEventListener("click", function () {
-
-
-    console.log(estoquista);
-
     if (!estoquista) {
         sessionStorage.removeItem('orderVisu');
         window.location.href = "pedidosCliente.html";
