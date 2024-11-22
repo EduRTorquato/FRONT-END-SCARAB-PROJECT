@@ -37,6 +37,23 @@ function displayOrders() {
     statusId.innerHTML = orderVisu.statusCompra;
     dataId.innerHTML = formatDate(orderVisu.data_compra);
 
+    switch (orderVisu.statusCompra) {
+        case "PREPARACAO":
+            statusId.innerHTML = "Preparação";
+            break;
+        case "ENVIADO":
+            statusId.innerHTML = "Enviado";
+            break;
+        case "AGUARDANDOPGTO":
+            statusId.innerHTML = "Aguardando Pagamento";
+            break;
+        case "FINALIZADO":
+            statusId.innerHTML = "Finalizado";
+            break;
+        default:
+            break;
+    }
+
 
 }
 

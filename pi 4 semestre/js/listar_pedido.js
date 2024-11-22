@@ -193,7 +193,7 @@ async function alteraStatus(id, status) {
 }
 
 async function buscaPorNome(id) {
-    const endpointMontado = `http://localhost:8080/cliente/${10}`;
+    const endpointMontado = `http://localhost:8080/cliente/${id}`;
 
     try {
         const response = await fetch(endpointMontado);
