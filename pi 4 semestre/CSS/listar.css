@@ -1,19 +1,22 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 
 .caixa {
     position: absolute;
     text-align: center;
-    padding: 30px;
+    padding-top: 5%;
     left: 50%;
     top: 20%; /* Opcional, se também quiser centralizar verticalmente */
     transform: translate(-50%, -50%); /* Centraliza horizontal e verticalmente */
-    margin-top: 30px;
+    margin-top: 10%;
     background-color: #014d83;
     width: 380px;
+    height: 380px;
     position: absolute; 
     color: #f4f4f4;
-    padding-top: 30px;
-    border-radius: 30px;
-    
+    border-radius: 5px;
 }
 /* para texto com link*/
 .caixa a{
@@ -26,9 +29,9 @@ a:hover {
     transition-duration: 0.3s;
 }
 
-
-
-
+.title{
+    padding: 10px;
+}
 
 /* para texto com link*/
 .listProduto{
@@ -47,11 +50,26 @@ a:hover {
     
 }
 
+.logout{
+    font-size: 20px;
+    display: flex;
+    float: right;
+    margin: 50px;
+}
+
+.logout:hover{
+    transition-duration: 0.1s;
+    font-size: 25px;
+    cursor: pointer;
+}
+
 
 .logoListar{
+    position: fixed;
+    left: 45%;
+    margin-top: 35%;
     border-radius: 20px;
     color: black;
     width: 180px;
     text-align: center;
-    margin-top: 80%;
 }

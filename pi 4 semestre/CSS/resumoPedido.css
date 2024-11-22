@@ -1,24 +1,34 @@
 /* Estilos Gerais */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f7f9; /* Mantém o fundo claro */
+    background-color: #f4f7f9;
+    /* Mantém o fundo claro */
     color: #333;
     margin: 0;
     padding: 0;
 }
 
-.enderecoPedido{
+.enderecoPedido {
     font-weight: bolder;
     font-size: 20px;
     color: #003049;
 }
 
+.itensCompra {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 18px;
+    color: #003049;
+}
+
 .backgroundPay {
-    background-color: #003049; /* Cor de fundo azul escuro */
+    background-color: #003049;
+    /* Cor de fundo azul escuro */
 }
 
 .navbarPay {
-    background-color: #D62828; /* Cor vermelha para a navbar */
+    background-color: #D62828;
+    /* Cor vermelha para a navbar */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,7 +53,7 @@ body {
     border-radius: 50%;
 }
 
-.icones:hover{
+.icones:hover {
     width: 45px;
     height: 45px;
     transition-duration: 0.2s;
@@ -73,6 +83,21 @@ body {
 .col {
     flex: 1;
     margin: 10px;
+}
+
+.carrinhoVisu {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    margin-right: 50px;
+    padding: 20px;
+}
+
+.btnVoltar {
+    background-color: #003049;
+    color: white;
+    border-radius: 5px;
+
 }
 
 .carrinho {
@@ -135,7 +160,8 @@ button {
 }
 
 button.btn-danger {
-    background-color: #dc3545; /* Botão "Remover" vermelho */
+    background-color: #dc3545;
+    /* Botão "Remover" vermelho */
     color: white;
     transition: background-color 0.3s ease;
 }
@@ -176,7 +202,8 @@ button.btn-sm {
 
 .title {
     font-size: 1.5rem;
-    color: #D62828; /* Cor vermelha para o título */
+    color: #D62828;
+    /* Cor vermelha para o título */
     margin-bottom: 20px;
 }
 
@@ -198,7 +225,9 @@ button.btn-sm {
     margin: 10px 0;
 }
 
-#totalProdutos, #frete, #total {
+#totalProdutos,
+#frete,
+#total {
     font-size: 1.2rem;
     font-weight: bold;
 }
@@ -213,26 +242,27 @@ button.btn-sm {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
 
-.tableAddress{
+.tableAddress {
     display: flex;
     align-items: center;
 }
 
 
-.addAddres{
+.addAddres {
     all: unset;
     font-size: 25px;
     font-weight: bolder;
-    color: #D62828; /* Cor vermelha para o título */
+    color: #D62828;
+    /* Cor vermelha para o título */
     top: 82%;
     left: 53%;
     position: relative;
     cursor: pointer;
 }
 
-.addAddres:hover{
-   transition-duration: 0.5s;
-   color: #570202;
+.addAddres:hover {
+    transition-duration: 0.5s;
+    color: #570202;
 }
 
 input[type="text"] {
@@ -248,7 +278,8 @@ button#btnFrete {
     padding: 10px;
     font-size: 1rem;
     color: white;
-    background-color: #28a745; /* Cor verde para calcular frete */
+    background-color: #28a745;
+    /* Cor verde para calcular frete */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -258,15 +289,17 @@ button#btnFrete:disabled {
     background-color: #ccc;
 }
 
-.btnFinsh{
-    background-color:#D62828;;
+.btnFinsh {
+    background-color: #D62828;
+    ;
     color: white;
     border-radius: 5px;
 }
 
-.btnFinsh:hover{
+.btnFinsh:hover {
     transition-duration: 1s;
-    background-color: #8d1414;;
+    background-color: #8d1414;
+    ;
 }
 
 button#btnFrete:hover {
@@ -319,4 +352,3 @@ button#btnFrete:hover {
         font-size: 0.9rem;
     }
 }
-

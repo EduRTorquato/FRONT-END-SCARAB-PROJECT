@@ -118,9 +118,6 @@ saveData.addEventListener("click", function () {
         "clienteId": JSON.parse(sessionStorage.getItem("user")).id
     }
 
-    console.log(objetoAddress);
-
-
     // Chamar a API para cadastrar o endereço
     fetch("http://localhost:8080/endereco", {
         method: "POST",

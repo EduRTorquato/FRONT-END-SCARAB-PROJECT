@@ -102,6 +102,9 @@ function displayData(dados) {
 
     dados.forEach(function (dado) {
 
+        let enderecoUser;
+
+        console.log(dado);
 
         var tbody = document.createElement("tbody");
         var rowTable = document.createElement("tr");
@@ -111,17 +114,14 @@ function displayData(dados) {
         var tdMetodoPgto = document.createElement("td");
         var tdEndereco = document.createElement("td");
         var tdData = document.createElement("td");
+        var tdStatus = document.createElement("td");
+        var tdData = document.createElement("td");
+
+        var buttonVisualize = document.createElement("button");
+
+
+        buttonVisualize.classList.add("ativar");
         // var tdVisualizar = document.createElement("td");
-
-
-        // buttonVisualize.onclick = function () {
-        //     console.log("Deve abrir um modal com detalhes do pedidos");
-        //     modalProduct.show();
-        //     nomeProduto.value = buscaPorNome(dado.id).then(nome => { nomeProduto.value = nome });
-        //     preco.value = dado.valorCompra;
-        //     dataCompra.value = formatDate(dado.dataCompra)
-        //     statusPedido.value = "Em preparação";
-        // }
 
         //MONTA O HTML DA LISTAGEM.
         // buttonActive.classList.add("ativar");
@@ -138,7 +138,8 @@ function displayData(dados) {
         rowTable.appendChild(tdMetodoPgto);
         rowTable.appendChild(tdEndereco);
         rowTable.appendChild(tdData);
-
+        rowTable.appendChild(tdStatus);
+        rowTable.appendChild(buttonVisualize);
 
         //Botão Visualizar
         // rowTable.appendChild(tdVisualizar);
@@ -153,14 +154,38 @@ function displayData(dados) {
         tdItens.innerHTML = dado.qtdItens;
         tdPreco.innerHTML = dado.valorCompra;
         tdMetodoPgto.innerHTML = dado.metodoPgto;
+        tdStatus.innerHTML = dado.status;
 
 
         findAddressById(dado.enderecoId).then((endereco) => {
             tdEndereco.innerHTML = endereco
+            enderecoUser = endereco;
         });
 
 
+        buttonVisualize.onclick = function () {
+            console.log("Deve abrir um modal com detalhes do pedidos");
 
+            console.log(dado);
+
+            const pedido = {
+                "client_id": dado.clientId,
+                "data_compra": dado.dataCompra,
+                "qtd_itens": dado.qtdItens,
+                "valor_compra": dado.valorCompra,
+                "endereco": enderecoUser,
+                "metodoPgto": dado.metodoPgto,
+                "statusCompra": dado.status
+            }
+
+            sessionStorage.setItem("orderVisu", JSON.stringify(pedido));
+
+            sessionStorage.setItem("visualize", true);
+
+            window.location.href = "visuPedido.html";
+        }
+
+        buttonVisualize.innerHTML = "Visualizar";
         tdData.innerHTML = formatDate(dado.dataCompra);
 
         // buttonVisualize.innerHTML = "Visualizar"

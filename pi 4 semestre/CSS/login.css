@@ -1,32 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    background-image: url(../IMAGENS/8947349\ 2.png);
+    background-size: cover;
+}
+
+.logoImage {}
+
 .login {
-    background: radial-gradient(circle, rgba(78,78,78,1) 0%, rgba(0,0,0,1) 100%);    color: white;
+    background-color: #003049;
+    color: white;
     position: fixed;
-    height: 400px;
+    height: 500px;
     width: 450px;
+    margin-top: 5%;
     text-align: center;
     font-size: larger;
-    border-radius: 70px;
+    border-radius: 30px;
     left: 38%;
 }
 
 footer {
-    position: fixed;
-    bottom: 150px;
-    left: 45%;
+    text-align: center;
+    margin-top: 40%;
+}
+
+.baseTitle {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bolder;
 }
 
 .submitTrue {
-    background-color: red;
+    background-color: #D62828;
     color: #f4f4f4;
-    border-radius: 10px;
     border-style: none;
     font-weight: bolder;
 
-    font-size: 20Px;
 
+    margin-top: 75px;
+    font-size: 20Px;
+    border-radius: 25px;
     height: 45px;
-    width: 90px;
-    margin-top: 60px;
+    width: 150px;
 }
 
 .login input {

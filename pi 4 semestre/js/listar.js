@@ -4,6 +4,8 @@ const btnListarProduto = document.getElementById('btnListarProduto');
 const btnListarUsuario = document.getElementById('btnListarUsuario');
 const btnListarPedidos = document.getElementById('btnListarPedidos');
 
+const logout = document.getElementById("logout");
+
 function redirectToProduto(event) {
     event.preventDefault();
     window.location.href = '../html/listar_produto.html'; // Redireciona para index.html
@@ -38,6 +40,12 @@ async function avisaUsuario() {
         timer: 1500
     });
 }
+
+logout.addEventListener("click", function(){
+    console.log('LOGOUT');
+    sessionStorage.clear();
+    window.location.href = "login.html";
+})
 
 
 

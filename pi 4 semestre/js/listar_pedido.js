@@ -15,6 +15,8 @@ const realizaBusca = document.getElementById("realizaBusca");
 const idTable = document.getElementById("idTable");
 const statusPedido = document.getElementById("statusPedido");
 
+const btnSaveStatus = document.getElementById("btnSaveStatus");
+
 const checkboxLabel = document.getElementById("checkboxLabel");
 /// MODAIS ///
 const modalProduct = new bootstrap.Modal(document.getElementById('modalProduct'));
@@ -47,6 +49,7 @@ async function criarPedidos(dados) {
     dados.forEach(function (dado) {
 
 
+        let enderecoUser;
 
         var tbody = document.createElement("tbody");
         var rowTable = document.createElement("tr");
@@ -54,28 +57,42 @@ async function criarPedidos(dados) {
         var tdNome = document.createElement("td");
         var tdQuantidade = document.createElement("td");
         var tdValor = document.createElement("td");
+        var tdMetodoPgto = document.createElement("td");
         var tdStatus = document.createElement("td");
+        var tdAlterar = document.createElement("td");
         var tdVisualizar = document.createElement("td");
 
-
-        var buttonEditProduct = document.createElement("button");
-        var buttonActive = document.createElement("button");
-        var buttonDeactivate = document.createElement("button");
+        var buttonChangeStatus = document.createElement("button");
         var buttonVisualize = document.createElement("button");
 
-        buttonVisualize.onclick = function () {
-            console.log("Deve abrir um modal com detalhes do pedidos");
+
+
+        buttonChangeStatus.onclick = function () {
             modalProduct.show();
             nomeProduto.value = buscaPorNome(dado.id).then(nome => { nomeProduto.value = nome });
             preco.value = dado.valorCompra;
-            dataCompra.value = formatDate(dado.dataCompra)
-            statusPedido.value = "Em preparação";
+            dataCompra.value = formatDate(dado.dataCompra);
+
+            btnSaveStatus.addEventListener("click", function () {
+
+                alteraStatus(dado.id, statusPedido.value);
+
+                console.log(dado.id, statusPedido.value);
+
+            })
+
+            // statusPedido.value = "Em preparação";
         }
 
+        findAddressById(dado.enderecoId).then((endereco) => {
+            // tdEndereco.innerHTML = endereco
+            enderecoUser = endereco;
+        });
+
+
+
         //MONTA O HTML DA LISTAGEM.
-        buttonActive.classList.add("ativar");
-        buttonDeactivate.classList.add("desativar");
-        buttonEditProduct.classList.add("edit");
+        buttonChangeStatus.classList.add("ativar");
         buttonVisualize.classList.add("edit");
 
 
@@ -85,30 +102,99 @@ async function criarPedidos(dados) {
         rowTable.appendChild(tdNome);
         rowTable.appendChild(tdQuantidade);
         rowTable.appendChild(tdValor);
+        rowTable.appendChild(tdMetodoPgto);
         rowTable.appendChild(tdStatus);
 
 
-        //Botão Visualizar
+        rowTable.appendChild(tdAlterar);
         rowTable.appendChild(tdVisualizar);
+
+        tdAlterar.appendChild(buttonChangeStatus);
         tdVisualizar.appendChild(buttonVisualize);
+
 
         // //SETA CADA CAMPO INDIVIDUALMENTE
         tdCodigo.innerHTML = dado.id;
         buscaPorNome(dado.clientId).then(nome => { tdNome.innerHTML = nome });
         tdQuantidade.innerHTML = dado.qtdItens;
         tdValor.innerHTML = dado.valorCompra;
-        tdStatus.innerHTML = dado.metodoPgto;
+        tdMetodoPgto.innerHTML = dado.metodoPgto;
+        tdStatus.innerHTML = dado.status;
+
+        switch (dado.status) {
+            case "PREPARACAO":
+                tdStatus.innerHTML = "Preparação";
+                break;
+            case "ENVIADO":
+                tdStatus.innerHTML = "Enviado";
+                break;
+            case "AGUARDANDOPGTO":
+                tdStatus.innerHTML = "Aguardando Pagamento";
+                break;
+            case "FINALIZADO":
+                tdStatus.innerHTML = "Finalizado";
+                break;
+            default:
+                console.log("Cor não reconhecida.");
+        }
 
         buttonVisualize.innerHTML = "Visualizar"
+        buttonChangeStatus.innerHTML = "Alterar"
 
-        console.log(dado);
+        buttonVisualize.onclick = function () {
+            console.log(dado);
 
-        console.log(formatDate(dado.dataCompra));
+            const pedido = {
+                "client_id": dado.clientId,
+                "data_compra": dado.dataCompra,
+                "qtd_itens": dado.qtdItens,
+                "valor_compra": dado.valorCompra,
+                "endereco": enderecoUser,
+                "metodoPgto": dado.metodoPgto,
+                "statusCompra": dado.status
+            }
+
+            sessionStorage.setItem("orderVisu", JSON.stringify(pedido));
+
+            sessionStorage.setItem("estoquista", true);
+
+            window.location.href = "visuPedido.html";
+        }
 
 
     });
 }
 
+async function alteraStatus(id, status) {
+
+    // CHAMA O ENDPOINT DE PUT
+    await fetch(`http://localhost:8080/pedidos/${id}/${status}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+
+    }).then(response => {
+        if (response.status != 200) {
+            throw new Error("Verifique os dados");
+        } else {
+
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Status alterado com sucesso",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+            setTimeout(function () {
+                location.reload();
+            }, 2000);
+
+        }
+        return response.text();
+    });
+}
 
 async function buscaPorNome(id) {
     const endpointMontado = `http://localhost:8080/cliente/${10}`;
@@ -140,4 +226,31 @@ function formatDate(dataNascimento) {
 
     var novaData = `${ano}-${mes}-${dia}`;
     return novaData;
+}
+
+// Função que busca o endereço do usuário
+async function findAddressById(addressId) {
+    const endpoint = `http://localhost:8080/endereco/${addressId}`;
+
+    try {
+        const response = await fetch(endpoint, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erro na requisição: ${response.statusText}`);
+        }
+
+        const data = await response.json(); // Aguarda e processa o JSON
+        const enderecoFormatado = `Bairro: ${data.bairro}, ${data.rua} Número: ${data.numero}`;
+
+        // console.log(enderecoFormatado);
+        return enderecoFormatado; // Retorna os dados formatados
+    } catch (error) {
+        console.error("Erro ao buscar endereço:", error.message);
+        throw error; // Propaga o erro para tratamento externo
+    }
 }

@@ -49,17 +49,19 @@
                 <h1>Listagem de pedidos</h1>
 
                 <table class="table" id="idTable">
-                  <thead>
+                    <thead>
                         <tr>
                             <th scope="col">Código Pedido</th>
                             <th scope="col">Cliente</th>
                             <th scope="col">Quantidade</th>
                             <th scope="col">Valor Total</th>
                             <th scope="col">Método Pgto</th>
-                            <th scope="col">Detalhes</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Alterar Status</th>
+                            <th scope="col">Visualizar</th>
                         </tr>
                     </thead>
-                     <!-- <tbody>
+                    <!-- <tbody>
                         <tr>
                             <th scope="row">1</th>
                             <td>Mark</td>
@@ -88,24 +90,28 @@
                             <form>
                                 <div class="mb-4">
                                     <label for="nomeProduto" class="form-label">Nome do Cliente</label>
-                                    <input disabled  style="width: 100%;" type="text" class="form-control" id="nomeProduto"
-                                        aria-describedby="emailHelp">
+                                    <input disabled style="width: 100%;" type="text" class="form-control"
+                                        id="nomeProduto" aria-describedby="emailHelp">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="preco" class="form-label">Valor total do produto</label>
-                                    <input disabled  class="form-control" id="preco">
+                                    <input disabled class="form-control" id="preco">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="avaliacao" class="form-label">Data da compra</label>
-                                    <input disabled  type="date" max="5" min="0" class="form-control" id="dataCompra">
+                                    <input disabled type="date" max="5" min="0" class="form-control" id="dataCompra">
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="nomeProduto" class="form-label">Status do pedido</label>
-                                    <input disabled  style="width: 100%; background-color: green; color: white;" type="text" class="form-control" id="statusPedido"
-                                        aria-describedby="emailHelp">
+                                    <label for="statusPedido" class="form-label">Status do pedido</label>
+                                    <select class="form-select" id="statusPedido" aria-label="Default select example">
+                                        <option value="AGUARDANDOPGTO">Aguardando Pagamento</option>
+                                        <option selected value="PREPARACAO">Em preparação</option>
+                                        <option value="ENVIADO">Enviado</option>
+                                        <option value="FINALIZADO">Finalizado</option>
+                                    </select>
                                 </div>
 
                             </form>
@@ -114,6 +120,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button type="button" id="btnSaveStatus" class="btn btn-success">Salvar</button>
                         </div>
                     </div>
                 </div>
