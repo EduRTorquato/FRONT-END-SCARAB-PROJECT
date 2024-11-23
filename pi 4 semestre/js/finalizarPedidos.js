@@ -213,5 +213,6 @@ btnFinsh.addEventListener("click", function () {
     }
 
     sessionStorage.setItem("finishingOrder", true);
+    sessionStorage.setItem("finishedOrder", JSON.stringify(finishedOrder));
     window.location.href = "resumoPedido.html";
 })
