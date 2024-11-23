@@ -144,7 +144,24 @@ function displayData(dados) {
         tdItens.innerHTML = dado.qtdItens;
         tdPreco.innerHTML = dado.valorCompra;
         tdMetodoPgto.innerHTML = dado.metodoPgto;
-        tdStatus.innerHTML = dado.status;
+
+        switch (dado.status) {
+            case "PREPARACAO":
+                tdStatus.innerHTML = "Preparação";
+                break;
+            case "ENVIADO":
+                tdStatus.innerHTML = "Enviado";
+                break;
+            case "AGUARDANDOPGTO":
+                tdStatus.innerHTML = "Aguardando Pagamento";
+                break;
+            case "FINALIZADO":
+                tdStatus.innerHTML = "Finalizado";
+                break;
+            default:
+                break;
+        }
+
 
 
         findAddressById(dado.enderecoId).then((endereco) => {
