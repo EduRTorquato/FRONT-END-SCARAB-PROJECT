@@ -42,9 +42,6 @@ function displayOrders() {
 
 
     cart.forEach(product => {
-
-
-
         const rowProduct = document.createElement("div");
         const itemLine = document.createElement("div");
         const imgProduct = document.createElement("img");

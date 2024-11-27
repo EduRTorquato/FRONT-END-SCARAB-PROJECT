@@ -4,6 +4,8 @@ const user = JSON.parse(sessionStorage.getItem("user"));
 const estoquista = JSON.parse(sessionStorage.getItem("estoquista"));
 const orderVisu = JSON.parse(sessionStorage.getItem("orderVisu"));
 
+let products = [];
+products = orderVisu.produtos;
 
 //Componente de endereços
 const enderecoId = document.getElementById("enderecoId");
@@ -29,26 +31,95 @@ displayOrders();
 function displayOrders() {
 
     //SETA VALORES IMPORTANTES DO RESUMO
+    const cartList = document.getElementById('listCarrinho');
 
-    itensId.innerHTML = "Produtos Comprados: " + orderVisu.qtd_itens;
+    cartList.innerHTML = '';
+
+
+
+
+    products.forEach(product => {
+
+        const rowProduct = document.createElement("div");
+        const itemLine = document.createElement("div");
+        const imgProduct = document.createElement("img");
+        const colNome = document.createElement("div");
+        const nomeProduct = document.createElement("h5");
+        const valueName = document.createElement("p");
+     
+
+        const colQuantidade = document.createElement("div");
+        const titleQtd = document.createElement("h5");
+        const qtd = document.createElement("p");
+        const divValue = document.createElement("div");
+        const valueTitle = document.createElement("h5");
+        const price = document.createElement("p");
+
+        rowProduct.classList.add("row");
+        itemLine.classList.add("item");
+
+        colNome.classList.add("col");
+        colQuantidade.classList.add("col");
+        colQuantidade.classList.add("quantidade");
+
+        cartList.appendChild(rowProduct);
+        rowProduct.appendChild(itemLine);
+        itemLine.appendChild(imgProduct);
+
+        itemLine.appendChild(colNome);
+        colNome.appendChild(nomeProduct);
+        colNome.appendChild(valueName);
+
+        itemLine.appendChild(colQuantidade);
+        colQuantidade.appendChild(titleQtd);
+        colQuantidade.appendChild(qtd);
+
+        itemLine.appendChild(divValue);
+        divValue.appendChild(valueTitle);
+        divValue.appendChild(price);
+
+
+        //Definindo Quantidade
+        titleQtd.innerHTML = "Quantidade"
+        qtd.innerHTML = product.qty;
+
+        //Definindo coluna nome
+        nomeProduct.innerHTML = "Produto";
+        valueName.innerHTML = product.nomeProduto;
+
+        imgProduct.src = product.foto;
+        
+        //Valor unitário do produto
+        valueTitle.innerHTML = "Valor";
+        price.innerHTML = "R$" + product.preco;
+
+
+    });
+
+    // itensId.innerHTML = "Produtos Comprados: " + orderVisu.qtd_itens;
     enderecoId.innerHTML = orderVisu.endereco;
     inputState.value = orderVisu.metodoPgto;
     valorTotalCompra.innerHTML = "R$ " + orderVisu.valor_compra + ",00";
-    statusId.innerHTML = orderVisu.statusCompra;
     dataId.innerHTML = formatDate(orderVisu.data_compra);
 
     switch (orderVisu.statusCompra) {
-        case "PREPARACAO":
-            statusId.innerHTML = "Preparação";
-            break;
-        case "ENVIADO":
-            statusId.innerHTML = "Enviado";
-            break;
         case "AGUARDANDOPGTO":
             statusId.innerHTML = "Aguardando Pagamento";
             break;
-        case "FINALIZADO":
-            statusId.innerHTML = "Finalizado";
+        case "PGTOREJEITADO":
+            statusId.innerHTML = "Pagamento Rejeitado";
+            break;
+        case "PGTOAPROVADO":
+            statusId.innerHTML = "Pagamento Aprovado";
+            break;
+        case "AGUARDANDORETIRADA":
+            statusId.innerHTML = "Aguardando Retirada";
+            break;
+        case "EMTRANSITO":
+            statusId.innerHTML = "Em trânsito";
+            break;
+        case "ENTREGUE":
+            statusId.innerHTML = "Entregue!";
             break;
         default:
             break;

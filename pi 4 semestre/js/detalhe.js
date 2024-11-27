@@ -58,7 +58,17 @@ function addToCart(name, price, pic, descricao) {
     }
     
     localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${quantity} unidades de ${name} adicionadas ao carrinho! Clique no ícone de carrinho para ver todos os itens e finalizar sua compra.`);
+
+
+    Swal.fire({
+        position: "center",
+        title: `${name} foi adicionado ao carrinho!\n Quantidade: ${quantity}`,
+        showConfirmButton: false,
+        icon: 'success',
+        timer: 1700
+    })
+
+    // alert(`${quantity} unidades de ${name} adicionadas ao carrinho! Clique no ícone de carrinho para ver todos os itens e finalizar sua compra.`);
 }
 
 // Atualiza o valor total com base na quantidade

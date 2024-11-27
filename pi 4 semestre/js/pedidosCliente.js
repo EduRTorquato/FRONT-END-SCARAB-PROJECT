@@ -146,22 +146,27 @@ function displayData(dados) {
         tdMetodoPgto.innerHTML = dado.metodoPgto;
 
         switch (dado.status) {
-            case "PREPARACAO":
-                tdStatus.innerHTML = "Preparação";
-                break;
-            case "ENVIADO":
-                tdStatus.innerHTML = "Enviado";
-                break;
             case "AGUARDANDOPGTO":
                 tdStatus.innerHTML = "Aguardando Pagamento";
                 break;
-            case "FINALIZADO":
-                tdStatus.innerHTML = "Finalizado";
+            case "PGTOREJEITADO":
+                tdStatus.innerHTML = "Pagamento Rejeitado";
+                break;
+            case "PGTOAPROVADO":
+                tdStatus.innerHTML = "Pagamento Aprovado";
+                break;
+            case "AGUARDANDORETIRADA":
+                tdStatus.innerHTML = "Aguardando Retirada";
+                break;
+            case "EMTRANSITO":
+                tdStatus.innerHTML = "Em trânsito";
+                break;
+            case "ENTREGUE":
+                tdStatus.innerHTML = "Entregue!";
                 break;
             default:
                 break;
         }
-
 
 
         findAddressById(dado.enderecoId).then((endereco) => {
@@ -179,7 +184,8 @@ function displayData(dados) {
                 "valor_compra": dado.valorCompra,
                 "endereco": enderecoUser,
                 "metodoPgto": dado.metodoPgto,
-                "statusCompra": dado.status
+                "statusCompra": dado.status,
+                "produtos": dado.produtos
             }
 
             sessionStorage.setItem("orderVisu", JSON.stringify(pedido));

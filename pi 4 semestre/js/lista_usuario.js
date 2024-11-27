@@ -69,8 +69,6 @@ async function chamar() {
     });
 }
 
-
-
 //Função que retorna validade do CPF
 function validaCPF(cpf) {
     var Soma = 0
@@ -263,8 +261,6 @@ async function activate(objetoAtivar) {
         });
     });
 }
-
-
 
 //MONTA USUÁRIOS NA LISTA
 function criarUsers(dados) {

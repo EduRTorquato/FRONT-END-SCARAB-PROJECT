@@ -68,8 +68,10 @@ async function criarPedidos(dados) {
 
 
         buttonChangeStatus.onclick = function () {
+
+
             modalProduct.show();
-            nomeProduto.value = buscaPorNome(dado.id).then(nome => { nomeProduto.value = nome });
+            nomeProduto.value = buscaPorNome(dado.clientId).then(nome => { nomeProduto.value = nome});
             preco.value = dado.valorCompra;
             dataCompra.value = formatDate(dado.dataCompra);
 
@@ -120,17 +122,23 @@ async function criarPedidos(dados) {
         tdStatus.innerHTML = dado.status;
 
         switch (dado.status) {
-            case "PREPARACAO":
-                tdStatus.innerHTML = "Preparação";
-                break;
-            case "ENVIADO":
-                tdStatus.innerHTML = "Enviado";
-                break;
             case "AGUARDANDOPGTO":
                 tdStatus.innerHTML = "Aguardando Pagamento";
                 break;
-            case "FINALIZADO":
-                tdStatus.innerHTML = "Finalizado";
+            case "PGTOREJEITADO":
+                tdStatus.innerHTML = "Pagamento Rejeitado";
+                break;
+            case "PGTOAPROVADO":
+                tdStatus.innerHTML = "Pagamento Aprovado";
+                break;
+            case "AGUARDANDORETIRADA":
+                tdStatus.innerHTML = "Aguardando Retirada";
+                break;
+            case "EMTRANSITO":
+                tdStatus.innerHTML = "Em trânsito";
+                break;
+            case "ENTREGUE":
+                tdStatus.innerHTML = "Entregue!";
                 break;
             default:
                 break;
@@ -140,6 +148,7 @@ async function criarPedidos(dados) {
         buttonChangeStatus.innerHTML = "Alterar"
 
         buttonVisualize.onclick = function () {
+
             const pedido = {
                 "client_id": dado.clientId,
                 "data_compra": dado.dataCompra,
@@ -147,8 +156,10 @@ async function criarPedidos(dados) {
                 "valor_compra": dado.valorCompra,
                 "endereco": enderecoUser,
                 "metodoPgto": dado.metodoPgto,
-                "statusCompra": dado.status
+                "statusCompra": dado.status,
+                "produtos": dado.produtos
             }
+
 
             sessionStorage.setItem("orderVisu", JSON.stringify(pedido));
 

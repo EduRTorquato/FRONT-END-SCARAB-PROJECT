@@ -3,10 +3,8 @@ let totalProdutosFrete = 0;  // Variável para armazenar o valor total dos produ
 let totalFinalGlobal = 0;
 
 const userCard = JSON.parse(sessionStorage.getItem("user"));
-
-
 const btnFinsh = document.getElementById("btnFinsh");
-
+sessionStorage.setItem("finishingOrder", true);
 
 // Exibe os itens no carrinho
 function displayCart() {
@@ -214,7 +212,6 @@ btnFinsh.addEventListener("click", function () {
             if (result.isConfirmed) {
                 window.location.href="loginUsuario.html"
                 sessionStorage.setItem("finishingOrder", true);
-
             }
         });
     }

@@ -2,8 +2,6 @@
 // Recupera o usuário do sessionStorage
 const user = JSON.parse(sessionStorage.getItem("user"));
 
-
-
 //Componente de endereços
 const enderecos = document.getElementById("enderecos");
 
@@ -18,6 +16,8 @@ const btnFinsh = document.getElementById("btnFinsh");
 const inputState = document.getElementById("inputState");
 
 let addressFinish = null;
+
+const arrayProdutos = [];
 
 valorTotalCompra.innerHTML = dadosPedido.valor_compra;
 
@@ -203,13 +203,31 @@ async function loadAddress(params) {
 
 btnFinsh.addEventListener("click", function () {
 
+    // console.log(dadosPedido);
+
+    const carrinho = JSON.parse(localStorage.getItem('cart')) || [];
+    carrinho.forEach(element => {
+        // console.log(element)
+
+        let dado = {
+            "qty": element.quantity,
+            "foto": element.pic,
+            "nomeProduto": element.name,
+            "preco": element.totalPrice
+        }
+
+        arrayProdutos.push(dado);
+    });
+
+
     const finishedOrder = {
         "clientId": user.id,
         "dataCompra": dadosPedido.data_compra,
         "enderecoId": addressFinish,
         "qtdItens": dadosPedido.qtd_itens,
         "valorCompra": dadosPedido.valor_compra,
-        "metodoPgto": inputState.value
+        "metodoPgto": inputState.value,
+        "produtos": arrayProdutos
     }
 
     sessionStorage.setItem("finishingOrder", true);

@@ -15,14 +15,18 @@ var imagesList = [
 ]
 
 var imagesDefault = [
-    "../IMAGENS/imgUpload/bip.jpg",
     "../IMAGENS/imgUpload/vinilb.jpg",
     "../IMAGENS/imgUpload/vinilrpm.jpg",
     "../IMAGENS/imgUpload/vitrola.jpg",
     "../IMAGENS/imgUpload/walkman.jpg",
-    "../IMAGENS/imgUpload/comando.jpg",
-    "../IMAGENS/imgUpload/minigame.jpg",
-   
+    "../IMAGENS/imgUpload/comando.jpg",   
+    "../IMAGENS/imgUpload/alceu.jpg",   
+    "../IMAGENS/imgUpload/marvelhq1.png",   
+    "../IMAGENS/imgUpload/marvelhq2.png",   
+    "../IMAGENS/imgUpload/vinilm.jpg",   
+    "../IMAGENS/imgUpload/vinilmj.jpg",   
+    "../IMAGENS/imgUpload/vinilpe.jpg",   
+    "../IMAGENS/imgUpload/vinilpf.jpg",   
 ]
 
 

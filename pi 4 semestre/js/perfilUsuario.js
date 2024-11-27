@@ -64,21 +64,6 @@ cep_id.addEventListener('blur', function () {
     consultaCep();
 })
 
-async function salvaDados() {
-    const objetoAddress = {
-        "numero": numero_id.value,
-        "complemento": complemento_id.value,
-        "cep": cep_id.value,
-        "bairro": bairro_id.value,
-        "cidade": cidade_id.value,
-        "uf": inputState.value,
-        "principal": principal_id.checked,
-        "clienteId": 1,
-        "rua": endereco_id.value
-    }
-
-}
-
 async function consultaCep() {
     // Chamar a API para carregar os produtos
     await fetch(`https://viacep.com.br/ws/${cep_id.value}/json/`).then(response => {

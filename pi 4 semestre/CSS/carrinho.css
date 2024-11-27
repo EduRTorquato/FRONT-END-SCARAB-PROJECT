@@ -11,6 +11,13 @@ body {
     background-color: #003049; /* Cor de fundo azul escuro */
 }
 
+.btnNext {
+    background-color: #D62828;;
+    color: white;
+    border-radius: 5px;
+
+}
+
 .navbarPay {
     background-color: #D62828; /* Cor vermelha para a navbar */
     display: flex;
