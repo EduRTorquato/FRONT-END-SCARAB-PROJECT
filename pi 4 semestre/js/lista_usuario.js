@@ -182,9 +182,6 @@ async function deactivate(objetoDesativar) {
             throw new Error("Verifique os dados");
         } else {
 
-            ("OBJETO DESATIVADO")
-            (objetoDesativarBody)
-
             Swal.fire({
                 position: "center",
                 title: "Usuário desativado na base de dados!",
@@ -216,14 +213,13 @@ async function deactivate(objetoDesativar) {
 
 //FUNÇÃO QUE ATIVA USUÁRIO.
 async function activate(objetoAtivar) {
+    
     const objetoAtivarBody = {
         "cpf": objetoAtivar.cpf,
         "nomeUsuario": objetoAtivar.nomeUsuario,
         "email": objetoAtivar.email,
         "grupo": objetoAtivar.grupo
     }
-
-
     //CHAMA O ENDPOINT DE PUT
     await fetch("http://localhost:8080/usuarios/ativar", {
         method: "PUT",
